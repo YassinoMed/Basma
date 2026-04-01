@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 320" width="224" height="320">
+  <defs>
+    <pattern id="filBlueTile" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <rect width="44" height="44" fill="#ffffff"/>
+      <!-- Cadres -->
+      <rect x="1.5" y="1.5" width="41" height="41" rx="2" ry="2" fill="none" stroke="#1a3a6b" stroke-width="0.7" opacity="0.5"/>
+      <rect x="4" y="4" width="36" height="36" rx="1.5" ry="1.5" fill="none" stroke="#1a3a6b" stroke-width="0.35" opacity="0.3"/>
+      <!-- Volutes (S-curves) dans les 4 coins -->
+      <g transform="translate(22,22)" opacity="0.4">
+        <!-- 4 volutes spirales -->
+        <path d="M0,-14 C4,-14 7,-11 7,-7 C7,-3 4,-1 2,-3 C0,-5 3,-7 5,-7" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+        <path d="M0,14 C-4,14 -7,11 -7,7 C-7,3 -4,1 -2,3 C0,5 -3,7 -5,7" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+        <path d="M14,0 C14,-4 11,-7 7,-7 C3,-7 1,-4 3,-2 C5,0 7,-3 7,-5" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+        <path d="M-14,0 C-14,4 -11,7 -7,7 C-3,7 -1,4 -3,2 C-5,0 -7,3 -7,5" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+        <!-- Feuilles entre les volutes -->
+        <path d="M-9,-9 Q-6,-12 -3,-9 Q-6,-6 -9,-9Z" fill="#1a3a6b" opacity="0.2"/>
+        <path d="M9,9 Q6,12 3,9 Q6,6 9,9Z" fill="#1a3a6b" opacity="0.2"/>
+        <path d="M9,-9 Q12,-6 9,-3 Q6,-6 9,-9Z" fill="#1a3a6b" opacity="0.2"/>
+        <path d="M-9,9 Q-12,6 -9,3 Q-6,6 -9,9Z" fill="#1a3a6b" opacity="0.2"/>
+        <!-- Rosette centrale -->
+        <ellipse rx="7" ry="1.8" fill="#1a3a6b" opacity="0.15" transform="rotate(0)"/>
+        <ellipse rx="7" ry="1.8" fill="#1a3a6b" opacity="0.15" transform="rotate(45)"/>
+        <ellipse rx="7" ry="1.8" fill="#1a3a6b" opacity="0.15" transform="rotate(90)"/>
+        <ellipse rx="7" ry="1.8" fill="#1a3a6b" opacity="0.15" transform="rotate(135)"/>
+        <circle r="4" fill="none" stroke="#1a3a6b" stroke-width="0.5" opacity="0.4"/>
+        <circle r="2" fill="none" stroke="#1a3a6b" stroke-width="0.4" opacity="0.35"/>
+        <circle r="1" fill="#1a3a6b" opacity="0.45"/>
+        <!-- Gouttes -->
+        <path d="M0,-9 Q1.2,-6.5 0,-4 Q-1.2,-6.5 0,-9Z" fill="#1a3a6b" opacity="0.3"/>
+        <path d="M0,9 Q1.2,6.5 0,4 Q-1.2,6.5 0,9Z" fill="#1a3a6b" opacity="0.3"/>
+        <path d="M-9,0 Q-6.5,1.2 -4,0 Q-6.5,-1.2 -9,0Z" fill="#1a3a6b" opacity="0.3"/>
+        <path d="M9,0 Q6.5,1.2 4,0 Q6.5,-1.2 9,0Z" fill="#1a3a6b" opacity="0.3"/>
+      </g>
+      <!-- Points de coin -->
+      <circle cx="1.5" cy="1.5" r="1" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="42.5" cy="1.5" r="1" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="1.5" cy="42.5" r="1" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="42.5" cy="42.5" r="1" fill="#1a3a6b" opacity="0.2"/>
+    </pattern>
+    <pattern id="filBlueGrid" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <line x1="0" y1="0" x2="44" y2="0" stroke="#1a3a6b" stroke-width="0.2" opacity="0.1"/>
+      <line x1="0" y1="0" x2="0" y2="44" stroke="#1a3a6b" stroke-width="0.2" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="224" height="320" fill="#fefefe" rx="6" ry="6"/>
+  <rect x="4" y="4" width="216" height="312" rx="4" ry="4" fill="none" stroke="#1a3a6b" stroke-width="1" opacity="0.45"/>
+  <rect x="7" y="7" width="210" height="306" rx="3" ry="3" fill="none" stroke="#1a3a6b" stroke-width="0.4" opacity="0.25"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#filBlueGrid)" rx="2" ry="2"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#filBlueTile)" rx="2" ry="2"/>
+  <!-- Vigne centrale horizontale -->
+  <g opacity="0.3">
+    <path d="M25,160 C50,145 70,155 90,148 C110,140 130,152 150,145 C170,138 190,150 199,155" fill="none" stroke="#1a3a6b" stroke-width="0.8"/>
+    <path d="M25,160 C50,175 70,165 90,172 C110,180 130,168 150,175 C170,182 190,170 199,165" fill="none" stroke="#1a3a6b" stroke-width="0.8"/>
+    <circle cx="112" cy="160" r="4" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+    <circle cx="112" cy="160" r="1.5" fill="#1a3a6b" opacity="0.4"/>
+  </g>
+  <rect width="224" height="320" fill="none" stroke="#1a3a6b" stroke-width="0.4" opacity="0.15" rx="6" ry="6"/>
+</svg>

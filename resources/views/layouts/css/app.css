@@ -1,0 +1,529 @@
+/* ============================================
+   NAVBAR MODERNE - STYLES PREMIUM
+   ============================================ */
+
+:root {
+    --navbar-height: 70px;
+    --navbar-bg: rgba(255, 255, 255, 0.85);
+    --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    --navbar-border: rgba(0, 0, 0, 0.05);
+    --brand-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #667eea;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --hover-bg: rgba(102, 126, 234, 0.08);
+    --active-bg: rgba(102, 126, 234, 0.12);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --navbar-bg: rgba(26, 32, 44, 0.85);
+    --navbar-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    --navbar-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f7fafc;
+    --text-secondary: #cbd5e0;
+    --hover-bg: rgba(102, 126, 234, 0.15);
+    --active-bg: rgba(102, 126, 234, 0.25);
+}
+
+/* ============================================
+   NAVBAR CONTAINER
+   ============================================ */
+
+.navbar-modern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.navbar-backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--navbar-bg);
+    border-bottom: 1px solid var(--navbar-border);
+    box-shadow: var(--navbar-shadow);
+}
+
+.navbar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    gap: 2rem;
+}
+
+/* ============================================
+   BRAND SECTION
+   ============================================ */
+
+.navbar-brand-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-brand-modern:hover {
+    transform: translateY(-1px);
+}
+
+.brand-icon-modern {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-gradient);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.brand-icon-modern i {
+    font-size: 24px;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-icon-glow {
+    position: absolute;
+    inset: -2px;
+    background: var(--brand-gradient);
+    border-radius: 14px;
+    opacity: 0;
+    filter: blur(8px);
+    transition: var(--transition-smooth);
+    z-index: 1;
+}
+
+.navbar-brand-modern:hover .brand-icon-modern {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.navbar-brand-modern:hover .brand-icon-glow {
+    opacity: 0.6;
+}
+
+.brand-text-modern {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.brand-accent {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+/* ============================================
+   NAVIGATION MENU
+   ============================================ */
+
+.navbar-main {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 1.5rem;
+}
+
+.navbar-menu-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.nav-link-modern {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.nav-link-modern i {
+    font-size: 1.25rem;
+    transition: var(--transition-smooth);
+}
+
+.nav-link-modern:hover {
+    color: var(--accent-color);
+    background: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+.nav-link-modern:hover i {
+    transform: scale(1.1);
+}
+
+/* Active state indicator */
+.nav-link-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 3px;
+    background: var(--brand-gradient);
+    border-radius: 3px 3px 0 0;
+    transition: var(--transition-smooth);
+}
+
+.nav-link-modern.active {
+    color: var(--accent-color);
+    background: var(--active-bg);
+    font-weight: 600;
+}
+
+.nav-link-modern.active .nav-link-indicator {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* ============================================
+   BOUTON CRÉER MODERNE
+   ============================================ */
+
+.btn-modern {
+    position: relative;
+    overflow: hidden;
+    background: var(--brand-gradient);
+    color: white;
+    border: none;
+    padding: 0.625rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-modern:active {
+    transform: translateY(0);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.btn-modern:hover .btn-shine {
+    left: 100%;
+}
+
+.btn-modern.is-active {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ============================================
+   BOUTONS ICÔNES MODERNES
+   ============================================ */
+
+.btn-icon-modern {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    overflow: hidden;
+}
+
+.btn-icon-modern i {
+    font-size: 1.375rem;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.btn-icon-modern:hover {
+    background: var(--hover-bg);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+.btn-icon-modern:hover i {
+    transform: scale(1.1);
+}
+
+.btn-icon-ripple {
+    position: absolute;
+    inset: 0;
+    background: var(--accent-color);
+    opacity: 0;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: var(--transition-smooth);
+}
+
+.btn-icon-modern:active .btn-icon-ripple {
+    opacity: 0.2;
+    transform: scale(1);
+    transition: none;
+}
+
+/* ============================================
+   DROPDOWN MODERNE
+   ============================================ */
+
+.dropdown-modern {
+    position: relative;
+}
+
+.dropdown-menu-modern {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    min-width: 220px;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--navbar-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: var(--transition-smooth);
+    z-index: 1001;
+    overflow: hidden;
+}
+
+.dropdown-modern[aria-expanded="true"] .dropdown-menu-modern {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    border: none;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.dropdown-item-modern i {
+    font-size: 1.25rem;
+    transition: var(--transition-smooth);
+}
+
+.dropdown-item-modern:hover {
+    background: var(--hover-bg);
+    color: var(--accent-color);
+}
+
+.dropdown-item-modern:hover i {
+    transform: translateX(2px);
+}
+
+.dropdown-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--navbar-border);
+}
+
+.dropdown-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    margin-bottom: 0.25rem;
+}
+
+.dropdown-subtitle {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: var(--navbar-border);
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+    .navbar-container {
+        padding: 0 1.5rem;
+    }
+
+    .navbar-main {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid var(--navbar-border);
+        box-shadow: var(--navbar-shadow);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: var(--transition-smooth);
+    }
+
+    .navbar-main.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-menu-modern {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .nav-link-modern {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.875rem 1rem;
+    }
+
+    .navbar-actions {
+        width: 100%;
+    }
+
+    .btn-modern {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .navbar-toggle {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 993px) {
+    .navbar-toggle {
+        display: none;
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.navbar-modern {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+/* ============================================
+   SCROLL EFFECTS
+   ============================================ */
+
+.navbar-modern.scrolled .navbar-backdrop {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .navbar-modern.scrolled .navbar-backdrop {
+    background: rgba(26, 32, 44, 0.95);
+}
+
+/* ============================================
+   ACCESSIBILITÉ
+   ============================================ */
+
+.btn-icon-modern:focus,
+.nav-link-modern:focus,
+.btn-modern:focus,
+.dropdown-item-modern:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

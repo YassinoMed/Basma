@@ -1,0 +1,340 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black
+}
+
+\title{Cahier des charges \\ \large FrenchVerbs --- Cartes éducatives de conjugaison française}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Contexte et objectifs}
+Le projet \textbf{FrenchVerbs} est une application web destinée à faciliter l'apprentissage de la conjugaison française grâce à un système de \textbf{cartes éducatives} inspirées du style \emph{rami}. L'utilisateur authentifié peut consulter, filtrer et rechercher des verbes, accéder à une fiche détaillée, imprimer des cartes, gérer ses favoris et créer de nouvelles cartes. L'administration dispose d'outils pour \textbf{personnaliser le thème} visuel des cartes et superviser l'état du système.
+
+\subsection{Objectifs pédagogiques}
+\begin{itemize}[leftmargin=*]
+  \item Proposer un support visuel clair et mémorisable pour apprendre le présent de l'indicatif.
+  \item Permettre l'entraînement par répétition via une navigation rapide entre cartes.
+  \item Offrir des fonctionnalités d'accessibilité (clavier, retours visuels) et d'assistance (guide débutant).
+\end{itemize}
+
+\subsection{Objectifs techniques}
+\begin{itemize}[leftmargin=*]
+  \item Application Laravel (PHP) avec pages Blade et interactions JavaScript.
+  \item API JSON permettant d'exposer les verbes et leur conjugaison au présent.
+  \item Zone d'administration sécurisée pour personnaliser et maintenir l'application.
+\end{itemize}
+
+\section{Périmètre}
+
+\subsection{Inclus}
+\begin{itemize}[leftmargin=*]
+  \item Gestion des cartes de verbes au présent (liste, recherche, filtre, détail, impression, impression deck).
+  \item Création d'une carte avec validation côté serveur et outils d'édition (aperçu live, modèles, annuler/rétablir, tutoriel, brouillon).
+  \item Duplication d'une carte existante pour accélérer la création.
+  \item Favoris : ajout/retrait et liste dédiée.
+  \item Quiz : page d'entraînement (sélection de groupes).
+  \item Authentification (inscription, connexion, déconnexion) et rôle administrateur.
+  \item Administration : page Système (statut, actions) et personnalisation du thème (variables CSS).
+  \item API JSON: récupération de la liste des verbes et d'un verbe.
+  \item Expérience utilisateur : notifications toast, thème clair/sombre, anti double-soumission, TTS.
+\end{itemize}
+
+\subsection{Exclus / Hors périmètre}
+\begin{itemize}[leftmargin=*]
+  \item Gestion avancée des temps (imparfait, futur, etc.) au-delà du présent.
+  \item Téléversement/gestion d'illustrations via interface (l'application supporte un chemin d'illustration mais pas de module d'upload dédié).
+  \item Internationalisation complète (l'application est principalement en français).
+\end{itemize}
+
+\section{Acteurs et profils}
+\begin{longtable}{@{}p{3.5cm}p{11cm}@{}}
+\toprule
+\textbf{Acteur} & \textbf{Description} \\
+\midrule
+\endhead
+Visiteur & Utilisateur non authentifié : accès à la page d'accueil, inscription/connexion. \\
+Utilisateur & Utilisateur authentifié : consultation des cartes, favoris, quiz, création/duplication et impression. \\
+Administrateur & Utilisateur authentifié avec \texttt{is\_admin = true} : accès aux pages \texttt{/admin/theme} et \texttt{/admin/system}. \\
+\bottomrule
+\end{longtable}
+
+\section{Architecture générale}
+
+\subsection{Technologies}
+\begin{itemize}[leftmargin=*]
+  \item Backend : Laravel Framework (PHP), contrôleurs HTTP, validation serveur, Eloquent ORM.
+  \item Frontend : Blade, CSS (fichier principal), JavaScript (jQuery) pour interactions.
+  \item Outils frontend : Vite (build), Tailwind en dépendance (projet compatible Vite).
+  \item Base de données : MySQL/PostgreSQL/SQLite selon configuration Laravel (migrations fournies).
+\end{itemize}
+
+\subsection{Pages et routes principales}
+\begin{longtable}{@{}p{4cm}p{3cm}p{7.5cm}@{}}
+\toprule
+\textbf{Route} & \textbf{Méthode} & \textbf{Rôle} \\
+\midrule
+\endhead
+\texttt{/} & GET & Page d'accueil (\emph{landing}). \\
+\texttt{/dashboard} & GET & Redirection vers l'accueil (zone post-connexion). \\
+\texttt{/cards} & GET & Liste des cartes (pagination, recherche \texttt{q}, filtre \texttt{group}). \\
+\texttt{/cards/create} & GET & Formulaire de création d'une carte. \\
+\texttt{/builder} & GET & Alias vers la création de carte. \\
+\texttt{/cards} & POST & Création d'un verbe et de sa conjugaison au présent. \\
+\texttt{/cards/\{verb\}/duplicate} & GET & Pré-remplissage du formulaire depuis un verbe existant. \\
+\texttt{/cards/\{verb\}} & GET & Détail d'une carte (onglets pronoms). \\
+\texttt{/cards/\{verb\}/print} & GET & Page d'impression (cartes par pronom). \\
+\texttt{/cards/print/deck} & GET & Impression deck 9 cartes/A4 (options groupe, recto/verso). \\
+\texttt{/rules} & GET & Règles et aide (page dédiée). \\
+\texttt{/favorites} & GET & Liste des cartes favorites de l'utilisateur. \\
+\texttt{/favorites/\{verb\}/toggle} & POST & Ajout/retrait d'un favori. \\
+\texttt{/quiz} & GET & Page quiz (sélection de groupes). \\
+\texttt{/login} & GET/POST & Connexion (throttle). \\
+\texttt{/register} & GET/POST & Inscription (throttle). \\
+\texttt{/logout} & POST & Déconnexion (auth). \\
+\texttt{/health} & GET & Endpoint JSON de santé (DB + storage). \\
+\texttt{/up} & GET & Endpoint de santé Laravel (configuré par l'application). \\
+\texttt{/admin/verbs} & GET & Admin : liste des verbes et activation/désactivation. \\
+\texttt{/admin/theme} & GET/POST & Admin : éditeur thème et sauvegarde des variables CSS. \\
+\texttt{/admin/theme/reset} & POST & Admin : remise à zéro des valeurs de thème. \\
+\texttt{/admin/system} & GET & Admin : tableau statut système. \\
+\texttt{/admin/system/action} & POST & Admin : exécution d'actions (clear caches). \\
+\bottomrule
+\end{longtable}
+
+\subsection{API JSON}
+\begin{longtable}{@{}p{5cm}p{2cm}p{7.5cm}@{}}
+\toprule
+\textbf{Endpoint} & \textbf{Méthode} & \textbf{Description} \\
+\midrule
+\endhead
+\texttt{/api/verbs} & GET & Liste des verbes actifs (filtres \texttt{group}, \texttt{q}). Retourne les données du verbe et la conjugaison au présent. \\
+\texttt{/api/verbs/\{verb\}} & GET & Détails d'un verbe (inclut la conjugaison au présent formatée). \\
+\bottomrule
+\end{longtable}
+
+\section{Exigences fonctionnelles}
+
+\subsection{Module 1 --- Consultation des cartes}
+\begin{itemize}[leftmargin=*]
+  \item Afficher une liste paginée des verbes actifs (24 par page).
+  \item Permettre la recherche par infinitif ou traduction via un champ \texttt{q}.
+  \item Permettre le filtrage par groupe verbal \texttt{1er}, \texttt{2ème}, \texttt{3ème}.
+  \item Afficher, pour chaque carte, un badge groupe et un symbole (\(\spadesuit\), \(\diamondsuit\), \(\clubsuit\), \(\heartsuit\) pour les auxiliaires \emph{être/avoir}).
+  \item Permettre l'accès au détail d'une carte (navigation via clic/touche entrée).
+\end{itemize}
+
+\subsection{Module 2 --- Détail d'une carte}
+\begin{itemize}[leftmargin=*]
+  \item Afficher une carte \emph{grande} du verbe choisi et sa conjugaison au présent.
+  \item Proposer des onglets de sélection du pronom (\texttt{JE, TU, IL, NOUS, VOUS, ILS}) via paramètre \texttt{p}.
+  \item Afficher la description d'illustration si disponible.
+  \item Proposer un bouton de prononciation (TTS) du verbe.
+  \item Proposer un accès à l'impression de la carte.
+\end{itemize}
+
+\subsection{Module 3 --- Impression}
+\begin{itemize}[leftmargin=*]
+  \item Fournir une page d'impression générant une grille de cartes (une par pronom).
+  \item Masquer l'interface non nécessaire (\emph{chrome}) en mode impression.
+  \item Fournir des actions \emph{Retour} et \emph{Imprimer} (non imprimées).
+  \item Fournir une impression \emph{deck} 9 cartes/A4 (mélange par groupes, limite pages/cartes, option verso).
+\end{itemize}
+
+\subsection{Module 4 --- Création d'une carte}
+\begin{itemize}[leftmargin=*]
+  \item Afficher un formulaire de création comprenant : infinitif, traduction, groupe, couleurs (thème/accent), motif, conjugaisons (je/tu/il-nous-vous-ils).
+  \item Proposer un aperçu en temps réel de la carte en cours de saisie.
+  \item Proposer une action \emph{Conjugaison Magique} pour suggérer automatiquement des formes (notamment 1er/2ème groupe) et informer l'utilisateur en cas d'impossibilité.
+  \item Proposer des outils d'édition : modèles (presets), annuler/rétablir, tutoriel guidé, réinitialisation.
+  \item Sauvegarder un brouillon côté navigateur (localStorage) et restaurer automatiquement si le formulaire est vide.
+  \item Permettre la duplication d'une carte existante pour préremplir le formulaire.
+  \item Appliquer des validations serveur :
+    \begin{itemize}[leftmargin=*]
+      \item Champs requis pour l'infinitif et toutes les formes au présent.
+      \item Vérification du suffixe de l'infinitif selon le groupe (1er \(\rightarrow\) \texttt{er}, 2ème \(\rightarrow\) \texttt{ir}).
+      \item Unicité de l'infinitif (insensible à la casse).
+      \item Couleurs au format hexadécimal \texttt{\#RRGGBB}.
+      \item Motif limité à une liste autorisée.
+    \end{itemize}
+  \item Enregistrer en base : un \emph{verb} et une \emph{conjugation} au temps \emph{présent}.
+  \item Afficher un message de succès après création.
+\end{itemize}
+\subsection{Module 5 --- Favoris}
+\begin{itemize}[leftmargin=*]
+  \item Permettre d'ajouter/retirer un verbe des favoris (toggle).
+  \item Afficher une page listant les favoris avec filtre groupe et recherche.
+\end{itemize}
+
+\subsection{Module 6 --- Quiz}
+\begin{itemize}[leftmargin=*]
+  \item Fournir une page quiz permettant de choisir un ou plusieurs groupes.
+\end{itemize}
+
+\subsection{Module 7 --- Authentification et sessions}
+\begin{itemize}[leftmargin=*]
+  \item Inscription avec \texttt{name}, \texttt{email}, \texttt{password} (confirmation).
+  \item Connexion avec \texttt{email} et \texttt{password}, option \emph{remember}.
+  \item Déconnexion via requête POST (CSRF).
+  \item Limitation anti-bruteforce (throttle) sur les routes de connexion/inscription.
+  \item Rôle administrateur : champ \texttt{is\_admin} sur l'utilisateur.
+\end{itemize}
+
+\subsection{Module 8 --- Administration : personnalisation du thème}
+\begin{itemize}[leftmargin=*]
+  \item Accès réservé aux administrateurs (\texttt{auth} + middleware \texttt{admin}).
+  \item Interface de personnalisation basée sur des \textbf{variables CSS} (prévisualisation en direct).
+  \item Sauvegarde via requête AJAX des valeurs autorisées, avec validation des formats.
+  \item Réinitialisation du thème aux valeurs par défaut.
+  \item Mise en cache des styles générés (CSS inline injecté dans le layout) et invalidation du cache à la sauvegarde.
+  \item Préréglages : ombres (shadow presets), style d'illustration (center presets), icône d'illustration.
+  \item Aide UX : recherche de paramètres, raccourcis clavier (ex: \texttt{Ctrl+S} pour enregistrer), avertissement avant de quitter si modifications non sauvegardées.
+\end{itemize}
+
+\subsection{Module 9 --- Administration : page Système}
+\begin{itemize}[leftmargin=*]
+  \item Afficher l'état général : nom app, environnement, debug, versions Laravel/PHP, drivers (DB/cache/queue/session), accès DB, droits d'écriture storage/logs.
+  \item Proposer des actions d'entretien :
+    \begin{itemize}[leftmargin=*]
+      \item vider cache thème (cache applicatif),
+      \item \texttt{optimize:clear}, \texttt{cache:clear}, \texttt{config:clear}, \texttt{route:clear}, \texttt{view:clear}.
+    \end{itemize}
+  \item Afficher les erreurs en message utilisateur en cas d'échec d'une action.
+\end{itemize}
+
+\subsection{Module 10 --- Monitoring}
+\begin{itemize}[leftmargin=*]
+  \item Endpoint \texttt{/health} renvoyant JSON :
+    \begin{itemize}[leftmargin=*]
+      \item \texttt{status} (\texttt{ok} ou \texttt{fail}),
+      \item \texttt{timestamp},
+      \item \texttt{checks} : base de données et écriture storage.
+    \end{itemize}
+  \item Code HTTP 200 si OK, 503 sinon.
+\end{itemize}
+
+\subsection{Module 11 --- Expérience utilisateur (UX) et accessibilité}
+\begin{itemize}[leftmargin=*]
+  \item Thème clair/sombre : bascule via bouton UI, persistance par \texttt{localStorage}.
+  \item Notifications toast globales pour retours rapides (succès/erreur).
+  \item Guide débutant (affichable/masquable, mémorisé en \texttt{localStorage}).
+  \item Animations à l'apparition (\texttt{IntersectionObserver}) sur certaines cartes.
+  \item Navigation clavier : cartes et éléments interactifs accessibles (\texttt{tabindex}, \texttt{role}).
+  \item Anti double-soumission : blocage de formulaire au submit et désactivation des boutons.
+  \item Copie facilitée : clic sur champs hex readonly et feedback toast.
+\end{itemize}
+
+\section{Exigences non fonctionnelles}
+\subsection{Sécurité}
+\begin{itemize}[leftmargin=*]
+  \item Protection CSRF sur les formulaires.
+  \item Validation serveur systématique des entrées utilisateur.
+  \item Contrôle d'accès administrateur basé sur \texttt{is\_admin}.
+  \item (Optionnel selon environnement) Basic Auth admin via variables d'environnement (middleware dédié, non obligatoire).
+\end{itemize}
+
+\subsection{Performance}
+\begin{itemize}[leftmargin=*]
+  \item Pagination sur la liste (limitation du volume de données).
+  \item Cache des styles de thème (éviter calcul répété).
+\end{itemize}
+
+\subsection{Qualité et maintenabilité}
+\begin{itemize}[leftmargin=*]
+  \item Couverture par tests automatisés (ex: accès admin, validation création, endpoint health).
+  \item Conventions Laravel (controllers, models, migrations, providers).
+\end{itemize}
+
+\subsection{Compatibilité}
+\begin{itemize}[leftmargin=*]
+  \item Fonctionnement sur navigateurs modernes (TTS et IntersectionObserver avec fallback implicite).
+  \item Compatibilité DB multi-driver via migrations.
+\end{itemize}
+
+\section{Modèle de données (base)}
+\begin{longtable}{@{}p{3.5cm}p{11cm}@{}}
+\toprule
+\textbf{Table} & \textbf{Champs principaux} \\
+\midrule
+\endhead
+\texttt{users} & \texttt{name}, \texttt{email}, \texttt{password}, \texttt{is\_admin} \\
+\texttt{verbs} & \texttt{infinitive}, \texttt{infinitive\_translation}, \texttt{group}, \texttt{illustration\_path}, \texttt{illustration\_description}, \texttt{theme\_color}, \texttt{accent\_color}, \texttt{pattern}, \texttt{is\_active} \\
+\texttt{conjugations} & \texttt{verb\_id}, \texttt{tense}, \texttt{je}, \texttt{tu}, \texttt{il\_elle\_on}, \texttt{nous}, \texttt{vous}, \texttt{ils\_elles} \\
+\texttt{theme\_settings} & \texttt{key} (unique), \texttt{value} \\
+\texttt{cache}, \texttt{jobs} & Tables techniques Laravel (selon configuration). \\
+\bottomrule
+\end{longtable}
+
+\section{Règles de gestion}
+\begin{itemize}[leftmargin=*]
+  \item Un verbe est affiché si \texttt{is\_active = true}.
+  \item L'infinitif est unique (insensible à la casse).
+  \item Le temps manipulé par défaut est \textbf{présent}.
+  \item Un verbe appartient à un groupe \texttt{1er/2ème/3ème}.
+  \item Les clés de personnalisation thème acceptées sont restreintes à une liste contrôlée (variables CSS \texttt{--rami-*}).
+  \item Les valeurs de thème sont filtrées pour éviter l'injection (caractères \texttt{; \{ \}} interdits, longueurs limitées).
+\end{itemize}
+
+\section{Cas d'utilisation (résumé)}
+\begin{longtable}{@{}p{3.5cm}p{11cm}@{}}
+\toprule
+\textbf{UC} & \textbf{Description} \\
+\midrule
+\endhead
+UC1 & Consulter la liste, rechercher et filtrer des cartes. \\
+UC2 & Ouvrir une carte, changer le pronom, écouter la prononciation. \\
+UC3 & Imprimer une carte (grille par pronom). \\
+UC4 & Créer une nouvelle carte avec validation. \\
+UC5 & S'inscrire, se connecter, se déconnecter. \\
+UC6 & (Admin) Personnaliser le thème et sauvegarder les réglages. \\
+UC7 & (Admin) Consulter l'état du système et exécuter une action de maintenance. \\
+UC8 & Consommer l'API \texttt{/api/verbs} depuis un client. \\
+UC9 & Ajouter/retirer un favori et consulter la liste des favoris. \\
+UC10 & Accéder au quiz et sélectionner des groupes. \\
+UC11 & Dupliquer une carte existante pour en créer une nouvelle. \\
+\bottomrule
+\end{longtable}
+
+\section{Critères d'acceptation (exemples)}
+\begin{itemize}[leftmargin=*]
+  \item La page \texttt{/cards} affiche une liste paginée et les filtres fonctionnent.
+  \item La création refuse un infinitif du 1er groupe ne finissant pas par \texttt{er}.
+  \item Deux verbes \texttt{manger} et \texttt{Manger} ne peuvent pas coexister.
+  \item \texttt{/health} renvoie \texttt{status=ok} et HTTP 200 si DB+storage OK.
+  \item Un utilisateur non admin reçoit HTTP 403 sur \texttt{/admin/theme} et \texttt{/admin/system}.
+  \item La sauvegarde du thème met à jour l'apparence des cartes sans rechargement complet.
+  \item Un utilisateur peut ajouter un favori puis le retrouver dans \texttt{/favorites}.
+\end{itemize}
+
+\section{Annexe : Références techniques (code)}
+Pour valider la cohérence du cahier des charges avec l'implémentation, les références principales sont :
+\begin{itemize}[leftmargin=*]
+  \item Routes web : \texttt{routes/web.php}
+  \item Routes API : \texttt{routes/api.php}
+  \item Contrôleur cartes : \texttt{app/Http/Controllers/VerbCardController.php}
+  \item Contrôleur thème : \texttt{app/Http/Controllers/ThemeController.php}
+  \item Contrôleur système : \texttt{app/Http/Controllers/SystemController.php}
+  \item Provider thème : \texttt{app/Providers/AppServiceProvider.php}
+  \item JS global : \texttt{public/js/app.js}
+\end{itemize}
+
+\end{document}

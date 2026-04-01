@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 320" width="224" height="320">
+  <defs>
+    <pattern id="fanRedTile" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <rect width="36" height="36" fill="#ffffff"/>
+      <rect x="1" y="1" width="34" height="34" rx="1.5" ry="1.5" fill="none" stroke="#c41e3a" stroke-width="0.6" opacity="0.4"/>
+      <rect x="3.5" y="3.5" width="29" height="29" rx="1" ry="1" fill="none" stroke="#c41e3a" stroke-width="0.3" opacity="0.25"/>
+      <g transform="translate(18,18)" opacity="0.4">
+        <!-- Éventails superposés (arcs concentriques) -->
+        <path d="M-13,-4 A14,14 0 0,1 13,-4" fill="none" stroke="#c41e3a" stroke-width="0.5"/>
+        <path d="M-10,-3 A11,11 0 0,1 10,-3" fill="none" stroke="#c41e3a" stroke-width="0.4"/>
+        <path d="M-7,-2 A8,8 0 0,1 7,-2" fill="none" stroke="#c41e3a" stroke-width="0.35"/>
+        <path d="M-4,-1 A5,5 0 0,1 4,-1" fill="none" stroke="#c41e3a" stroke-width="0.3"/>
+        <!-- Éventails inversés (bas) -->
+        <path d="M-13,4 A14,14 0 0,0 13,4" fill="none" stroke="#c41e3a" stroke-width="0.5"/>
+        <path d="M-10,3 A11,11 0 0,0 10,3" fill="none" stroke="#c41e3a" stroke-width="0.4"/>
+        <path d="M-7,2 A8,8 0 0,0 7,2" fill="none" stroke="#c41e3a" stroke-width="0.35"/>
+        <!-- Rayons de l'éventail -->
+        <line x1="0" y1="-14" x2="0" y2="14" stroke="#c41e3a" stroke-width="0.25" opacity="0.3"/>
+        <line x1="-10" y1="-10" x2="10" y2="10" stroke="#c41e3a" stroke-width="0.25" opacity="0.25"/>
+        <line x1="10" y1="-10" x2="-10" y2="10" stroke="#c41e3a" stroke-width="0.25" opacity="0.25"/>
+        <!-- Centre -->
+        <circle r="3" fill="none" stroke="#c41e3a" stroke-width="0.45" opacity="0.45"/>
+        <circle r="1.2" fill="#c41e3a" opacity="0.4"/>
+        <!-- Petits losanges décoratifs -->
+        <path d="M0,-12 L1.5,-10.5 L0,-9 L-1.5,-10.5Z" fill="#c41e3a" opacity="0.25"/>
+        <path d="M0,12 L1.5,10.5 L0,9 L-1.5,10.5Z" fill="#c41e3a" opacity="0.25"/>
+        <path d="M-12,0 L-10.5,1.5 L-9,0 L-10.5,-1.5Z" fill="#c41e3a" opacity="0.25"/>
+        <path d="M12,0 L10.5,1.5 L9,0 L10.5,-1.5Z" fill="#c41e3a" opacity="0.25"/>
+      </g>
+      <circle cx="1" cy="1" r="0.8" fill="#c41e3a" opacity="0.2"/>
+      <circle cx="35" cy="1" r="0.8" fill="#c41e3a" opacity="0.2"/>
+      <circle cx="1" cy="35" r="0.8" fill="#c41e3a" opacity="0.2"/>
+      <circle cx="35" cy="35" r="0.8" fill="#c41e3a" opacity="0.2"/>
+    </pattern>
+    <pattern id="fanRedGrid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <line x1="0" y1="0" x2="36" y2="0" stroke="#c41e3a" stroke-width="0.2" opacity="0.08"/>
+      <line x1="0" y1="0" x2="0" y2="36" stroke="#c41e3a" stroke-width="0.2" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="224" height="320" fill="#fefefe" rx="6" ry="6"/>
+  <rect x="4" y="4" width="216" height="312" rx="4" ry="4" fill="none" stroke="#c41e3a" stroke-width="1" opacity="0.4"/>
+  <rect x="7" y="7" width="210" height="306" rx="3" ry="3" fill="none" stroke="#c41e3a" stroke-width="0.4" opacity="0.22"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#fanRedGrid)" rx="2" ry="2"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#fanRedTile)" rx="2" ry="2"/>
+  <!-- Grand éventail central décoratif -->
+  <g transform="translate(112,160)" opacity="0.25">
+    <path d="M-40,0 A45,45 0 0,1 40,0" fill="none" stroke="#c41e3a" stroke-width="0.8"/>
+    <path d="M-35,0 A40,40 0 0,1 35,0" fill="none" stroke="#c41e3a" stroke-width="0.6"/>
+    <path d="M-30,0 A35,35 0 0,1 30,0" fill="none" stroke="#c41e3a" stroke-width="0.5"/>
+    <path d="M-40,0 A45,45 0 0,0 40,0" fill="none" stroke="#c41e3a" stroke-width="0.8"/>
+    <path d="M-35,0 A40,40 0 0,0 35,0" fill="none" stroke="#c41e3a" stroke-width="0.6"/>
+    <path d="M-30,0 A35,35 0 0,0 30,0" fill="none" stroke="#c41e3a" stroke-width="0.5"/>
+    <circle r="8" fill="none" stroke="#c41e3a" stroke-width="0.6"/>
+    <circle r="3" fill="#c41e3a" opacity="0.3"/>
+  </g>
+  <rect width="224" height="320" fill="none" stroke="#c41e3a" stroke-width="0.4" opacity="0.15" rx="6" ry="6"/>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 882" width="630" height="882">
+  <defs>
+    <!-- Classic Rami card back pattern - Red variant -->
+    <!-- Each diamond tile is 45x45 rotated 45 degrees, creating a grid of ornamental losanges -->
+    <pattern id="classicRamiRed" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse" patternTransform="rotate(45 315 441)">
+      <rect width="50" height="50" fill="#ffffff"/>
+      
+      <!-- Diamond border -->
+      <rect x="3" y="3" width="44" height="44" rx="2" ry="2" fill="none" stroke="#c41e3a" stroke-width="1.2" opacity="0.85"/>
+      
+      <!-- Inner decorative diamond -->
+      <rect x="7" y="7" width="36" height="36" rx="1.5" ry="1.5" fill="none" stroke="#c41e3a" stroke-width="0.6" opacity="0.5"/>
+      
+      <!-- Central floral rosette -->
+      <g transform="translate(25, 25)">
+        <!-- Outer petal ring (8 petals) -->
+        <ellipse rx="12" ry="3.5" fill="#c41e3a" opacity="0.3" transform="rotate(0)"/>
+        <ellipse rx="12" ry="3.5" fill="#c41e3a" opacity="0.3" transform="rotate(45)"/>
+        <ellipse rx="12" ry="3.5" fill="#c41e3a" opacity="0.3" transform="rotate(90)"/>
+        <ellipse rx="12" ry="3.5" fill="#c41e3a" opacity="0.3" transform="rotate(135)"/>
+        
+        <!-- Inner petal ring -->
+        <ellipse rx="8" ry="2.5" fill="#c41e3a" opacity="0.45" transform="rotate(22.5)"/>
+        <ellipse rx="8" ry="2.5" fill="#c41e3a" opacity="0.45" transform="rotate(67.5)"/>
+        <ellipse rx="8" ry="2.5" fill="#c41e3a" opacity="0.45" transform="rotate(112.5)"/>
+        <ellipse rx="8" ry="2.5" fill="#c41e3a" opacity="0.45" transform="rotate(157.5)"/>
+        
+        <!-- Ornamental circles -->
+        <circle r="6" fill="none" stroke="#c41e3a" stroke-width="0.8" opacity="0.6"/>
+        <circle r="3.5" fill="none" stroke="#c41e3a" stroke-width="0.6" opacity="0.5"/>
+        <circle r="2" fill="#c41e3a" opacity="0.55"/>
+        
+        <!-- Cardinal point teardrops -->
+        <path d="M0,-14 Q2,-10 0,-7 Q-2,-10 0,-14Z" fill="#c41e3a" opacity="0.5"/>
+        <path d="M0,14 Q2,10 0,7 Q-2,10 0,14Z" fill="#c41e3a" opacity="0.5"/>
+        <path d="M-14,0 Q-10,2 -7,0 Q-10,-2 -14,0Z" fill="#c41e3a" opacity="0.5"/>
+        <path d="M14,0 Q10,2 7,0 Q10,-2 14,0Z" fill="#c41e3a" opacity="0.5"/>
+        
+        <!-- Diagonal accent dots -->
+        <circle cx="11" cy="11" r="1.2" fill="#c41e3a" opacity="0.4"/>
+        <circle cx="-11" cy="11" r="1.2" fill="#c41e3a" opacity="0.4"/>
+        <circle cx="11" cy="-11" r="1.2" fill="#c41e3a" opacity="0.4"/>
+        <circle cx="-11" cy="-11" r="1.2" fill="#c41e3a" opacity="0.4"/>
+        
+        <!-- Curving flourish arcs -->
+        <path d="M-15,-15 Q-8,-12 -5,-5" fill="none" stroke="#c41e3a" stroke-width="0.5" opacity="0.35"/>
+        <path d="M15,-15 Q8,-12 5,-5" fill="none" stroke="#c41e3a" stroke-width="0.5" opacity="0.35"/>
+        <path d="M-15,15 Q-8,12 -5,5" fill="none" stroke="#c41e3a" stroke-width="0.5" opacity="0.35"/>
+        <path d="M15,15 Q8,12 5,5" fill="none" stroke="#c41e3a" stroke-width="0.5" opacity="0.35"/>
+      </g>
+      
+      <!-- Corner ornaments -->
+      <circle cx="3" cy="3" r="1.5" fill="#c41e3a" opacity="0.3"/>
+      <circle cx="47" cy="3" r="1.5" fill="#c41e3a" opacity="0.3"/>
+      <circle cx="3" cy="47" r="1.5" fill="#c41e3a" opacity="0.3"/>
+      <circle cx="47" cy="47" r="1.5" fill="#c41e3a" opacity="0.3"/>
+    </pattern>
+
+    <!-- Non-rotated fine grid lines between diamonds -->
+    <pattern id="classicGridRed" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse" patternTransform="rotate(45 315 441)">
+      <line x1="0" y1="0" x2="50" y2="0" stroke="#c41e3a" stroke-width="0.4" opacity="0.25"/>
+      <line x1="0" y1="0" x2="0" y2="50" stroke="#c41e3a" stroke-width="0.4" opacity="0.25"/>
+    </pattern>
+
+    <clipPath id="classicCardClip">
+      <rect x="8" y="8" width="614" height="866" rx="8" ry="8"/>
+    </clipPath>
+  </defs>
+
+  <!-- White card background -->
+  <rect width="630" height="882" fill="#ffffff" rx="12" ry="12"/>
+
+  <!-- Pattern area with inner margin (mimics the white border of real cards) -->
+  <g clip-path="url(#classicCardClip)">
+    <!-- White base inside margin -->
+    <rect x="8" y="8" width="614" height="866" fill="#fefefe"/>
+    
+    <!-- Grid lines layer -->
+    <rect x="8" y="8" width="614" height="866" fill="url(#classicGridRed)"/>
+    
+    <!-- Main ornamental diamond pattern -->
+    <rect x="8" y="8" width="614" height="866" fill="url(#classicRamiRed)"/>
+  </g>
+
+  <!-- Thin inner border -->
+  <rect x="8" y="8" width="614" height="866" rx="8" ry="8" fill="none" stroke="#c41e3a" stroke-width="0.8" opacity="0.3"/>
+</svg>

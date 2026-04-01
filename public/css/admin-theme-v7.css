@@ -1,0 +1,1394 @@
+/* ============================================================
+   THEME V7 — PREMIUM VINTAGE
+   Cream (#F9F7F0) · Navy (#0f3057) · Gold (#bfa05f)
+   Serif Typography · Double Gold Borders · Ornamental Corners
+   ============================================================ */
+
+/* === Google Font === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
+/* === V7 Design Tokens === */
+.theme-customizer--v7 {
+    --v7-cream: #F9F7F0;
+    --v7-cream-light: #FDFCF8;
+    --v7-cream-dark: #F0EBE0;
+    --v7-parchment: #EDE8D8;
+    --v7-navy: #0f3057;
+    --v7-navy-light: #1a4a7a;
+    --v7-navy-dark: #091e38;
+    --v7-gold: #bfa05f;
+    --v7-gold-light: #d4bb7e;
+    --v7-gold-dark: #9a7d3f;
+    --v7-gold-shine: #e8d5a3;
+    --v7-bronze: #8B6914;
+    --v7-success: #4a7c59;
+    --v7-danger: #8b3a3a;
+    --v7-text-primary: #0f3057;
+    --v7-text-secondary: #3d5a80;
+    --v7-text-muted: #8a7e6b;
+    --v7-bg: #F9F7F0;
+    --v7-surface: rgba(249, 247, 240, 0.92);
+    --v7-surface-hover: rgba(249, 247, 240, 0.98);
+    --v7-border: rgba(191, 160, 95, 0.25);
+    --v7-border-hover: rgba(191, 160, 95, 0.5);
+    --v7-border-strong: rgba(191, 160, 95, 0.6);
+    --v7-shadow-sm: 0 1px 4px rgba(15, 48, 87, 0.06);
+    --v7-shadow-md: 0 4px 16px rgba(15, 48, 87, 0.08);
+    --v7-shadow-lg: 0 8px 32px rgba(15, 48, 87, 0.1);
+    --v7-shadow-xl: 0 16px 48px rgba(15, 48, 87, 0.12), 0 4px 12px rgba(191, 160, 95, 0.08);
+    --v7-radius-sm: 8px;
+    --v7-radius-md: 12px;
+    --v7-radius-lg: 15px;
+    --v7-radius-xl: 18px;
+    --v7-transition-fast: 0.15s ease;
+    --v7-transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --v7-transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --v7-font-display: 'Playfair Display', 'Cinzel', Georgia, 'Times New Roman', serif;
+    --v7-font-body: 'Playfair Display', Georgia, serif;
+}
+
+/* Dark mode tokens */
+[data-theme="dark"] .theme-customizer--v7 {
+    --v7-cream: #1a1a2e;
+    --v7-cream-light: #222240;
+    --v7-cream-dark: #0f0f1e;
+    --v7-parchment: #252542;
+    --v7-text-primary: #e8dfc8;
+    --v7-text-secondary: #c4b896;
+    --v7-text-muted: #8a7e6b;
+    --v7-bg: #0f0f1e;
+    --v7-surface: rgba(26, 26, 46, 0.92);
+    --v7-surface-hover: rgba(34, 34, 64, 0.96);
+    --v7-border: rgba(191, 160, 95, 0.2);
+    --v7-border-hover: rgba(191, 160, 95, 0.4);
+    --v7-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
+    --v7-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --v7-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+    --v7-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(191, 160, 95, 0.06);
+}
+
+/* ============================================================
+   V7 Customizer Card / Controls
+   ============================================================ */
+.theme-customizer--v7 .customizer-controls {
+    background: var(--v7-surface) !important;
+    border: 2px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-xl) !important;
+    box-shadow: var(--v7-shadow-lg), inset 0 0 0 1px rgba(191, 160, 95, 0.08) !important;
+    font-family: var(--v7-font-body) !important;
+}
+
+/* ============================================================
+   V7 Header — Vintage Ribbon
+   ============================================================ */
+.theme-customizer--v7 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(191, 160, 95, 0.1) 0%,
+            rgba(15, 48, 87, 0.06) 30%,
+            rgba(191, 160, 95, 0.04) 50%,
+            rgba(15, 48, 87, 0.06) 70%,
+            rgba(191, 160, 95, 0.1) 100%) !important;
+    border: 1.5px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-xl) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Double border inset effect with shimmer */
+.theme-customizer--v7 .customizer-header::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(191, 160, 95, 0.18);
+    border-radius: calc(var(--v7-radius-xl) - 4px);
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(191, 160, 95, 0.03) 50%,
+            transparent 100%);
+    background-size: 200% 100%;
+    animation: v7-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes v7-shimmer {
+
+    0%,
+    100% {
+        background-position: 200% 0;
+    }
+
+    50% {
+        background-position: -200% 0;
+    }
+}
+
+/* Gold fleuron ornament — both corners */
+.theme-customizer--v7 .customizer-header::after {
+    content: '❧  ❧';
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    font-size: 16px;
+    color: var(--v7-gold);
+    opacity: 0.35;
+    pointer-events: none;
+    text-shadow: 0 0 8px rgba(191, 160, 95, 0.2);
+    letter-spacing: 4px;
+}
+
+/* === V7 Section Badge === */
+.theme-customizer--v7 .section-badge {
+    background: linear-gradient(135deg, rgba(15, 48, 87, 0.08), rgba(191, 160, 95, 0.06)) !important;
+    border: 1px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    color: var(--v7-navy) !important;
+    font-family: var(--v7-font-display) !important;
+}
+
+.theme-customizer--v7 .section-title {
+    font-family: var(--v7-font-display) !important;
+    color: var(--v7-text-primary) !important;
+}
+
+.theme-customizer--v7 .section-description {
+    font-family: var(--v7-font-body) !important;
+    color: var(--v7-text-secondary) !important;
+    font-size: 13px !important;
+    font-style: italic !important;
+}
+
+.theme-customizer--v7 .section-description::after {
+    content: ' ❧ Premium · Vintage · Classique';
+    display: inline;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--v7-gold);
+    opacity: 0.7;
+}
+
+/* ============================================================
+   V7 Version Pills — Gold Frame
+   ============================================================ */
+.theme-customizer--v7 .customizer-version-switch {
+    background: rgba(249, 247, 240, 0.7) !important;
+    border: 1px solid var(--v7-border) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v7 .customizer-version-switch {
+    background: rgba(26, 26, 46, 0.7) !important;
+}
+
+.theme-customizer--v7 .customizer-version-pill {
+    font-family: var(--v7-font-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    transition: all var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .customizer-version-pill.is-active {
+    background: linear-gradient(135deg, var(--v7-navy), var(--v7-navy-light)) !important;
+    color: var(--v7-gold-shine) !important;
+    border-color: var(--v7-gold) !important;
+    box-shadow: 0 4px 14px rgba(15, 48, 87, 0.25), inset 0 0 0 1px rgba(191, 160, 95, 0.3) !important;
+}
+
+.theme-customizer--v7 .customizer-version-pill:hover:not(.is-active) {
+    background: rgba(191, 160, 95, 0.1) !important;
+    color: var(--v7-navy) !important;
+    border-color: rgba(191, 160, 95, 0.3) !important;
+}
+
+/* ============================================================
+   V7 Control Sections
+   ============================================================ */
+.theme-customizer--v7 .control-section {
+    border-bottom: 1px solid var(--v7-border) !important;
+    padding: 24px 28px !important;
+    transition: background var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .control-section:hover {
+    background: rgba(191, 160, 95, 0.02) !important;
+}
+
+.theme-customizer--v7 .control-section h3 {
+    font-family: var(--v7-font-display) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    color: var(--v7-text-primary) !important;
+    text-transform: uppercase;
+}
+
+.theme-customizer--v7 .control-section h3::before {
+    background: linear-gradient(180deg, var(--v7-gold), var(--v7-gold-dark)) !important;
+    border-radius: 2px !important;
+    width: 3px !important;
+    height: 22px !important;
+}
+
+.theme-customizer--v7 .control-section h3:hover {
+    color: var(--v7-gold-dark) !important;
+}
+
+/* ============================================================
+   V7 Color Inputs — Gold-bordered
+   ============================================================ */
+.theme-customizer--v7 .color-input-group label {
+    font-family: var(--v7-font-body) !important;
+    color: var(--v7-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase;
+}
+
+.theme-customizer--v7 .color-input-wrapper input[type="color"] {
+    width: 52px !important;
+    height: 52px !important;
+    border: 2px solid var(--v7-border-strong) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    box-shadow: var(--v7-shadow-sm), inset 0 0 0 1px rgba(191, 160, 95, 0.1) !important;
+    transition: all var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .color-input-wrapper input[type="color"]:hover {
+    border-color: var(--v7-gold) !important;
+    box-shadow: var(--v7-shadow-md), 0 0 0 3px rgba(191, 160, 95, 0.1) !important;
+    transform: scale(1.05) !important;
+}
+
+.theme-customizer--v7 .color-hex {
+    background: var(--v7-cream-light) !important;
+    border: 1.5px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--v7-text-primary) !important;
+}
+
+.theme-customizer--v7 .color-hex:focus {
+    border-color: var(--v7-gold) !important;
+    box-shadow: 0 0 0 3px rgba(191, 160, 95, 0.12) !important;
+}
+
+/* ============================================================
+   V7 Sliders — Gold accent
+   ============================================================ */
+.theme-customizer--v7 .slider-group label {
+    font-family: var(--v7-font-body) !important;
+    color: var(--v7-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.6px !important;
+}
+
+.theme-customizer--v7 .slider-wrapper {
+    background: var(--v7-cream-light) !important;
+    border: 1px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-md) !important;
+    padding: 14px 16px !important;
+}
+
+.theme-customizer--v7 .slider-wrapper:hover {
+    border-color: var(--v7-border-hover) !important;
+}
+
+.theme-customizer--v7 .slider::-webkit-slider-thumb {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid var(--v7-cream) !important;
+    background: linear-gradient(135deg, var(--v7-gold), var(--v7-gold-dark)) !important;
+    box-shadow: 0 2px 8px rgba(191, 160, 95, 0.4) !important;
+}
+
+.theme-customizer--v7 .slider-value {
+    background: linear-gradient(135deg, rgba(15, 48, 87, 0.06), rgba(191, 160, 95, 0.06)) !important;
+    border: 1px solid var(--v7-border) !important;
+    color: var(--v7-navy) !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: var(--v7-radius-sm) !important;
+}
+
+/* ============================================================
+   V7 Shadow / Preset Options
+   ============================================================ */
+.theme-customizer--v7 .shadow-option {
+    background: var(--v7-cream-light) !important;
+    border: 1.5px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-md) !important;
+    transition: all var(--v7-transition-smooth) !important;
+}
+
+.theme-customizer--v7 .shadow-option:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--v7-shadow-md) !important;
+    border-color: var(--v7-gold) !important;
+}
+
+.theme-customizer--v7 .shadow-option.active {
+    background: linear-gradient(135deg, rgba(15, 48, 87, 0.04), rgba(191, 160, 95, 0.06)) !important;
+    border-color: var(--v7-gold) !important;
+    box-shadow: 0 0 0 2px rgba(191, 160, 95, 0.2), inset 0 0 0 1px rgba(191, 160, 95, 0.1) !important;
+}
+
+/* ============================================================
+   V7 Design Options
+   ============================================================ */
+.theme-customizer--v7 .design-option {
+    border: 1.5px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    transition: all var(--v7-transition-smooth) !important;
+}
+
+.theme-customizer--v7 .design-option:hover {
+    border-color: var(--v7-gold) !important;
+    box-shadow: var(--v7-shadow-md) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.theme-customizer--v7 .design-option.active {
+    border-color: var(--v7-gold) !important;
+    box-shadow: 0 0 0 3px rgba(191, 160, 95, 0.12) !important;
+    background: rgba(191, 160, 95, 0.04) !important;
+}
+
+/* ============================================================
+   V7 Preview Panel
+   ============================================================ */
+.theme-customizer--v7 .customizer-preview {
+    border-radius: var(--v7-radius-xl) !important;
+    border: 2px solid var(--v7-border) !important;
+    overflow: hidden !important;
+}
+
+.theme-customizer--v7 .preview-toolbar {
+    background: linear-gradient(180deg, var(--v7-cream-light), var(--v7-cream)) !important;
+    border-bottom: 1px solid var(--v7-border) !important;
+    font-family: var(--v7-font-display) !important;
+}
+
+.theme-customizer--v7 .preview-mode-btn {
+    border-radius: var(--v7-radius-sm) !important;
+    font-family: var(--v7-font-display) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    transition: all var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .preview-mode-btn.active {
+    background: linear-gradient(135deg, var(--v7-navy), var(--v7-navy-light)) !important;
+    color: var(--v7-gold-shine) !important;
+    box-shadow: 0 2px 8px rgba(15, 48, 87, 0.25) !important;
+}
+
+/* ============================================================
+   V7 Preview Container — Parchment Stage
+   ============================================================ */
+.theme-customizer--v7 .preview-container {
+    background:
+        radial-gradient(ellipse at center, var(--v7-cream-light) 0%, var(--v7-cream) 40%, var(--v7-parchment) 100%) !important;
+    position: relative;
+}
+
+/* Vintage texture overlay — linen + subtle grain */
+.theme-customizer--v7 .preview-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(191, 160, 95, 0.01) 2px,
+            rgba(191, 160, 95, 0.01) 4px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 3px,
+            rgba(191, 160, 95, 0.005) 3px,
+            rgba(191, 160, 95, 0.005) 6px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Soft vignette edges on preview */
+.theme-customizer--v7 .preview-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: inset 0 0 80px rgba(15, 48, 87, 0.03);
+    border-radius: inherit;
+}
+
+/* ============================================================
+   V7 CARD FIXES + VINTAGE STYLING
+   ============================================================ */
+
+/* Card — premium vintage with parchment texture */
+.theme-customizer--v7 .rami-card {
+    position: relative;
+    font-family: var(--v7-font-display) !important;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    transform-style: preserve-3d !important;
+    perspective: 1000px !important;
+    /* Layered realistic shadow */
+    box-shadow:
+        0 1px 2px rgba(15, 48, 87, 0.04),
+        0 4px 8px rgba(15, 48, 87, 0.06),
+        0 8px 20px rgba(15, 48, 87, 0.06),
+        0 16px 40px rgba(15, 48, 87, 0.04) !important;
+}
+
+/* Parchment texture overlay on card */
+.theme-customizer--v7 .rami-card::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: var(--rami-card-radius, 15px) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    opacity: 0.4 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E") !important;
+    mix-blend-mode: multiply !important;
+}
+
+/* ── 1. FULL SERIF TYPOGRAPHY — consistency ── */
+.theme-customizer--v7 .rami-card *,
+.theme-customizer--v7 .rami-card-large * {
+    font-family: var(--v7-font-display) !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-suit {
+    font-family: var(--v7-font-display) !important;
+    color: var(--v7-navy) !important;
+    font-size: 1.1em !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-index-top {
+    font-family: var(--v7-font-display) !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-verb-text,
+.theme-customizer--v7 .rami-card .rami-card-verb-text-v3 {
+    font-family: var(--v7-font-display) !important;
+}
+
+.theme-customizer--v7 .rami-card-large .rami-large-verb-conjugated,
+.theme-customizer--v7 .rami-card-large .rami-large-infinitive,
+.theme-customizer--v7 .rami-card-large .rami-large-badge,
+.theme-customizer--v7 .rami-card-large .rami-large-badge-bottom {
+    font-family: var(--v7-font-display) !important;
+}
+
+/* Inner ornamental SVG frame overlay */
+.theme-customizer--v7 .rami-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 420' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23D4B87A'/%3E%3Cstop offset='40%25' stop-color='%23C5A059'/%3E%3Cstop offset='70%25' stop-color='%23B8913E'/%3E%3Cstop offset='100%25' stop-color='%23C5A059'/%3E%3C/linearGradient%3E%3Cg id='c'%3E%3Cpath d='M12 12C12 12 18 8 28 10C38 12 42 20 40 30C38 38 30 42 24 38C18 34 20 26 26 24C30 22 34 28 32 32' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M12 12C12 12 8 18 10 28C12 38 20 42 30 40C38 38 42 30 38 24C34 18 26 20 24 26C22 30 28 34 32 32' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M14 14Q22 14 26 18Q22 22 18 22Q14 18 14 14Z' fill='url(%23g)' opacity='0.35'/%3E%3Cpath d='M16 16Q20 16 22 18Q20 20 18 20Q16 18 16 16Z' fill='url(%23g)' opacity='0.5'/%3E%3Cpath d='M40 14C48 10 60 12 68 14Q72 15 76 14C80 13 84 14 88 15L95 15' stroke='url(%23g)' stroke-width='1' stroke-linecap='round' fill='none' opacity='0.6'/%3E%3Ccircle cx='52' cy='12.5' r='1.2' fill='%23C5A059' opacity='0.5'/%3E%3Ccircle cx='68' cy='14' r='1' fill='%23C5A059' opacity='0.4'/%3E%3Ccircle cx='84' cy='14.5' r='1.2' fill='%23C5A059' opacity='0.5'/%3E%3Cpath d='M14 40C10 48 12 60 14 68Q15 72 14 76C13 80 14 84 15 88L15 95' stroke='url(%23g)' stroke-width='1' stroke-linecap='round' fill='none' opacity='0.6'/%3E%3Ccircle cx='12.5' cy='52' r='1.2' fill='%23C5A059' opacity='0.5'/%3E%3Ccircle cx='14' cy='68' r='1' fill='%23C5A059' opacity='0.4'/%3E%3Ccircle cx='14.5' cy='84' r='1.2' fill='%23C5A059' opacity='0.5'/%3E%3C/g%3E%3C/defs%3E%3Crect x='6' y='6' width='288' height='408' rx='12' ry='12' stroke='url(%23g)' stroke-width='1.5' fill='none' opacity='0.8'/%3E%3Crect x='12' y='12' width='276' height='396' rx='9' ry='9' stroke='url(%23g)' stroke-width='0.8' fill='none' opacity='0.5'/%3E%3Crect x='9' y='9' width='282' height='402' rx='10.5' ry='10.5' stroke='%23C5A059' stroke-width='0.3' fill='none' opacity='0.3'/%3E%3Cuse href='%23c'/%3E%3Cuse href='%23c' transform='translate(300,0) scale(-1,1)'/%3E%3Cuse href='%23c' transform='translate(0,420) scale(1,-1)'/%3E%3Cuse href='%23c' transform='translate(300,420) scale(-1,-1)'/%3E%3Cg transform='translate(150,15)' opacity='0.55'%3E%3Cpath d='M0 0C-8 4-14 2-18-2C-14 0-10-2-8-4Q-4-2 0 0Z' fill='url(%23g)'/%3E%3Cpath d='M0 0C8 4 14 2 18-2C14 0 10-2 8-4Q4-2 0 0Z' fill='url(%23g)'/%3E%3Ccircle r='1.5' cy='-1' fill='%23C5A059'/%3E%3C/g%3E%3Cg transform='translate(150,405)' opacity='0.55'%3E%3Cpath d='M0 0C-8-4-14-2-18 2C-14 0-10 2-8 4Q-4 2 0 0Z' fill='url(%23g)'/%3E%3Cpath d='M0 0C8-4 14-2 18 2C14 0 10 2 8 4Q4 2 0 0Z' fill='url(%23g)'/%3E%3Ccircle r='1.5' cy='1' fill='%23C5A059'/%3E%3C/g%3E%3Cg transform='translate(11,210)' opacity='0.4'%3E%3Cpath d='M0-12Q4-8 4 0Q4 8 0 12' stroke='%23C5A059' stroke-width='0.8' fill='none'/%3E%3Ccircle cx='3' r='1' fill='%23C5A059' opacity='0.6'/%3E%3C/g%3E%3Cg transform='translate(289,210)' opacity='0.4'%3E%3Cpath d='M0-12Q-4-8-4 0Q-4 8 0 12' stroke='%23C5A059' stroke-width='0.8' fill='none'/%3E%3Ccircle cx='-3' r='1' fill='%23C5A059' opacity='0.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: var(--rami-card-radius, 15px);
+}
+
+/* ── 3D HOVER — perspective tilt + golden halo ── */
+.theme-customizer--v7 .rami-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-1deg) scale(1.02) !important;
+    box-shadow:
+        0 2px 4px rgba(15, 48, 87, 0.04),
+        0 8px 16px rgba(15, 48, 87, 0.06),
+        0 20px 40px rgba(15, 48, 87, 0.08),
+        0 32px 64px rgba(15, 48, 87, 0.04),
+        0 0 30px rgba(191, 160, 95, 0.08) !important;
+}
+
+/* Gold shimmer line on hover */
+.theme-customizer--v7 .rami-card:hover::after {
+    filter: brightness(1.15) !important;
+}
+
+/* ── Decorative star between illustration and verb ── */
+.theme-customizer--v7 .rami-card .rami-card-center::before {
+    content: '✦' !important;
+    position: absolute !important;
+    top: -16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    font-size: 9px !important;
+    color: var(--v7-gold) !important;
+    opacity: 0.6 !important;
+    z-index: 6 !important;
+    text-shadow: 0 0 6px rgba(191, 160, 95, 0.3) !important;
+}
+
+/* ── ILLUSTRATION — Double-ring gold border with inner shine ── */
+.theme-customizer--v7 .rami-card .rami-card-illustration {
+    background: linear-gradient(145deg,
+            var(--rami-illustration-bg-start, #f0ead6),
+            var(--rami-illustration-bg-end, #e8dfc8)) !important;
+    border: 2.5px solid var(--v7-gold) !important;
+    box-shadow:
+        0 0 0 3px rgba(191, 160, 95, 0.12),
+        0 3px 12px rgba(191, 160, 95, 0.15),
+        inset 0 1px 6px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.03) !important;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+/* Illustration glow on card hover */
+.theme-customizer--v7 .rami-card:hover .rami-card-illustration {
+    box-shadow:
+        0 0 0 3px rgba(191, 160, 95, 0.2),
+        0 0 20px rgba(191, 160, 95, 0.12),
+        0 4px 16px rgba(191, 160, 95, 0.18),
+        inset 0 1px 6px rgba(255, 255, 255, 0.35),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.03) !important;
+    border-color: var(--v7-gold-light) !important;
+}
+
+/* ── GOLD ICON — fork/knife integrated ── */
+.theme-customizer--v7 .rami-card-illustration-placeholder {
+    color: var(--v7-gold) !important;
+    opacity: 0.7 !important;
+    font-size: 2.4em !important;
+    filter: drop-shadow(0 1px 2px rgba(191, 160, 95, 0.3)) !important;
+    transition: opacity 0.3s ease, transform 0.4s ease !important;
+}
+
+.theme-customizer--v7 .rami-card:hover .rami-card-illustration-placeholder {
+    opacity: 0.85 !important;
+    transform: scale(1.05) !important;
+}
+
+.theme-customizer--v7 .rami-card-large .rami-card-illustration-placeholder {
+    color: var(--v7-gold) !important;
+    opacity: 0.7 !important;
+    font-size: 3em !important;
+    filter: drop-shadow(0 2px 4px rgba(191, 160, 95, 0.35)) !important;
+}
+
+/* FIX: ghost text — hide the small verb index */
+.theme-customizer--v7 .rami-card-index-verb {
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ── VERB TEXT — enlarged and tracked ── */
+.theme-customizer--v7 .rami-card .rami-card-verb-main {
+    font-family: var(--v7-font-display) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1em !important;
+    color: var(--v7-navy) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    font-size: 1.15em !important;
+}
+
+/* ── PERFECT CENTERING — illustration + text balanced ── */
+.theme-customizer--v7 .rami-card .rami-card-center {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 85% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-illustration {
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ── PRONOUN INDEX — larger, tracked, navy ── */
+.theme-customizer--v7 .rami-card-index-pronoun {
+    font-family: var(--v7-font-display) !important;
+    font-weight: 700 !important;
+    color: var(--v7-navy) !important;
+    font-size: 1.1em !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* ── BADGE — navy capsule with gold border and shine ── */
+.theme-customizer--v7 .rami-card-badge {
+    font-family: var(--v7-font-display) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    border: 1.5px solid var(--v7-gold) !important;
+    box-shadow: 0 1px 4px rgba(15, 48, 87, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: box-shadow 0.3s ease !important;
+}
+
+.theme-customizer--v7 .rami-card:hover .rami-card-badge {
+    box-shadow: 0 2px 8px rgba(191, 160, 95, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ── BOTTOM INDEX — proper 180° rotation styling ── */
+.theme-customizer--v7 .rami-card .rami-card-badge-bottom {
+    border: 1.5px solid var(--v7-gold) !important;
+    box-shadow: 0 1px 4px rgba(15, 48, 87, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-verb-bottom {
+    opacity: 0.95 !important;
+}
+
+.theme-customizer--v7 .rami-card .rami-card-verb-bottom .rami-card-verb-main {
+    text-shadow: none !important;
+}
+
+/* ============================================================
+   V7 Card Animations — Premium Entrance
+   ============================================================ */
+.theme-customizer--v7 .preview-cards-grid>* {
+    animation: v7-card-appear 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards !important;
+    opacity: 0;
+}
+
+@keyframes v7-card-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.92) rotateX(12deg);
+        filter: blur(4px);
+    }
+
+    60% {
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    80% {
+        transform: translateY(-4px) scale(1.01) rotateX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0);
+        filter: blur(0);
+    }
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(1) {
+    animation-delay: 0s !important;
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(2) {
+    animation-delay: 0.12s !important;
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(3) {
+    animation-delay: 0.24s !important;
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(4) {
+    animation-delay: 0.36s !important;
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(5) {
+    animation-delay: 0.48s !important;
+}
+
+.theme-customizer--v7 .preview-cards-grid>*:nth-child(6) {
+    animation-delay: 0.60s !important;
+}
+
+/* ============================================================
+   V7 Footer — Gold ribbon
+   ============================================================ */
+.theme-customizer--v7 .customizer-footer {
+    background: var(--v7-surface) !important;
+    border: 2px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-lg) !important;
+    box-shadow: var(--v7-shadow-xl) !important;
+    padding: 14px 20px !important;
+}
+
+/* Inner gold inset line */
+.theme-customizer--v7 .customizer-footer::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(191, 160, 95, 0.12);
+    border-radius: calc(var(--v7-radius-lg) - 3px);
+    pointer-events: none;
+}
+
+.theme-customizer--v7 .customizer-footer .btn-primary {
+    background: linear-gradient(135deg, var(--v7-navy), var(--v7-navy-light)) !important;
+    border: 1px solid var(--v7-gold) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    color: var(--v7-gold-shine) !important;
+    font-family: var(--v7-font-display) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 4px 14px rgba(15, 48, 87, 0.3) !important;
+    transition: all var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .customizer-footer .btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(15, 48, 87, 0.35), 0 0 0 1px var(--v7-gold) !important;
+}
+
+.theme-customizer--v7 .customizer-footer .btn-secondary {
+    background: var(--v7-cream-light) !important;
+    border: 1px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    color: var(--v7-text-secondary) !important;
+    font-family: var(--v7-font-body) !important;
+    font-weight: 600 !important;
+}
+
+.theme-customizer--v7 .customizer-footer .btn-secondary:hover {
+    border-color: var(--v7-gold) !important;
+    color: var(--v7-navy) !important;
+    background: rgba(191, 160, 95, 0.06) !important;
+}
+
+/* ============================================================
+   V7 Layout
+   ============================================================ */
+.theme-customizer--v7 .customizer-layout {
+    grid-template-columns: minmax(460px, 700px) minmax(0, 1fr) !important;
+    gap: 24px !important;
+}
+
+@media (max-width: 1200px) {
+    .theme-customizer--v7 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .theme-customizer--v7 .control-section {
+        padding: 18px 16px !important;
+    }
+
+    .theme-customizer--v7 .customizer-header {
+        padding: 16px !important;
+    }
+}
+
+/* ============================================================
+   V7 Scrollbar
+   ============================================================ */
+.theme-customizer--v7 .customizer-controls::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.theme-customizer--v7 .customizer-controls::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.theme-customizer--v7 .customizer-controls::-webkit-scrollbar-thumb {
+    background: var(--v7-gold) !important;
+    border-radius: 999px !important;
+    opacity: 0.3;
+}
+
+/* ============================================================
+   V7 Font/Icon Options
+   ============================================================ */
+.theme-customizer--v7 .font-option {
+    background: var(--v7-cream-light) !important;
+    border: 1.5px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    transition: all var(--v7-transition-normal) !important;
+}
+
+.theme-customizer--v7 .font-option:hover {
+    border-color: var(--v7-gold) !important;
+    transform: translateY(-2px) !important;
+}
+
+.theme-customizer--v7 .font-option.active {
+    border-color: var(--v7-gold) !important;
+    background: rgba(191, 160, 95, 0.06) !important;
+    box-shadow: 0 2px 10px rgba(191, 160, 95, 0.15) !important;
+}
+
+/* ============================================================
+   V7 Tool Buttons
+   ============================================================ */
+.theme-customizer--v7 .customizer-tool-btn {
+    border-radius: var(--v7-radius-sm) !important;
+    border: 1px solid var(--v7-border) !important;
+    background: var(--v7-cream-light) !important;
+    color: var(--v7-text-secondary) !important;
+    font-family: var(--v7-font-body) !important;
+    font-weight: 600 !important;
+}
+
+.theme-customizer--v7 .customizer-tool-btn:hover {
+    background: rgba(191, 160, 95, 0.08) !important;
+    border-color: var(--v7-gold) !important;
+    color: var(--v7-navy) !important;
+}
+
+.theme-customizer--v7 #theme-magic:hover {
+    color: var(--v7-gold-dark) !important;
+    border-color: var(--v7-gold) !important;
+    background: rgba(191, 160, 95, 0.08) !important;
+}
+
+.theme-customizer--v7 #theme-reset:hover {
+    color: var(--v7-danger) !important;
+    border-color: rgba(139, 58, 58, 0.3) !important;
+    background: rgba(139, 58, 58, 0.04) !important;
+}
+
+/* ============================================================
+   V7 Search / Jump
+   ============================================================ */
+.theme-customizer--v7 .customizer-search,
+.theme-customizer--v7 .customizer-jump {
+    border-radius: var(--v7-radius-md) !important;
+    border: 1px solid var(--v7-border) !important;
+    background: var(--v7-cream-light) !important;
+    font-family: var(--v7-font-body) !important;
+}
+
+.theme-customizer--v7 .customizer-search:focus-within,
+.theme-customizer--v7 .customizer-jump:focus-within {
+    border-color: var(--v7-gold) !important;
+    box-shadow: 0 0 0 3px rgba(191, 160, 95, 0.1) !important;
+}
+
+/* ============================================================
+   V7 Exclusive Sections — Gold-framed
+   ============================================================ */
+.theme-customizer--v7 .v5-exclusive-section,
+.theme-customizer--v7 .v6-exclusive-section,
+.theme-customizer--v7 .v7-exclusive-section {
+    background: linear-gradient(135deg,
+            rgba(191, 160, 95, 0.04) 0%,
+            rgba(15, 48, 87, 0.03) 100%) !important;
+    border: 1px solid var(--v7-border) !important;
+    position: relative;
+}
+
+.theme-customizer--v7 .v7-exclusive-section::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(191, 160, 95, 0.08);
+    border-radius: var(--v7-radius-sm);
+    pointer-events: none;
+}
+
+/* ============================================================
+   V7 Exclusive: Ornament Style
+   ============================================================ */
+.theme-customizer--v7 .v7-ornament-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v7 .v7-ornament-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    background: var(--v7-cream-light);
+    border: 1.5px solid var(--v7-border);
+    border-radius: var(--v7-radius-md);
+    cursor: pointer;
+    transition: all var(--v7-transition-normal);
+    font-family: var(--v7-font-body);
+}
+
+.theme-customizer--v7 .v7-ornament-option:hover {
+    border-color: var(--v7-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--v7-shadow-md);
+}
+
+.theme-customizer--v7 .v7-ornament-option.active {
+    background: rgba(191, 160, 95, 0.06);
+    border-color: var(--v7-gold);
+    box-shadow: 0 0 0 2px rgba(191, 160, 95, 0.15);
+}
+
+.theme-customizer--v7 .v7-ornament-preview {
+    font-size: 24px;
+    color: var(--v7-gold);
+    line-height: 1;
+}
+
+.theme-customizer--v7 .v7-ornament-option span:last-child {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--v7-text-secondary);
+}
+
+.theme-customizer--v7 .v7-ornament-option.active span:last-child {
+    color: var(--v7-navy);
+}
+
+/* ============================================================
+   V7 Exclusive: Gold Intensity
+   ============================================================ */
+.theme-customizer--v7 .v7-gold-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v7 .v7-gold-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    border: 1.5px solid var(--v7-border);
+    border-radius: var(--v7-radius-md);
+    cursor: pointer;
+    transition: all var(--v7-transition-normal);
+    background: transparent;
+}
+
+.theme-customizer--v7 .v7-gold-option:hover {
+    border-color: var(--v7-gold);
+    background: rgba(191, 160, 95, 0.04);
+}
+
+.theme-customizer--v7 .v7-gold-option.active {
+    border-color: var(--v7-gold);
+    background: rgba(191, 160, 95, 0.08);
+    box-shadow: 0 0 0 2px rgba(191, 160, 95, 0.15);
+}
+
+.theme-customizer--v7 .v7-gold-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(191, 160, 95, 0.3);
+}
+
+.theme-customizer--v7 .v7-gold-swatch--muted {
+    background: linear-gradient(135deg, #c4b896, #a89468);
+}
+
+.theme-customizer--v7 .v7-gold-swatch--classic {
+    background: linear-gradient(135deg, #d4bb7e, #bfa05f);
+    box-shadow: 0 0 12px rgba(191, 160, 95, 0.3);
+}
+
+.theme-customizer--v7 .v7-gold-swatch--rich {
+    background: linear-gradient(135deg, #e8d5a3, #bfa05f, #8B6914);
+    box-shadow: 0 0 18px rgba(191, 160, 95, 0.45);
+}
+
+.theme-customizer--v7 .v7-gold-option span:last-child {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--v7-text-secondary);
+}
+
+/* ============================================================
+   V7 Writing & Shape Styles (inherited from V5)
+   ============================================================ */
+.theme-customizer--v7 .v5-writing-styles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.theme-customizer--v7 .v5-style-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px;
+    background: var(--v7-cream-light);
+    border: 1.5px solid var(--v7-border);
+    border-radius: var(--v7-radius-md);
+    cursor: pointer;
+    transition: all var(--v7-transition-normal);
+    font-family: var(--v7-font-body);
+}
+
+.theme-customizer--v7 .v5-style-option:hover {
+    border-color: var(--v7-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--v7-shadow-md);
+}
+
+.theme-customizer--v7 .v5-style-option.active {
+    background: rgba(191, 160, 95, 0.06);
+    border-color: var(--v7-gold);
+    box-shadow: 0 0 0 2px rgba(191, 160, 95, 0.15);
+}
+
+.theme-customizer--v7 .v5-shape-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v7 .v5-shape-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--v7-radius-sm);
+    cursor: pointer;
+    transition: all var(--v7-transition-fast);
+    font-family: var(--v7-font-body);
+}
+
+.theme-customizer--v7 .v5-shape-option:hover {
+    background: rgba(191, 160, 95, 0.04);
+}
+
+.theme-customizer--v7 .v5-shape-option.active {
+    background: rgba(191, 160, 95, 0.06);
+    border-color: var(--v7-border-hover);
+}
+
+.theme-customizer--v7 .v5-shape-preview {
+    width: 32px;
+    height: 48px;
+    border: 2px solid var(--v7-text-secondary);
+    transition: all 0.3s ease;
+}
+
+.theme-customizer--v7 .v5-shape-option.active .v5-shape-preview {
+    border-color: var(--v7-gold);
+    background: rgba(191, 160, 95, 0.1);
+}
+
+/* ============================================================
+   V7 Zoom overlay cursor
+   ============================================================ */
+.theme-customizer--v7 .preview-container .rami-card:hover,
+.theme-customizer--v7 .preview-container .rami-card-large:hover {
+    cursor: zoom-in;
+}
+
+/* ============================================================
+   V7 Large Card Preview — same harmonization
+   ============================================================ */
+.theme-customizer--v7 .rami-card-large {
+    font-family: var(--v7-font-display) !important;
+    transition: transform var(--v7-transition-smooth), box-shadow var(--v7-transition-smooth) !important;
+    position: relative;
+}
+
+/* Large card — double-ring gold illustration */
+.theme-customizer--v7 .rami-card-large .rami-card-illustration {
+    border: 2.5px solid var(--v7-gold) !important;
+    box-shadow:
+        0 0 0 4px rgba(191, 160, 95, 0.12),
+        0 4px 16px rgba(191, 160, 95, 0.2),
+        inset 0 2px 8px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.03) !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: box-shadow 0.4s ease !important;
+}
+
+/* Large card hover glow */
+.theme-customizer--v7 .rami-card-large:hover .rami-card-illustration {
+    box-shadow:
+        0 0 0 4px rgba(191, 160, 95, 0.2),
+        0 0 24px rgba(191, 160, 95, 0.15),
+        0 6px 20px rgba(191, 160, 95, 0.2),
+        inset 0 2px 8px rgba(255, 255, 255, 0.35),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Large card — centered content */
+.theme-customizer--v7 .rami-card-large .rami-large-center {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Large card — gold suit symbols */
+.theme-customizer--v7 .rami-card-large .rami-card-suit {
+    color: var(--v7-navy) !important;
+    font-family: var(--v7-font-display) !important;
+    font-size: 1.1em !important;
+}
+
+/* Large card — verb */
+.theme-customizer--v7 .rami-card-large .rami-large-verb-conjugated {
+    color: var(--v7-navy) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1em !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    font-size: 1.1em !important;
+}
+
+/* Large card — badge gold border */
+.theme-customizer--v7 .rami-card-large .rami-large-badge,
+.theme-customizer--v7 .rami-card-large .rami-large-badge-bottom {
+    border: 1.5px solid var(--v7-gold) !important;
+    box-shadow: 0 1px 4px rgba(15, 48, 87, 0.1) !important;
+}
+
+/* Large card — 3D hover */
+.theme-customizer--v7 .rami-card-large:hover {
+    transform: translateY(-6px) scale(1.015) !important;
+    box-shadow:
+        0 2px 4px rgba(15, 48, 87, 0.04),
+        0 8px 16px rgba(15, 48, 87, 0.06),
+        0 20px 40px rgba(15, 48, 87, 0.08),
+        0 0 28px rgba(191, 160, 95, 0.07) !important;
+}
+
+/* ============================================================
+   V7 Card Back — Vintage Damask Pattern
+   ============================================================ */
+.theme-customizer--v7 .rami-card-back {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow:
+        0 1px 2px rgba(15, 48, 87, 0.04),
+        0 4px 8px rgba(15, 48, 87, 0.06),
+        0 8px 20px rgba(15, 48, 87, 0.06),
+        0 16px 40px rgba(15, 48, 87, 0.04) !important;
+}
+
+/* Gold double border on card back */
+.theme-customizer--v7 .rami-card-back::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 6px !important;
+    border: 1.5px solid rgba(191, 160, 95, 0.4) !important;
+    border-radius: calc(var(--rami-card-radius, 15px) - 6px) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+
+/* Inner border = double-line effect */
+.theme-customizer--v7 .rami-card-back::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 10px !important;
+    border: 1px solid rgba(191, 160, 95, 0.25) !important;
+    border-radius: calc(var(--rami-card-radius, 15px) - 10px) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+}
+
+.theme-customizer--v7 .rami-card-back:hover {
+    transform: translateY(-6px) scale(1.02) !important;
+    box-shadow:
+        0 2px 4px rgba(15, 48, 87, 0.04),
+        0 8px 16px rgba(15, 48, 87, 0.06),
+        0 20px 40px rgba(15, 48, 87, 0.08),
+        0 0 24px rgba(191, 160, 95, 0.06) !important;
+}
+
+/* ============================================================
+   V7 Preview Header
+   ============================================================ */
+.theme-customizer--v7 .preview-header h3 {
+    font-family: var(--v7-font-display) !important;
+    font-weight: 700 !important;
+    color: var(--v7-navy) !important;
+}
+
+/* ============================================================
+   V7 Help text
+   ============================================================ */
+.theme-customizer--v7 .customizer-help {
+    color: var(--v7-text-muted) !important;
+    font-family: var(--v7-font-body) !important;
+    font-size: 11px !important;
+    font-style: italic !important;
+    border-left: 2px solid var(--v7-gold) !important;
+    padding-left: 10px !important;
+    margin-top: 10px !important;
+}
+
+/* ============================================================
+   V7 Decorative Background — Vintage filigree
+   ============================================================ */
+.theme-customizer--v7::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(3px 3px at 10% 20%, rgba(191, 160, 95, 0.04), transparent),
+        radial-gradient(3px 3px at 90% 15%, rgba(191, 160, 95, 0.03), transparent),
+        radial-gradient(3px 3px at 50% 80%, rgba(15, 48, 87, 0.02), transparent),
+        radial-gradient(4px 4px at 75% 50%, rgba(191, 160, 95, 0.025), transparent);
+}
+
+/* ============================================================
+   V7 Button Shimmer — Gold gleam
+   ============================================================ */
+.theme-customizer--v7 .customizer-footer .btn-primary:not(:disabled) {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v7 .customizer-footer .btn-primary:not(:disabled)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(191, 160, 95, 0.25), transparent);
+}
+
+.theme-customizer--v7 .customizer-footer .btn-primary:not(:disabled):hover::after {
+    animation: v7-gold-gleam 1.4s ease-in-out;
+}
+
+@keyframes v7-gold-gleam {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ============================================================
+   V7 Dark Mode Enhancements
+   ============================================================ */
+[data-theme="dark"] .theme-customizer--v7 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(191, 160, 95, 0.06) 0%,
+            rgba(26, 26, 46, 0.8) 50%,
+            rgba(191, 160, 95, 0.06) 100%) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v7 .customizer-controls {
+    background: var(--v7-surface) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v7 .shadow-option {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(191, 160, 95, 0.15) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v7 .preview-container {
+    background: linear-gradient(180deg, var(--v7-bg), var(--v7-cream-dark)) !important;
+}
+
+/* ============================================================
+   V7 Accessibility
+   ============================================================ */
+.theme-customizer--v7 *:focus-visible {
+    outline: 2px solid var(--v7-gold) !important;
+    outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .theme-customizer--v7 *,
+    .theme-customizer--v7 *::before,
+    .theme-customizer--v7 *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .theme-customizer--v7 {
+        --v7-border: rgba(191, 160, 95, 0.5);
+        --v7-border-hover: rgba(191, 160, 95, 0.8);
+    }
+
+    .theme-customizer--v7 .control-section h3 {
+        font-weight: 900 !important;
+    }
+}
+
+/* ============================================================
+   V7 Print
+   ============================================================ */
+@media print {
+
+    .theme-customizer--v7 .customizer-controls,
+    .theme-customizer--v7 .customizer-footer,
+    .theme-customizer--v7 .customizer-tools {
+        display: none !important;
+    }
+
+    .theme-customizer--v7 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================================
+   V7 Firefox fallback
+   ============================================================ */
+@supports not (backdrop-filter: blur(1px)) {
+    .theme-customizer--v7 .customizer-controls {
+        background: rgba(249, 247, 240, 0.98) !important;
+    }
+
+    [data-theme="dark"] .theme-customizer--v7 .customizer-controls {
+        background: rgba(26, 26, 46, 0.98) !important;
+    }
+}
+
+/* ============================================================
+   V7 Tool Hints
+   ============================================================ */
+.theme-customizer--v7 .customizer-tools-hint {
+    color: var(--v7-text-muted) !important;
+    font-size: 10px !important;
+    font-style: italic !important;
+    background: rgba(191, 160, 95, 0.04) !important;
+    border: 1px solid var(--v7-border) !important;
+    border-radius: var(--v7-radius-sm) !important;
+    padding: 6px 12px !important;
+}
+
+/* ============================================================
+   V7 Save Status
+   ============================================================ */
+.theme-customizer--v7 .customizer-save-status {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    font-family: var(--v7-font-body) !important;
+    color: var(--v7-text-muted) !important;
+}
+
+/* ============================================================
+   V7 Color Grid
+   ============================================================ */
+.theme-customizer--v7 .color-grid {
+    gap: 16px !important;
+}

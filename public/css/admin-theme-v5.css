@@ -1,0 +1,1527 @@
+/* ========================================
+   THEME V5 — MODERN PREMIUM DESIGN
+   Based on V2 structure with advanced visuals
+   ======================================== */
+
+/* === V5 Design Tokens (CSS Custom Properties) === */
+.theme-customizer--v5 {
+    --v5-primary: #4f46e5;
+    --v5-primary-light: #818cf8;
+    --v5-primary-dark: #3730a3;
+    --v5-accent: #06b6d4;
+    --v5-accent-light: #67e8f9;
+    --v5-success: #059669;
+    --v5-warning: #f59e0b;
+    --v5-danger: #ef4444;
+    --v5-bg-start: #f8fafc;
+    --v5-bg-end: #eef2ff;
+    --v5-surface: rgba(255, 255, 255, 0.82);
+    --v5-surface-hover: rgba(255, 255, 255, 0.92);
+    --v5-glass: rgba(255, 255, 255, 0.48);
+    --v5-glass-border: rgba(255, 255, 255, 0.65);
+    --v5-text-primary: #0f172a;
+    --v5-text-secondary: #475569;
+    --v5-text-muted: #94a3b8;
+    --v5-border: rgba(0, 0, 0, 0.06);
+    --v5-border-hover: rgba(79, 70, 229, 0.2);
+    --v5-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --v5-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    --v5-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --v5-shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+    --v5-radius-sm: 10px;
+    --v5-radius-md: 16px;
+    --v5-radius-lg: 22px;
+    --v5-radius-xl: 28px;
+    --v5-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --v5-transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --v5-transition-smooth: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    --v5-blur-md: blur(16px) saturate(180%);
+    --v5-blur-lg: blur(24px) saturate(200%);
+}
+
+[data-theme="dark"] .theme-customizer--v5 {
+    --v5-primary: #818cf8;
+    --v5-primary-light: #a5b4fc;
+    --v5-primary-dark: #6366f1;
+    --v5-accent: #22d3ee;
+    --v5-accent-light: #67e8f9;
+    --v5-success: #34d399;
+    --v5-bg-start: #0c0f1a;
+    --v5-bg-end: #111827;
+    --v5-surface: rgba(15, 23, 42, 0.78);
+    --v5-surface-hover: rgba(15, 23, 42, 0.88);
+    --v5-glass: rgba(15, 23, 42, 0.58);
+    --v5-glass-border: rgba(255, 255, 255, 0.08);
+    --v5-text-primary: #f1f5f9;
+    --v5-text-secondary: #cbd5e1;
+    --v5-text-muted: #64748b;
+    --v5-border: rgba(255, 255, 255, 0.06);
+    --v5-border-hover: rgba(129, 140, 248, 0.3);
+    --v5-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15);
+    --v5-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+    --v5-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.2);
+    --v5-shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.45), 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* === V5 Header — Modern Gradient Hero === */
+.theme-customizer--v5 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(79, 70, 229, 0.12) 0%,
+            rgba(6, 182, 212, 0.08) 40%,
+            rgba(167, 139, 250, 0.10) 100%) !important;
+    border: 1px solid var(--v5-glass-border) !important;
+    border-radius: var(--v5-radius-xl) !important;
+    backdrop-filter: var(--v5-blur-md);
+    padding: 24px 28px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v5 .customizer-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    animation: v5-pulse-glow 6s ease-in-out infinite;
+}
+
+.theme-customizer--v5 .customizer-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    animation: v5-pulse-glow 8s ease-in-out infinite reverse;
+}
+
+@keyframes v5-pulse-glow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+.theme-customizer--v5 .customizer-header .section-title {
+    background: linear-gradient(135deg, var(--v5-primary) 0%, var(--v5-accent) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+}
+
+.theme-customizer--v5 .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.08));
+    border: 1px solid rgba(79, 70, 229, 0.12);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--v5-primary);
+    margin-bottom: 8px;
+}
+
+/* === V5 Version Pills — Refined === */
+.theme-customizer--v5 .customizer-version-switch {
+    background: var(--v5-surface) !important;
+    border: 1px solid var(--v5-border) !important;
+    backdrop-filter: var(--v5-blur-md) !important;
+    box-shadow: var(--v5-shadow-sm);
+    padding: 4px !important;
+    gap: 3px !important;
+}
+
+.theme-customizer--v5 .customizer-version-pill {
+    border-radius: 12px !important;
+    font-size: 11px !important;
+    height: 32px !important;
+    min-width: 44px !important;
+    padding: 0 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .customizer-version-pill:hover {
+    background: rgba(79, 70, 229, 0.06) !important;
+    color: var(--v5-primary) !important;
+}
+
+.theme-customizer--v5 .customizer-version-pill.is-active {
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-primary-dark)) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3), 0 1px 3px rgba(79, 70, 229, 0.15) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-version-pill.is-active {
+    background: linear-gradient(135deg, var(--v5-primary), #6366f1) !important;
+    box-shadow: 0 4px 16px rgba(129, 140, 248, 0.25), 0 1px 3px rgba(129, 140, 248, 0.1) !important;
+}
+
+/* === V5 Controls Panel — Glassmorphism === */
+.theme-customizer--v5 .customizer-controls {
+    background: var(--v5-surface) !important;
+    border: 1px solid var(--v5-glass-border) !important;
+    backdrop-filter: var(--v5-blur-lg) !important;
+    border-radius: var(--v5-radius-xl) !important;
+    box-shadow: var(--v5-shadow-lg) !important;
+}
+
+.theme-customizer--v5 .customizer-tools {
+    background: linear-gradient(180deg, var(--v5-surface-hover), var(--v5-surface)) !important;
+    border-bottom: 1px solid var(--v5-border) !important;
+    backdrop-filter: var(--v5-blur-lg) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    padding: 16px 20px 14px !important;
+}
+
+/* Search bar V5 */
+.theme-customizer--v5 .customizer-search {
+    border-radius: var(--v5-radius-md) !important;
+    border: 1px solid var(--v5-border) !important;
+    background: var(--v5-glass) !important;
+    backdrop-filter: blur(8px);
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .customizer-search:focus-within {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08) !important;
+    background: var(--v5-surface) !important;
+}
+
+.theme-customizer--v5 .customizer-search i {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.06)) !important;
+    color: var(--v5-primary) !important;
+    border-radius: 8px !important;
+}
+
+/* Tool buttons V5 */
+.theme-customizer--v5 .customizer-tool-btn {
+    border-radius: var(--v5-radius-sm) !important;
+    border: 1px solid var(--v5-border) !important;
+    background: var(--v5-glass) !important;
+    color: var(--v5-text-secondary) !important;
+    font-weight: 600 !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .customizer-tool-btn:hover {
+    background: rgba(79, 70, 229, 0.06) !important;
+    border-color: var(--v5-border-hover) !important;
+    color: var(--v5-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--v5-shadow-sm) !important;
+}
+
+/* Jump selector V5 */
+.theme-customizer--v5 .customizer-jump {
+    border-radius: var(--v5-radius-md) !important;
+    border: 1px solid var(--v5-border) !important;
+    background: var(--v5-glass) !important;
+}
+
+.theme-customizer--v5 .customizer-jump:focus-within {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08) !important;
+}
+
+.theme-customizer--v5 .customizer-jump i {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.06)) !important;
+    color: var(--v5-primary) !important;
+    border-radius: 8px !important;
+}
+
+/* Hints */
+.theme-customizer--v5 .customizer-tools-hint {
+    color: var(--v5-text-muted) !important;
+    font-size: 10px !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* === V5 Control Sections — Refined expansion === */
+.theme-customizer--v5 .control-section {
+    border-bottom: 1px solid var(--v5-border) !important;
+    padding: 24px 28px !important;
+    transition: background var(--v5-transition-normal), border-color var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .control-section:hover {
+    background: rgba(79, 70, 229, 0.015) !important;
+}
+
+.theme-customizer--v5 .control-section h3 {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    color: var(--v5-text-primary) !important;
+}
+
+.theme-customizer--v5 .control-section h3::before {
+    background: linear-gradient(180deg, var(--v5-primary), var(--v5-accent)) !important;
+    border-radius: 3px !important;
+    width: 3px !important;
+    height: 20px !important;
+}
+
+.theme-customizer--v5 .control-section h3::after {
+    color: var(--v5-text-muted) !important;
+    font-size: 12px !important;
+    transition: transform var(--v5-transition-normal) !important;
+}
+
+/* Section body animation */
+.theme-customizer--v5 .control-section-body {
+    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+/* === V5 Color Inputs — Premium feel === */
+.theme-customizer--v5 .color-input-group label {
+    color: var(--v5-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.6px !important;
+}
+
+.theme-customizer--v5 .color-input-wrapper input[type="color"] {
+    width: 56px !important;
+    height: 56px !important;
+    border: 2px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    padding: 4px !important;
+    transition: all var(--v5-transition-normal) !important;
+    box-shadow: var(--v5-shadow-sm) !important;
+}
+
+.theme-customizer--v5 .color-input-wrapper input[type="color"]:hover {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: var(--v5-shadow-md), 0 0 0 3px rgba(79, 70, 229, 0.06) !important;
+    transform: scale(1.04) !important;
+}
+
+.theme-customizer--v5 .color-hex {
+    background: var(--v5-glass) !important;
+    border: 1.5px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .color-hex:focus {
+    border-color: var(--v5-primary) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08) !important;
+}
+
+/* === V5 Sliders — Polished track & thumb === */
+.theme-customizer--v5 .slider-group label {
+    color: var(--v5-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.6px !important;
+}
+
+.theme-customizer--v5 .slider-wrapper {
+    background: var(--v5-glass) !important;
+    border: 1px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-md) !important;
+    padding: 14px 16px !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .slider-wrapper:hover {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: var(--v5-shadow-sm) !important;
+}
+
+.theme-customizer--v5 .slider-wrapper:focus-within {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.06), var(--v5-shadow-sm) !important;
+    background: var(--v5-surface) !important;
+}
+
+.theme-customizer--v5 .slider::-webkit-slider-runnable-track {
+    height: 8px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg,
+            var(--v5-primary) 0%,
+            var(--v5-primary) var(--slider-pct),
+            rgba(0, 0, 0, 0.08) var(--slider-pct),
+            rgba(0, 0, 0, 0.08) 100%) !important;
+    box-shadow: none !important;
+}
+
+.theme-customizer--v5 .slider::-webkit-slider-thumb {
+    width: 22px !important;
+    height: 22px !important;
+    border: 2px solid #fff !important;
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-accent)) !important;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3), 0 0 0 4px rgba(255, 255, 255, 0.15) !important;
+    margin-top: -7px !important;
+    transition: all var(--v5-transition-fast) !important;
+}
+
+.theme-customizer--v5 .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.12) !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4), 0 0 0 6px rgba(79, 70, 229, 0.08) !important;
+}
+
+.theme-customizer--v5 .slider-value {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    border: 1px solid rgba(79, 70, 229, 0.1) !important;
+    color: var(--v5-primary) !important;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    padding: 6px 12px !important;
+}
+
+/* === V5 Shadow/Preset options === */
+.theme-customizer--v5 .shadow-selector label {
+    color: var(--v5-text-secondary) !important;
+}
+
+.theme-customizer--v5 .shadow-selector label i {
+    color: var(--v5-primary) !important;
+}
+
+.theme-customizer--v5 .shadow-option {
+    background: var(--v5-glass) !important;
+    border: 1.5px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-md) !important;
+    transition: all var(--v5-transition-smooth) !important;
+}
+
+.theme-customizer--v5 .shadow-option::before {
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-accent)) !important;
+}
+
+.theme-customizer--v5 .shadow-option:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--v5-shadow-md) !important;
+    border-color: var(--v5-border-hover) !important;
+}
+
+.theme-customizer--v5 .shadow-option.active {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    border-color: transparent !important;
+}
+
+.theme-customizer--v5 .shadow-option span {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: var(--v5-text-secondary) !important;
+}
+
+.theme-customizer--v5 .shadow-option.active span {
+    color: var(--v5-primary) !important;
+}
+
+/* === V5 Design selector === */
+.theme-customizer--v5 .design-option {
+    border-radius: var(--v5-radius-sm) !important;
+    border: 1.5px solid var(--v5-border) !important;
+    transition: all var(--v5-transition-smooth) !important;
+}
+
+.theme-customizer--v5 .design-option:hover {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: var(--v5-shadow-md) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+}
+
+.theme-customizer--v5 .design-option.active {
+    border-color: var(--v5-primary) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08), var(--v5-shadow-md) !important;
+}
+
+.theme-customizer--v5 .design-toolbar-select,
+.theme-customizer--v5 .design-toolbar-search {
+    border-radius: var(--v5-radius-sm) !important;
+    border: 1px solid var(--v5-border) !important;
+    background: var(--v5-glass) !important;
+    font-size: 12px !important;
+}
+
+.theme-customizer--v5 .design-toolbar-clear {
+    border-radius: var(--v5-radius-sm) !important;
+    color: var(--v5-text-muted) !important;
+    font-size: 11px !important;
+}
+
+/* === V5 Preview Panel — Elevated === */
+.theme-customizer--v5 .customizer-preview {
+    border-radius: var(--v5-radius-xl) !important;
+    overflow: hidden !important;
+}
+
+.theme-customizer--v5 .preview-toolbar {
+    background: var(--v5-surface) !important;
+    border-bottom: 1px solid var(--v5-border) !important;
+    backdrop-filter: var(--v5-blur-md) !important;
+}
+
+.theme-customizer--v5 .preview-mode-btn {
+    border-radius: var(--v5-radius-sm) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .preview-mode-btn.active {
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-primary-dark)) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25) !important;
+}
+
+.theme-customizer--v5 .preview-legend {
+    font-size: 11px !important;
+    color: var(--v5-text-muted) !important;
+    letter-spacing: 0.2px !important;
+}
+
+.theme-customizer--v5 .btn-icon-mini {
+    border-radius: var(--v5-radius-sm) !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .btn-icon-mini:hover {
+    background: rgba(79, 70, 229, 0.06) !important;
+    color: var(--v5-primary) !important;
+}
+
+/* === V5 Preview Container — Modern stage === */
+.theme-customizer--v5 .preview-container {
+    background: linear-gradient(180deg, var(--v5-bg-start), var(--v5-bg-end)) !important;
+    position: relative;
+}
+
+.theme-customizer--v5 .preview-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* === V5 Card Preview — Glassmorphic cards === */
+.theme-customizer--v5 .preview-cards-grid>* {
+    animation: v5-card-appear 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+@keyframes v5-card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Staggered appearance */
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(1) {
+    animation-delay: 0s !important;
+}
+
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(2) {
+    animation-delay: 0.05s !important;
+}
+
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(3) {
+    animation-delay: 0.1s !important;
+}
+
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(4) {
+    animation-delay: 0.15s !important;
+}
+
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(5) {
+    animation-delay: 0.2s !important;
+}
+
+.theme-customizer--v5 .preview-cards-grid>*:nth-child(6) {
+    animation-delay: 0.25s !important;
+}
+
+/* === V5 Footer — Floating action bar === */
+.theme-customizer--v5 .customizer-footer {
+    background: var(--v5-surface) !important;
+    border: 1px solid var(--v5-glass-border) !important;
+    backdrop-filter: var(--v5-blur-lg) !important;
+    border-radius: var(--v5-radius-lg) !important;
+    box-shadow: var(--v5-shadow-xl) !important;
+    padding: 14px 20px !important;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary {
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-primary-dark)) !important;
+    border: none !important;
+    border-radius: var(--v5-radius-sm) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3) !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4) !important;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-secondary {
+    background: var(--v5-glass) !important;
+    border: 1px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    color: var(--v5-text-secondary) !important;
+    font-weight: 600 !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-secondary:hover {
+    background: rgba(79, 70, 229, 0.06) !important;
+    border-color: var(--v5-border-hover) !important;
+    color: var(--v5-primary) !important;
+}
+
+.theme-customizer--v5 .customizer-save-status {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: var(--v5-text-muted) !important;
+}
+
+/* === V5 Scrollbar === */
+.theme-customizer--v5 .customizer-controls::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.theme-customizer--v5 .customizer-controls::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.theme-customizer--v5 .customizer-controls::-webkit-scrollbar-thumb {
+    background: var(--v5-text-muted) !important;
+    border-radius: 999px !important;
+    opacity: 0.3;
+    border: none !important;
+}
+
+.theme-customizer--v5 .customizer-controls::-webkit-scrollbar-thumb:hover {
+    background: var(--v5-text-secondary) !important;
+}
+
+/* === V5 Font options === */
+.theme-customizer--v5 .font-option {
+    background: var(--v5-glass) !important;
+    border: 1.5px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .font-option:hover {
+    border-color: var(--v5-border-hover) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--v5-shadow-sm) !important;
+}
+
+.theme-customizer--v5 .font-option.active {
+    border-color: var(--v5-primary) !important;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.15) !important;
+}
+
+/* === V5 Icon options === */
+.theme-customizer--v5 .shadow-options--icons .shadow-option {
+    border-radius: var(--v5-radius-sm) !important;
+}
+
+.theme-customizer--v5 .icon-preview {
+    color: var(--v5-text-secondary) !important;
+    transition: color var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .shadow-option.active .icon-preview {
+    color: var(--v5-primary) !important;
+}
+
+/* === V5 Layout refinements === */
+.theme-customizer--v5 .customizer-layout {
+    grid-template-columns: minmax(460px, 700px) minmax(0, 1fr) !important;
+    gap: 24px !important;
+}
+
+@media (max-width: 1200px) {
+    .theme-customizer--v5 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .theme-customizer--v5 .control-section {
+        padding: 18px 16px !important;
+    }
+
+    .theme-customizer--v5 .customizer-header {
+        padding: 16px !important;
+    }
+
+    .theme-customizer--v5 .customizer-tools {
+        padding: 12px 14px 10px !important;
+    }
+}
+
+/* === V5 Micro-animations === */
+@keyframes v5-shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary:not(:disabled) {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary:not(:disabled)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transition: none;
+    animation: none;
+}
+
+.theme-customizer--v5 .customizer-footer .btn-primary:not(:disabled):hover::after {
+    animation: v5-shimmer 1.2s ease-in-out;
+}
+
+/* === V5 Dark mode specific enhancements === */
+[data-theme="dark"] .theme-customizer--v5 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(129, 140, 248, 0.08) 0%,
+            rgba(34, 211, 238, 0.05) 40%,
+            rgba(167, 139, 250, 0.06) 100%) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .section-badge {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(34, 211, 238, 0.08));
+    border-color: rgba(129, 140, 248, 0.15);
+    color: var(--v5-primary-light);
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-controls {
+    background: var(--v5-surface) !important;
+    border-color: var(--v5-glass-border) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-tools {
+    background: linear-gradient(180deg, var(--v5-surface-hover), var(--v5-surface)) !important;
+    border-bottom-color: var(--v5-border) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .slider::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg,
+            var(--v5-primary) 0%,
+            var(--v5-primary) var(--slider-pct),
+            rgba(255, 255, 255, 0.1) var(--slider-pct),
+            rgba(255, 255, 255, 0.1) 100%) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .slider-wrapper {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .slider-value {
+    background: rgba(129, 140, 248, 0.08) !important;
+    border-color: rgba(129, 140, 248, 0.12) !important;
+    color: var(--v5-primary-light) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .color-input-wrapper input[type="color"] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .color-hex {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--v5-text-primary) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .preview-container {
+    background: linear-gradient(180deg, var(--v5-bg-start), var(--v5-bg-end)) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .preview-container::before {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.03) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-footer {
+    background: var(--v5-surface) !important;
+    border-color: var(--v5-glass-border) !important;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-footer .btn-primary {
+    background: linear-gradient(135deg, var(--v5-primary), #6366f1) !important;
+    box-shadow: 0 4px 14px rgba(129, 140, 248, 0.2) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-footer .btn-secondary {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--v5-text-secondary) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .shadow-option {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .shadow-option:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(129, 140, 248, 0.2) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .shadow-option.active {
+    background: rgba(129, 140, 248, 0.06) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .control-section:hover {
+    background: rgba(129, 140, 248, 0.02) !important;
+}
+
+/* === V5 Accessibility — Enhanced focus states === */
+.theme-customizer--v5 *:focus-visible {
+    outline: 2px solid var(--v5-primary) !important;
+    outline-offset: 2px !important;
+    border-radius: 6px;
+}
+
+.theme-customizer--v5 .customizer-version-pill:focus-visible {
+    outline-offset: 0px !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* === V5 Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+
+    .theme-customizer--v5 *,
+    .theme-customizer--v5 *::before,
+    .theme-customizer--v5 *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* === V5 High contrast mode === */
+@media (prefers-contrast: high) {
+    .theme-customizer--v5 {
+        --v5-border: rgba(0, 0, 0, 0.2);
+        --v5-border-hover: rgba(79, 70, 229, 0.5);
+    }
+
+    .theme-customizer--v5 .control-section h3 {
+        font-weight: 800 !important;
+    }
+}
+
+/* === V5 Print styles === */
+@media print {
+
+    .theme-customizer--v5 .customizer-controls,
+    .theme-customizer--v5 .customizer-footer,
+    .theme-customizer--v5 .customizer-tools {
+        display: none !important;
+    }
+
+    .theme-customizer--v5 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* === V5 Floating Particles Background === */
+.theme-customizer--v5::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(2px 2px at 15% 25%, rgba(79, 70, 229, 0.12), transparent),
+        radial-gradient(2px 2px at 85% 15%, rgba(6, 182, 212, 0.10), transparent),
+        radial-gradient(2px 2px at 45% 75%, rgba(167, 139, 250, 0.08), transparent),
+        radial-gradient(3px 3px at 70% 55%, rgba(79, 70, 229, 0.06), transparent),
+        radial-gradient(2px 2px at 30% 90%, rgba(6, 182, 212, 0.07), transparent);
+    animation: v5-float-particles 20s ease-in-out infinite alternate;
+}
+
+@keyframes v5-float-particles {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-8px) scale(1.01);
+    }
+
+    100% {
+        transform: translateY(4px) scale(0.99);
+    }
+}
+
+[data-theme="dark"] .theme-customizer--v5::before {
+    background:
+        radial-gradient(2px 2px at 15% 25%, rgba(129, 140, 248, 0.08), transparent),
+        radial-gradient(2px 2px at 85% 15%, rgba(34, 211, 238, 0.06), transparent),
+        radial-gradient(2px 2px at 45% 75%, rgba(167, 139, 250, 0.05), transparent),
+        radial-gradient(3px 3px at 70% 55%, rgba(129, 140, 248, 0.04), transparent),
+        radial-gradient(2px 2px at 30% 90%, rgba(34, 211, 238, 0.05), transparent);
+}
+
+/* === V5 Feature Tag on Header === */
+.theme-customizer--v5 .customizer-header .section-description {
+    color: var(--v5-text-secondary) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+.theme-customizer--v5 .customizer-header .section-description::after {
+    content: ' ✨ Glassmorphism · Dark Mode · Animations';
+    display: inline;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--v5-primary);
+    opacity: 0.7;
+}
+
+/* === V5 Active Pill — Animated gradient border === */
+.theme-customizer--v5 .customizer-version-pill.is-active {
+    position: relative;
+    z-index: 1;
+}
+
+.theme-customizer--v5 .customizer-version-pill.is-active::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--v5-primary), var(--v5-accent), var(--v5-primary));
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: v5-gradient-rotate 3s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes v5-gradient-rotate {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* === V5 Card Preview Hover — Premium ripple === */
+.theme-customizer--v5 .rami-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.theme-customizer--v5 .rami-card:hover {
+    box-shadow:
+        0 20px 50px rgba(79, 70, 229, 0.1),
+        0 8px 20px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .rami-card:hover {
+    box-shadow:
+        0 20px 50px rgba(129, 140, 248, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+/* === V5 Notification Toast === */
+.theme-customizer--v5~.notification-container .notification,
+.theme-customizer--v5 #theme-message {
+    background: var(--v5-surface) !important;
+    border: 1px solid var(--v5-glass-border) !important;
+    backdrop-filter: var(--v5-blur-lg) !important;
+    border-radius: var(--v5-radius-md) !important;
+    box-shadow: var(--v5-shadow-lg) !important;
+    font-weight: 500 !important;
+}
+
+/* === V5 Section collapse/expand indicator === */
+.theme-customizer--v5 .control-section h3 {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+}
+
+.theme-customizer--v5 .control-section h3:hover {
+    color: var(--v5-primary) !important;
+}
+
+/* === V5 Color swatch enhanced hover === */
+.theme-customizer--v5 .color-input-wrapper input[type="color"]:active {
+    transform: scale(0.95) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), var(--v5-shadow-sm) !important;
+}
+
+/* === V5 Select dropdowns — Premium === */
+.theme-customizer--v5 select.color-hex,
+.theme-customizer--v5 select.select-full {
+    background: var(--v5-glass) !important;
+    border: 1.5px solid var(--v5-border) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    color: var(--v5-text-primary) !important;
+    font-weight: 500 !important;
+    padding: 10px 14px !important;
+    transition: all var(--v5-transition-normal) !important;
+    cursor: pointer;
+}
+
+.theme-customizer--v5 select.color-hex:hover,
+.theme-customizer--v5 select.select-full:hover {
+    border-color: var(--v5-border-hover) !important;
+    box-shadow: var(--v5-shadow-sm) !important;
+}
+
+.theme-customizer--v5 select.color-hex:focus,
+.theme-customizer--v5 select.select-full:focus {
+    border-color: var(--v5-primary) !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08) !important;
+    outline: none !important;
+}
+
+/* === V5 Button Style Demos === */
+.theme-customizer--v5 .button-style-options {
+    gap: 10px !important;
+}
+
+.theme-customizer--v5 .button-style-demo {
+    border-radius: var(--v5-radius-sm) !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    transition: all var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .button-style-demo:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--v5-shadow-md) !important;
+}
+
+/* === V5 Help text === */
+.theme-customizer--v5 .customizer-help {
+    color: var(--v5-text-muted) !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    border-left: 2px solid var(--v5-primary) !important;
+    padding-left: 10px !important;
+    margin-top: 10px !important;
+    opacity: 0.8;
+}
+
+/* === V5 Large Card Preview === */
+.theme-customizer--v5 .rami-card-large {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* === V5 Preview Header === */
+.theme-customizer--v5 .preview-header h3 {
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, var(--v5-text-primary), var(--v5-primary)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* === V5 Color Grid — Better spacing === */
+.theme-customizer--v5 .color-grid {
+    gap: 16px !important;
+}
+
+/* === V5 AI Assistant section === */
+.theme-customizer--v5 .control-section:first-child {
+    background: linear-gradient(180deg,
+            rgba(79, 70, 229, 0.02) 0%,
+            transparent 100%) !important;
+}
+
+/* === V5 Firefox backdrop-filter fallback === */
+@supports not (backdrop-filter: blur(1px)) {
+    .theme-customizer--v5 .customizer-controls {
+        background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    .theme-customizer--v5 .customizer-header {
+        background: linear-gradient(135deg,
+                rgba(79, 70, 229, 0.08) 0%,
+                rgba(6, 182, 212, 0.05) 40%,
+                rgba(167, 139, 250, 0.06) 100%) !important;
+    }
+
+    .theme-customizer--v5 .customizer-footer {
+        background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    [data-theme="dark"] .theme-customizer--v5 .customizer-controls {
+        background: rgba(15, 23, 42, 0.96) !important;
+    }
+
+    [data-theme="dark"] .theme-customizer--v5 .customizer-footer {
+        background: rgba(15, 23, 42, 0.96) !important;
+    }
+}
+
+/* === V5 Smooth dark mode transition === */
+.theme-customizer--v5,
+.theme-customizer--v5 .customizer-header,
+.theme-customizer--v5 .customizer-controls,
+.theme-customizer--v5 .customizer-footer,
+.theme-customizer--v5 .control-section,
+.theme-customizer--v5 .preview-container {
+    transition: background 0.4s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* === V5 Magic Button — special glow === */
+.theme-customizer--v5 #theme-magic {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v5 #theme-magic:hover {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(79, 70, 229, 0.06)) !important;
+    border-color: rgba(167, 139, 250, 0.3) !important;
+    color: #7c3aed !important;
+}
+
+.theme-customizer--v5 #theme-magic:hover i {
+    animation: v5-sparkle 0.6s ease;
+}
+
+@keyframes v5-sparkle {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.3) rotate(-15deg);
+    }
+
+    50% {
+        transform: scale(0.9) rotate(10deg);
+    }
+
+    75% {
+        transform: scale(1.2) rotate(-5deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* === V5 Reset Button — distinct style === */
+.theme-customizer--v5 #theme-reset:hover {
+    color: var(--v5-danger) !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+    background: rgba(239, 68, 68, 0.04) !important;
+}
+
+.theme-customizer--v5 #theme-reset:hover i {
+    animation: v5-spin-once 0.5s ease;
+}
+
+@keyframes v5-spin-once {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+/* === V5 Card Back Preview === */
+.theme-customizer--v5 .rami-card-back {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.theme-customizer--v5 .rami-card-back:hover {
+    transform: scale(1.03) !important;
+}
+
+/* === V5 Keyboard shortcut hints === */
+.theme-customizer--v5 .customizer-tools-hint {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.03), rgba(6, 182, 212, 0.02)) !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    margin-top: 8px !important;
+    border: 1px solid rgba(79, 70, 229, 0.06) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .customizer-tools-hint {
+    background: rgba(129, 140, 248, 0.04) !important;
+    border-color: rgba(129, 140, 248, 0.08) !important;
+}
+
+/* === V5 Enhanced Pattern/Background Demo squares === */
+.theme-customizer--v5 .bg-demo {
+    border-radius: 8px !important;
+    transition: transform var(--v5-transition-normal), box-shadow var(--v5-transition-normal) !important;
+}
+
+.theme-customizer--v5 .shadow-option:hover .bg-demo {
+    transform: scale(1.08) !important;
+}
+
+/* === V5 Design Current Value indicator === */
+.theme-customizer--v5 .design-current {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.04), rgba(6, 182, 212, 0.03)) !important;
+    border: 1px solid rgba(79, 70, 229, 0.08) !important;
+    border-radius: var(--v5-radius-sm) !important;
+    padding: 8px 14px !important;
+}
+
+.theme-customizer--v5 .design-current-label {
+    color: var(--v5-text-muted) !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase;
+}
+
+
+/* === V5 Exclusive Sections === */
+.theme-customizer--v5 .v5-exclusive-section {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.04) 0%, rgba(6, 182, 212, 0.04) 100%) !important;
+    border: 1px solid rgba(79, 70, 229, 0.1) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .v5-exclusive-section {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.06) 0%, rgba(34, 211, 238, 0.06) 100%) !important;
+    border-color: rgba(129, 140, 248, 0.15) !important;
+}
+
+.theme-customizer--v5 .v5-exclusive-section h3 i {
+    color: var(--v5-primary);
+    margin-right: 6px;
+}
+
+/* === V5 Writing Styles === */
+.theme-customizer--v5 .v5-writing-styles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.theme-customizer--v5 .v5-style-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    background: var(--v5-surface);
+    border: 1px solid var(--v5-border);
+    border-radius: var(--v5-radius-md);
+    cursor: pointer;
+    transition: all var(--v5-transition-normal);
+}
+
+.theme-customizer--v5 .v5-style-option:hover {
+    border-color: var(--v5-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--v5-shadow-md);
+}
+
+.theme-customizer--v5 .v5-style-option.active {
+    background: rgba(79, 70, 229, 0.05);
+    border-color: var(--v5-primary);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.theme-customizer--v5 .v5-style-preview {
+    background: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+[data-theme="dark"] .theme-customizer--v5 .v5-style-preview {
+    background: #1e293b;
+    color: #f1f5f9;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.theme-customizer--v5 .v5-style-letter {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.theme-customizer--v5 .v5-style-sample {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.theme-customizer--v5 .v5-style-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--v5-text-primary);
+}
+
+.theme-customizer--v5 .v5-style-desc {
+    font-size: 11px;
+    color: var(--v5-text-muted);
+}
+
+/* === V5 Card Shapes === */
+.theme-customizer--v5 .v5-shape-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v5 .v5-shape-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--v5-radius-sm);
+    cursor: pointer;
+    transition: all var(--v5-transition-fast);
+}
+
+.theme-customizer--v5 .v5-shape-option:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.theme-customizer--v5 .v5-shape-option.active {
+    background: rgba(79, 70, 229, 0.05);
+    border-color: rgba(79, 70, 229, 0.2);
+}
+
+.theme-customizer--v5 .v5-shape-preview {
+    width: 32px;
+    height: 48px;
+    border: 2px solid var(--v5-text-secondary);
+    transition: all 0.3s ease;
+}
+
+.theme-customizer--v5 .v5-shape-option.active .v5-shape-preview {
+    border-color: var(--v5-primary);
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.v5-shape-rounded {
+    border-radius: 6px;
+}
+
+.v5-shape-square {
+    border-radius: 1px;
+}
+
+.v5-shape-sharp {
+    border-radius: 0;
+}
+
+.v5-shape-pill {
+    border-radius: 16px;
+}
+
+/* === V5 Zoom Overlay === */
+.v5-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    /* Flexbox au lieu de grid pour centrage */
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+
+.v5-zoom-overlay.is-active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.v5-zoom-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.v5-zoom-container {
+    position: relative;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.v5-zoom-card-wrapper {
+    /* Utiliser transform pour le zoom, centrage via flex parent */
+    transform-origin: center center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    /* Espace pour les contrôles */
+}
+
+/* Override card styles in zoom mode */
+.v5-zoomed-card {
+    pointer-events: none;
+    /* Désactiver interactions internes */
+    background: white !important;
+    /* Force background opacity */
+    margin: 0 !important;
+}
+
+[data-theme="dark"] .v5-zoomed-card {
+    background: #1e293b !important;
+}
+
+.v5-zoomed-card .rami-card-verb {
+    /* Ensure visibility if rotated */
+    backface-visibility: visible !important;
+}
+
+
+/* === V5 Zoom Controls === */
+.v5-zoom-controls {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 24px;
+    border-radius: 999px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.v5-zoom-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.v5-zoom-btn:hover {
+    transform: scale(1.2);
+    color: var(--v5-accent);
+}
+
+.v5-zoom-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+}
+
+.v5-zoom-close {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fca5a5;
+}
+
+.v5-zoom-close:hover {
+    color: #ef4444;
+}
+
+/* Card Zoom Cursor */
+.theme-customizer--v5 .preview-container .rami-card:hover,
+.theme-customizer--v5 .preview-container .rami-card-large:hover {
+    cursor: zoom-in;
+}

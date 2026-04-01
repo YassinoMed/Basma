@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 320" width="224" height="320">
+  <defs>
+    <!-- Fond ivoire subtil -->
+    <linearGradient id="bgGradEmerald" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#faf8f2"/>
+      <stop offset="50%" stop-color="#f5f0e6"/>
+      <stop offset="100%" stop-color="#f8f4ec"/>
+    </linearGradient>
+    <!-- Vert émeraude -->
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d5e3a"/>
+      <stop offset="50%" stop-color="#1a7a4e"/>
+      <stop offset="100%" stop-color="#0b5030"/>
+    </linearGradient>
+
+    <!-- Motif losanges émeraude avancé -->
+    <pattern id="advEmeraldDiamond" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <rect width="32" height="32" fill="none"/>
+      <!-- Cadre extérieur -->
+      <rect x="1" y="1" width="30" height="30" rx="1.2" ry="1.2" fill="none" stroke="#0d5e3a" stroke-width="0.7" opacity="0.55"/>
+      <!-- Cadre intérieur double -->
+      <rect x="3" y="3" width="26" height="26" rx="0.8" ry="0.8" fill="none" stroke="#0d5e3a" stroke-width="0.35" opacity="0.35"/>
+      <rect x="4.5" y="4.5" width="23" height="23" rx="0.5" ry="0.5" fill="none" stroke="#1a7a4e" stroke-width="0.25" opacity="0.25"/>
+      <!-- Rosette centrale complexe -->
+      <g transform="translate(16, 16)">
+        <!-- Couronne de 12 pétales -->
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(0)"/>
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(30)"/>
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(60)"/>
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(90)"/>
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(120)"/>
+        <ellipse rx="9" ry="1.8" fill="#0d5e3a" opacity="0.18" transform="rotate(150)"/>
+        <!-- Pétales intérieurs -->
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(15)"/>
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(45)"/>
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(75)"/>
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(105)"/>
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(135)"/>
+        <ellipse rx="6" ry="1.3" fill="#1a7a4e" opacity="0.25" transform="rotate(165)"/>
+        <!-- Cercles concentriques -->
+        <circle r="5.5" fill="none" stroke="#0d5e3a" stroke-width="0.5" opacity="0.4"/>
+        <circle r="3.8" fill="none" stroke="#1a7a4e" stroke-width="0.35" opacity="0.35"/>
+        <circle r="2.2" fill="none" stroke="#0d5e3a" stroke-width="0.45" opacity="0.45"/>
+        <circle r="1.2" fill="#0d5e3a" opacity="0.5"/>
+        <!-- Points décoratifs sur le cercle -->
+        <circle cx="5.5" cy="0" r="0.5" fill="#0d5e3a" opacity="0.35"/>
+        <circle cx="-5.5" cy="0" r="0.5" fill="#0d5e3a" opacity="0.35"/>
+        <circle cx="0" cy="5.5" r="0.5" fill="#0d5e3a" opacity="0.35"/>
+        <circle cx="0" cy="-5.5" r="0.5" fill="#0d5e3a" opacity="0.35"/>
+        <circle cx="3.9" cy="3.9" r="0.4" fill="#1a7a4e" opacity="0.3"/>
+        <circle cx="-3.9" cy="3.9" r="0.4" fill="#1a7a4e" opacity="0.3"/>
+        <circle cx="3.9" cy="-3.9" r="0.4" fill="#1a7a4e" opacity="0.3"/>
+        <circle cx="-3.9" cy="-3.9" r="0.4" fill="#1a7a4e" opacity="0.3"/>
+        <!-- Gouttes cardinales -->
+        <path d="M0,-10 Q1.5,-7 0,-4.5 Q-1.5,-7 0,-10Z" fill="#0d5e3a" opacity="0.3"/>
+        <path d="M0,10 Q1.5,7 0,4.5 Q-1.5,7 0,10Z" fill="#0d5e3a" opacity="0.3"/>
+        <path d="M-10,0 Q-7,1.5 -4.5,0 Q-7,-1.5 -10,0Z" fill="#0d5e3a" opacity="0.3"/>
+        <path d="M10,0 Q7,1.5 4.5,0 Q7,-1.5 10,0Z" fill="#0d5e3a" opacity="0.3"/>
+        <!-- Trèfles dans les coins -->
+        <g transform="translate(8.5, 8.5) scale(0.5)">
+          <circle cx="0" cy="-2" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="-1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <line x1="0" y1="1" x2="0" y2="4" stroke="#0d5e3a" stroke-width="0.6" opacity="0.2"/>
+        </g>
+        <g transform="translate(-8.5, 8.5) scale(0.5)">
+          <circle cx="0" cy="-2" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="-1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <line x1="0" y1="1" x2="0" y2="4" stroke="#0d5e3a" stroke-width="0.6" opacity="0.2"/>
+        </g>
+        <g transform="translate(8.5, -8.5) scale(0.5) rotate(180)">
+          <circle cx="0" cy="-2" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="-1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <line x1="0" y1="1" x2="0" y2="4" stroke="#0d5e3a" stroke-width="0.6" opacity="0.2"/>
+        </g>
+        <g transform="translate(-8.5, -8.5) scale(0.5) rotate(180)">
+          <circle cx="0" cy="-2" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="-1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <circle cx="1.7" cy="1" r="1.5" fill="#0d5e3a" opacity="0.2"/>
+          <line x1="0" y1="1" x2="0" y2="4" stroke="#0d5e3a" stroke-width="0.6" opacity="0.2"/>
+        </g>
+      </g>
+      <!-- Points de coin -->
+      <circle cx="1" cy="1" r="0.9" fill="#0d5e3a" opacity="0.2"/>
+      <circle cx="31" cy="1" r="0.9" fill="#0d5e3a" opacity="0.2"/>
+      <circle cx="1" cy="31" r="0.9" fill="#0d5e3a" opacity="0.2"/>
+      <circle cx="31" cy="31" r="0.9" fill="#0d5e3a" opacity="0.2"/>
+    </pattern>
+
+    <!-- Grille fine émeraude -->
+    <pattern id="advEmeraldGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <line x1="0" y1="0" x2="32" y2="0" stroke="#0d5e3a" stroke-width="0.2" opacity="0.12"/>
+      <line x1="0" y1="0" x2="0" y2="32" stroke="#0d5e3a" stroke-width="0.2" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Fond ivoire -->
+  <rect width="224" height="320" fill="url(#bgGradEmerald)" rx="6" ry="6"/>
+
+  <!-- Cadre décoratif — triple bordure -->
+  <rect x="3.5" y="3.5" width="217" height="313" rx="4" ry="4" fill="none" stroke="#0d5e3a" stroke-width="1.5" opacity="0.55"/>
+  <rect x="6.5" y="6.5" width="211" height="307" rx="3" ry="3" fill="none" stroke="#1a7a4e" stroke-width="0.5" opacity="0.3"/>
+  <rect x="9" y="9" width="206" height="302" rx="2.5" ry="2.5" fill="none" stroke="#0d5e3a" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Entrelacs celtiques dans le cadre (haut) -->
+  <g opacity="0.3">
+    <path d="M30,12 Q55,8 80,12 Q105,16 130,12 Q155,8 180,12 Q195,14 194,12" fill="none" stroke="#0d5e3a" stroke-width="0.8"/>
+    <path d="M30,14 Q55,18 80,14 Q105,10 130,14 Q155,18 180,14 Q195,12 194,14" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+  </g>
+  <!-- Entrelacs (bas) -->
+  <g opacity="0.3">
+    <path d="M30,308 Q55,304 80,308 Q105,312 130,308 Q155,304 180,308 Q195,310 194,308" fill="none" stroke="#0d5e3a" stroke-width="0.8"/>
+    <path d="M30,306 Q55,310 80,306 Q105,302 130,306 Q155,310 180,306 Q195,304 194,306" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+  </g>
+  <!-- Entrelacs (gauche) -->
+  <g opacity="0.3">
+    <path d="M12,30 Q8,60 12,90 Q16,120 12,150 Q8,180 12,210 Q16,240 12,270 Q10,285 12,290" fill="none" stroke="#0d5e3a" stroke-width="0.8"/>
+    <path d="M14,30 Q18,60 14,90 Q10,120 14,150 Q18,180 14,210 Q10,240 14,270 Q12,285 14,290" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+  </g>
+  <!-- Entrelacs (droit) -->
+  <g opacity="0.3">
+    <path d="M212,30 Q208,60 212,90 Q216,120 212,150 Q208,180 212,210 Q216,240 212,270 Q214,285 212,290" fill="none" stroke="#0d5e3a" stroke-width="0.8"/>
+    <path d="M210,30 Q214,60 210,90 Q206,120 210,150 Q214,180 210,210 Q206,240 210,270 Q208,285 210,290" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+  </g>
+
+  <!-- Grille fine -->
+  <rect x="16" y="16" width="192" height="288" fill="url(#advEmeraldGrid)" rx="1" ry="1"/>
+
+  <!-- Motif principal -->
+  <rect x="16" y="16" width="192" height="288" fill="url(#advEmeraldDiamond)" rx="1" ry="1"/>
+
+  <!-- Coins ornementaux avec trèfle stylisé -->
+  <g opacity="0.45">
+    <!-- Coin haut-gauche -->
+    <g transform="translate(20, 20)">
+      <path d="M0,0 C4,-2 8,-1 10,0 C12,2 11,6 10,10 C8,12 4,11 0,10 C-2,8 -1,4 0,0Z" fill="none" stroke="#0d5e3a" stroke-width="0.7"/>
+      <circle cx="5" cy="5" r="2.5" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="#0d5e3a"/>
+      <!-- Petit trèfle -->
+      <circle cx="5" cy="2" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="3.2" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="6.8" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+    </g>
+    <!-- Coin haut-droit -->
+    <g transform="translate(204, 20) scale(-1,1)">
+      <path d="M0,0 C4,-2 8,-1 10,0 C12,2 11,6 10,10 C8,12 4,11 0,10 C-2,8 -1,4 0,0Z" fill="none" stroke="#0d5e3a" stroke-width="0.7"/>
+      <circle cx="5" cy="5" r="2.5" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="#0d5e3a"/>
+      <circle cx="5" cy="2" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="3.2" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="6.8" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+    </g>
+    <!-- Coin bas-gauche -->
+    <g transform="translate(20, 300) scale(1,-1)">
+      <path d="M0,0 C4,-2 8,-1 10,0 C12,2 11,6 10,10 C8,12 4,11 0,10 C-2,8 -1,4 0,0Z" fill="none" stroke="#0d5e3a" stroke-width="0.7"/>
+      <circle cx="5" cy="5" r="2.5" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="#0d5e3a"/>
+      <circle cx="5" cy="2" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="3.2" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="6.8" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+    </g>
+    <!-- Coin bas-droit -->
+    <g transform="translate(204, 300) scale(-1,-1)">
+      <path d="M0,0 C4,-2 8,-1 10,0 C12,2 11,6 10,10 C8,12 4,11 0,10 C-2,8 -1,4 0,0Z" fill="none" stroke="#0d5e3a" stroke-width="0.7"/>
+      <circle cx="5" cy="5" r="2.5" fill="none" stroke="#1a7a4e" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="#0d5e3a"/>
+      <circle cx="5" cy="2" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="3.2" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+      <circle cx="6.8" cy="4.5" r="1.2" fill="#0d5e3a" opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- Grand médaillon central avec rosette 12 branches -->
+  <g transform="translate(112, 160)" opacity="0.45">
+    <!-- Cercle extérieur avec points -->
+    <circle r="36" fill="none" stroke="#0d5e3a" stroke-width="0.8"/>
+    <circle r="34" fill="none" stroke="#1a7a4e" stroke-width="0.4" stroke-dasharray="2 3" opacity="0.5"/>
+    <circle r="31" fill="none" stroke="#0d5e3a" stroke-width="0.6"/>
+    <!-- 12 points sur le cercle extérieur -->
+    <circle cx="36" cy="0" r="1.2" fill="#0d5e3a" opacity="0.4"/>
+    <circle cx="-36" cy="0" r="1.2" fill="#0d5e3a" opacity="0.4"/>
+    <circle cx="0" cy="36" r="1.2" fill="#0d5e3a" opacity="0.4"/>
+    <circle cx="0" cy="-36" r="1.2" fill="#0d5e3a" opacity="0.4"/>
+    <circle cx="25.5" cy="25.5" r="1" fill="#1a7a4e" opacity="0.35"/>
+    <circle cx="-25.5" cy="25.5" r="1" fill="#1a7a4e" opacity="0.35"/>
+    <circle cx="25.5" cy="-25.5" r="1" fill="#1a7a4e" opacity="0.35"/>
+    <circle cx="-25.5" cy="-25.5" r="1" fill="#1a7a4e" opacity="0.35"/>
+    <circle cx="18" cy="31.2" r="0.8" fill="#0d5e3a" opacity="0.3"/>
+    <circle cx="-18" cy="31.2" r="0.8" fill="#0d5e3a" opacity="0.3"/>
+    <circle cx="18" cy="-31.2" r="0.8" fill="#0d5e3a" opacity="0.3"/>
+    <circle cx="-18" cy="-31.2" r="0.8" fill="#0d5e3a" opacity="0.3"/>
+    <!-- Étoile 12 branches -->
+    <polygon points="0,-28 4,-10 12,-22 6,-8 22,-12 10,-4 28,0 10,4 22,12 6,8 12,22 4,10 0,28 -4,10 -12,22 -6,8 -22,12 -10,4 -28,0 -10,-4 -22,-12 -6,-8 -12,-22 -4,-10" fill="none" stroke="#0d5e3a" stroke-width="0.5" opacity="0.35"/>
+    <!-- Rosette 12 pétales -->
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(0)"/>
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(30)"/>
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(60)"/>
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(90)"/>
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(120)"/>
+    <ellipse rx="18" ry="3.5" fill="#0d5e3a" opacity="0.08" transform="rotate(150)"/>
+    <!-- Anneau intérieur -->
+    <circle r="12" fill="none" stroke="#0d5e3a" stroke-width="0.6" opacity="0.4"/>
+    <circle r="8" fill="none" stroke="#1a7a4e" stroke-width="0.4" opacity="0.35"/>
+    <circle r="5" fill="none" stroke="#0d5e3a" stroke-width="0.5" opacity="0.45"/>
+    <!-- Centre: petit trèfle -->
+    <circle cx="0" cy="-2.5" r="1.8" fill="#0d5e3a" opacity="0.35"/>
+    <circle cx="-2.2" cy="1.3" r="1.8" fill="#0d5e3a" opacity="0.35"/>
+    <circle cx="2.2" cy="1.3" r="1.8" fill="#0d5e3a" opacity="0.35"/>
+    <line x1="0" y1="1.5" x2="0" y2="5" stroke="#0d5e3a" stroke-width="0.8" opacity="0.35"/>
+  </g>
+
+  <!-- Filets décoratifs avec petits losanges -->
+  <g opacity="0.25">
+    <line x1="35" y1="48" x2="189" y2="48" stroke="#0d5e3a" stroke-width="0.5"/>
+    <line x1="35" y1="272" x2="189" y2="272" stroke="#0d5e3a" stroke-width="0.5"/>
+    <path d="M112,45 L115,48 L112,51 L109,48Z" fill="#0d5e3a" opacity="0.6"/>
+    <path d="M112,269 L115,272 L112,275 L109,272Z" fill="#0d5e3a" opacity="0.6"/>
+    <!-- Petits cercles aux bords des filets -->
+    <circle cx="38" cy="48" r="1" fill="#0d5e3a"/>
+    <circle cx="186" cy="48" r="1" fill="#0d5e3a"/>
+    <circle cx="38" cy="272" r="1" fill="#0d5e3a"/>
+    <circle cx="186" cy="272" r="1" fill="#0d5e3a"/>
+  </g>
+
+  <!-- Bordure finale -->
+  <rect width="224" height="320" fill="none" stroke="#0d5e3a" stroke-width="0.4" opacity="0.15" rx="6" ry="6"/>
+</svg>

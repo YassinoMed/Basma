@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 320" width="224" height="320">
+  <defs>
+    <pattern id="ecuBlueTile" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <rect width="48" height="48" fill="#ffffff"/>
+      <rect x="1.5" y="1.5" width="45" height="45" rx="2" ry="2" fill="none" stroke="#1a3a6b" stroke-width="0.7" opacity="0.45"/>
+      <rect x="4" y="4" width="40" height="40" rx="1.5" ry="1.5" fill="none" stroke="#1a3a6b" stroke-width="0.3" opacity="0.25"/>
+      <g transform="translate(24,24)" opacity="0.4">
+        <!-- Bouclier/écusson -->
+        <path d="M0,-14 L10,-10 L10,2 Q10,10 0,15 Q-10,10 -10,2 L-10,-10Z" fill="none" stroke="#1a3a6b" stroke-width="0.7"/>
+        <path d="M0,-11 L7,-8 L7,1 Q7,7 0,11 Q-7,7 -7,1 L-7,-8Z" fill="none" stroke="#1a3a6b" stroke-width="0.35" opacity="0.6"/>
+        <!-- Croix dans l'écusson -->
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#1a3a6b" stroke-width="0.5" opacity="0.5"/>
+        <line x1="-5" y1="-2" x2="5" y2="-2" stroke="#1a3a6b" stroke-width="0.5" opacity="0.5"/>
+        <!-- Points cardinaux -->
+        <circle cx="0" cy="-2" r="1.5" fill="#1a3a6b" opacity="0.3"/>
+        <!-- Couronne miniature au sommet -->
+        <path d="M-4,-14 L-3,-11 L-1,-13 L0,-10 L1,-13 L3,-11 L4,-14" fill="none" stroke="#1a3a6b" stroke-width="0.5" opacity="0.5"/>
+        <!-- Fleurs-de-lys en coins -->
+        <g transform="translate(-14,-14) scale(0.4)">
+          <path d="M0,-8 C-2,-4 -4,-2 -4,2 C-4,5 -2,6 0,4 C2,6 4,5 4,2 C4,-2 2,-4 0,-8Z" fill="#1a3a6b" opacity="0.25"/>
+        </g>
+        <g transform="translate(14,-14) scale(0.4)">
+          <path d="M0,-8 C-2,-4 -4,-2 -4,2 C-4,5 -2,6 0,4 C2,6 4,5 4,2 C4,-2 2,-4 0,-8Z" fill="#1a3a6b" opacity="0.25"/>
+        </g>
+        <g transform="translate(-14,14) scale(0.4) rotate(180)">
+          <path d="M0,-8 C-2,-4 -4,-2 -4,2 C-4,5 -2,6 0,4 C2,6 4,5 4,2 C4,-2 2,-4 0,-8Z" fill="#1a3a6b" opacity="0.25"/>
+        </g>
+        <g transform="translate(14,14) scale(0.4) rotate(180)">
+          <path d="M0,-8 C-2,-4 -4,-2 -4,2 C-4,5 -2,6 0,4 C2,6 4,5 4,2 C4,-2 2,-4 0,-8Z" fill="#1a3a6b" opacity="0.25"/>
+        </g>
+      </g>
+      <circle cx="1.5" cy="1.5" r="0.9" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="46.5" cy="1.5" r="0.9" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="1.5" cy="46.5" r="0.9" fill="#1a3a6b" opacity="0.2"/>
+      <circle cx="46.5" cy="46.5" r="0.9" fill="#1a3a6b" opacity="0.2"/>
+    </pattern>
+    <pattern id="ecuBlueGrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45 112 160)">
+      <line x1="0" y1="0" x2="48" y2="0" stroke="#1a3a6b" stroke-width="0.2" opacity="0.1"/>
+      <line x1="0" y1="0" x2="0" y2="48" stroke="#1a3a6b" stroke-width="0.2" opacity="0.1"/>
+    </pattern>
+  </defs>
+  <rect width="224" height="320" fill="#fefefe" rx="6" ry="6"/>
+  <rect x="4" y="4" width="216" height="312" rx="4" ry="4" fill="none" stroke="#1a3a6b" stroke-width="1" opacity="0.45"/>
+  <rect x="7" y="7" width="210" height="306" rx="3" ry="3" fill="none" stroke="#1a3a6b" stroke-width="0.4" opacity="0.25"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#ecuBlueGrid)" rx="2" ry="2"/>
+  <rect x="10" y="10" width="204" height="300" fill="url(#ecuBlueTile)" rx="2" ry="2"/>
+  <!-- Grand écusson central -->
+  <g transform="translate(112,160)" opacity="0.35">
+    <path d="M0,-40 L28,-30 L28,5 Q28,30 0,45 Q-28,30 -28,5 L-28,-30Z" fill="none" stroke="#1a3a6b" stroke-width="0.8"/>
+    <path d="M0,-35 L23,-26 L23,3 Q23,25 0,38 Q-23,25 -23,3 L-23,-26Z" fill="none" stroke="#1a3a6b" stroke-width="0.5"/>
+    <line x1="0" y1="-30" x2="0" y2="30" stroke="#1a3a6b" stroke-width="0.4" opacity="0.5"/>
+    <line x1="-18" y1="-5" x2="18" y2="-5" stroke="#1a3a6b" stroke-width="0.4" opacity="0.5"/>
+    <circle r="5" fill="none" stroke="#1a3a6b" stroke-width="0.5"/>
+    <circle r="2" fill="#1a3a6b" opacity="0.35"/>
+    <!-- Couronne -->
+    <path d="M-12,-40 L-10,-33 L-6,-37 L-3,-31 L0,-36 L3,-31 L6,-37 L10,-33 L12,-40" fill="none" stroke="#1a3a6b" stroke-width="0.6"/>
+    <line x1="-12" y1="-40" x2="12" y2="-40" stroke="#1a3a6b" stroke-width="0.5"/>
+  </g>
+  <rect width="224" height="320" fill="none" stroke="#1a3a6b" stroke-width="0.4" opacity="0.15" rx="6" ry="6"/>
+</svg>

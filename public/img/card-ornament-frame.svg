@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420" fill="none">
+  <!-- ============================================
+       CADRE ORNEMENTAL — PREMIUM VINTAGE
+       Style : Art Nouveau / Victorien
+       Couleur : Or métallique (#C5A059)
+       ViewBox : 300×420 (ratio poker)
+       ============================================ -->
+
+  <defs>
+    <!-- Gradient or métallique pour profondeur -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4B87A"/>
+      <stop offset="40%" stop-color="#C5A059"/>
+      <stop offset="70%" stop-color="#B8913E"/>
+      <stop offset="100%" stop-color="#C5A059"/>
+    </linearGradient>
+
+    <!-- Gradient plus clair pour les volutes fines -->
+    <linearGradient id="gold-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D9C48B"/>
+      <stop offset="100%" stop-color="#C5A059"/>
+    </linearGradient>
+
+    <!-- Coin supérieur gauche — volutes + acanthe -->
+    <g id="corner-tl">
+      <!-- Volute principale — grande spirale -->
+      <path d="
+        M 12,12
+        C 12,12 18,8 28,10
+        C 38,12 42,20 40,30
+        C 38,38 30,42 24,38
+        C 18,34 20,26 26,24
+        C 30,22 34,28 32,32
+      " stroke="url(#gold)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+      <!-- Volute secondaire — petite spirale miroir -->
+      <path d="
+        M 12,12
+        C 12,12 8,18 10,28
+        C 12,38 20,42 30,40
+        C 38,38 42,30 38,24
+        C 34,18 26,20 24,26
+        C 22,30 28,34 32,32
+      " stroke="url(#gold)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+      <!-- Feuille d'acanthe stylisée — forme centrale -->
+      <path d="
+        M 14,14 Q 22,14 26,18 Q 22,22 18,22 Q 14,18 14,14 Z
+      " fill="url(#gold)" opacity="0.35"/>
+
+      <!-- Petite feuille intérieure -->
+      <path d="
+        M 16,16 Q 20,16 22,18 Q 20,20 18,20 Q 16,18 16,16 Z
+      " fill="url(#gold)" opacity="0.5"/>
+
+      <!-- Filigrane — ligne décorative horizontale -->
+      <path d="
+        M 40,14
+        C 48,10 60,12 68,14
+        Q 72,15 76,14
+        C 80,13 84,14 88,15
+        L 95,15
+      " stroke="url(#gold)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+      <!-- Petites perles le long du filigrane -->
+      <circle cx="52" cy="12.5" r="1.2" fill="#C5A059" opacity="0.5"/>
+      <circle cx="68" cy="14" r="1" fill="#C5A059" opacity="0.4"/>
+      <circle cx="84" cy="14.5" r="1.2" fill="#C5A059" opacity="0.5"/>
+
+      <!-- Filigrane — ligne décorative verticale -->
+      <path d="
+        M 14,40
+        C 10,48 12,60 14,68
+        Q 15,72 14,76
+        C 13,80 14,84 15,88
+        L 15,95
+      " stroke="url(#gold)" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+      <!-- Petites perles verticales -->
+      <circle cx="12.5" cy="52" r="1.2" fill="#C5A059" opacity="0.5"/>
+      <circle cx="14" cy="68" r="1" fill="#C5A059" opacity="0.4"/>
+      <circle cx="14.5" cy="84" r="1.2" fill="#C5A059" opacity="0.5"/>
+
+      <!-- Point d'accroche — petite étoile/fleur -->
+      <path d="
+        M 12,12 L 14,9 L 12,6 L 10,9 Z
+      " fill="#C5A059" opacity="0.4" transform="translate(-2,-2) scale(0.8)"/>
+    </g>
+  </defs>
+
+  <!-- ========================================
+       DOUBLE BORDURE
+       ======================================== -->
+
+  <!-- Bordure extérieure -->
+  <rect x="6" y="6" width="288" height="408" rx="12" ry="12"
+        stroke="url(#gold)" stroke-width="1.5" fill="none" opacity="0.8"/>
+
+  <!-- Bordure intérieure -->
+  <rect x="12" y="12" width="276" height="396" rx="9" ry="9"
+        stroke="url(#gold)" stroke-width="0.8" fill="none" opacity="0.5"/>
+
+  <!-- Ligne fine médiane entre les deux bordures (effet triple) -->
+  <rect x="9" y="9" width="282" height="402" rx="10.5" ry="10.5"
+        stroke="#C5A059" stroke-width="0.3" fill="none" opacity="0.3"/>
+
+  <!-- ========================================
+       4 COINS ORNEMENTAUX (symétrie miroir)
+       ======================================== -->
+
+  <!-- Coin supérieur gauche (original) -->
+  <use href="#corner-tl"/>
+
+  <!-- Coin supérieur droit (miroir horizontal) -->
+  <use href="#corner-tl" transform="translate(300,0) scale(-1,1)"/>
+
+  <!-- Coin inférieur gauche (miroir vertical) -->
+  <use href="#corner-tl" transform="translate(0,420) scale(1,-1)"/>
+
+  <!-- Coin inférieur droit (miroir horizontal + vertical) -->
+  <use href="#corner-tl" transform="translate(300,420) scale(-1,-1)"/>
+
+  <!-- ========================================
+       ORNEMENTS CENTRAUX — haut et bas
+       ======================================== -->
+
+  <!-- Ornement central haut — petit fleuron -->
+  <g transform="translate(150, 15)" opacity="0.55">
+    <!-- Courbe gauche -->
+    <path d="M 0,0 C -8,4 -14,2 -18,-2 C -14,0 -10,-2 -8,-4 Q -4,-2 0,0 Z"
+          fill="url(#gold)"/>
+    <!-- Courbe droite (miroir) -->
+    <path d="M 0,0 C 8,4 14,2 18,-2 C 14,0 10,-2 8,-4 Q 4,-2 0,0 Z"
+          fill="url(#gold)"/>
+    <!-- Point central -->
+    <circle cx="0" cy="-1" r="1.5" fill="#C5A059"/>
+    <!-- Petites perles latérales -->
+    <circle cx="-12" cy="0" r="0.8" fill="#C5A059" opacity="0.6"/>
+    <circle cx="12" cy="0" r="0.8" fill="#C5A059" opacity="0.6"/>
+  </g>
+
+  <!-- Ornement central bas — fleuron miroir -->
+  <g transform="translate(150, 405)" opacity="0.55">
+    <path d="M 0,0 C -8,-4 -14,-2 -18,2 C -14,0 -10,2 -8,4 Q -4,2 0,0 Z"
+          fill="url(#gold)"/>
+    <path d="M 0,0 C 8,-4 14,-2 18,2 C 14,0 10,2 8,4 Q 4,2 0,0 Z"
+          fill="url(#gold)"/>
+    <circle cx="0" cy="1" r="1.5" fill="#C5A059"/>
+    <circle cx="-12" cy="0" r="0.8" fill="#C5A059" opacity="0.6"/>
+    <circle cx="12" cy="0" r="0.8" fill="#C5A059" opacity="0.6"/>
+  </g>
+
+  <!-- ========================================
+       ORNEMENTS LATÉRAUX — gauche et droit
+       ======================================== -->
+
+  <!-- Ornement latéral gauche -->
+  <g transform="translate(11, 210)" opacity="0.4">
+    <path d="M 0,-12 Q 4,-8 4,0 Q 4,8 0,12" stroke="#C5A059" stroke-width="0.8" fill="none"/>
+    <path d="M 2,-8 Q 5,-4 5,0 Q 5,4 2,8" stroke="#C5A059" stroke-width="0.5" fill="none"/>
+    <circle cx="3" cy="0" r="1" fill="#C5A059" opacity="0.6"/>
+  </g>
+
+  <!-- Ornement latéral droit -->
+  <g transform="translate(289, 210)" opacity="0.4">
+    <path d="M 0,-12 Q -4,-8 -4,0 Q -4,8 0,12" stroke="#C5A059" stroke-width="0.8" fill="none"/>
+    <path d="M -2,-8 Q -5,-4 -5,0 Q -5,4 -2,8" stroke="#C5A059" stroke-width="0.5" fill="none"/>
+    <circle cx="-3" cy="0" r="1" fill="#C5A059" opacity="0.6"/>
+  </g>
+
+  <!-- ========================================
+       PETITES LIGNES DÉCORATIVES (filets)
+       entre les coins et les ornements centraux
+       ======================================== -->
+
+  <!-- Filets horizontaux haut -->
+  <line x1="100" y1="10" x2="130" y2="10" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+  <line x1="170" y1="10" x2="200" y2="10" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Filets horizontaux bas -->
+  <line x1="100" y1="410" x2="130" y2="410" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+  <line x1="170" y1="410" x2="200" y2="410" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Filets verticaux gauche -->
+  <line x1="10" y1="120" x2="10" y2="150" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+  <line x1="10" y1="270" x2="10" y2="300" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Filets verticaux droit -->
+  <line x1="290" y1="120" x2="290" y2="150" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+  <line x1="290" y1="270" x2="290" y2="300" stroke="#C5A059" stroke-width="0.4" opacity="0.3"/>
+
+</svg>

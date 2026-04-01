@@ -1,0 +1,1136 @@
+/* ============================================================
+   THEME V6 — AURORA
+   Fixes V5 card issues + refined aurora-inspired design
+   ============================================================ */
+
+/* === V6 Design Tokens === */
+.theme-customizer--v6 {
+    --v6-primary: #6366f1;
+    --v6-primary-light: #818cf8;
+    --v6-primary-dark: #4f46e5;
+    --v6-accent: #06b6d4;
+    --v6-accent-warm: #f59e0b;
+    --v6-success: #10b981;
+    --v6-danger: #ef4444;
+    --v6-text-primary: #0f172a;
+    --v6-text-secondary: #475569;
+    --v6-text-muted: #94a3b8;
+    --v6-bg-start: #f8fafc;
+    --v6-bg-end: #f1f5f9;
+    --v6-surface: rgba(255, 255, 255, 0.85);
+    --v6-surface-hover: rgba(255, 255, 255, 0.95);
+    --v6-glass: rgba(255, 255, 255, 0.6);
+    --v6-glass-border: rgba(255, 255, 255, 0.3);
+    --v6-border: rgba(0, 0, 0, 0.06);
+    --v6-border-hover: rgba(99, 102, 241, 0.2);
+    --v6-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --v6-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --v6-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --v6-shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.1);
+    --v6-radius-sm: 10px;
+    --v6-radius-md: 14px;
+    --v6-radius-lg: 20px;
+    --v6-radius-xl: 24px;
+    --v6-transition-fast: 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+    --v6-transition-normal: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    --v6-transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    --v6-blur-md: blur(20px) saturate(180%);
+    --v6-blur-lg: blur(28px) saturate(200%);
+}
+
+/* Dark mode tokens */
+[data-theme="dark"] .theme-customizer--v6 {
+    --v6-text-primary: #f1f5f9;
+    --v6-text-secondary: #cbd5e1;
+    --v6-text-muted: #64748b;
+    --v6-bg-start: #0f172a;
+    --v6-bg-end: #1e293b;
+    --v6-surface: rgba(30, 41, 59, 0.85);
+    --v6-surface-hover: rgba(30, 41, 59, 0.95);
+    --v6-glass: rgba(30, 41, 59, 0.6);
+    --v6-glass-border: rgba(255, 255, 255, 0.06);
+    --v6-border: rgba(255, 255, 255, 0.06);
+    --v6-border-hover: rgba(129, 140, 248, 0.25);
+    --v6-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --v6-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.25);
+    --v6-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --v6-shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* === V6 Customizer Card === */
+.theme-customizer--v6 .customizer-controls {
+    background: var(--v6-surface) !important;
+    border: 1px solid var(--v6-glass-border) !important;
+    backdrop-filter: var(--v6-blur-md) !important;
+    border-radius: var(--v6-radius-xl) !important;
+    box-shadow: var(--v6-shadow-lg) !important;
+}
+
+/* === V6 Header — Aurora gradient === */
+.theme-customizer--v6 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.1) 0%,
+            rgba(6, 182, 212, 0.07) 35%,
+            rgba(139, 92, 246, 0.08) 70%,
+            rgba(16, 185, 129, 0.06) 100%) !important;
+    border-color: rgba(99, 102, 241, 0.08) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v6 .customizer-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 60%);
+    animation: v6-aurora-shift 15s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes v6-aurora-shift {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-3%, 2%) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(2%, -1%) rotate(-1deg);
+    }
+}
+
+/* === V6 Section Badge === */
+.theme-customizer--v6 .section-badge {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.08)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.12) !important;
+    border-radius: 10px !important;
+    color: var(--v6-primary) !important;
+}
+
+/* === V6 Version Pills === */
+.theme-customizer--v6 .customizer-version-pill {
+    border-radius: 999px !important;
+    font-weight: 700 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .customizer-version-pill.is-active {
+    background: linear-gradient(135deg, var(--v6-primary), var(--v6-primary-dark)) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3) !important;
+    border-color: transparent !important;
+}
+
+.theme-customizer--v6 .customizer-version-pill:hover:not(.is-active) {
+    background: rgba(99, 102, 241, 0.06) !important;
+    color: var(--v6-primary) !important;
+}
+
+/* === V6 Description Feature Tag === */
+.theme-customizer--v6 .customizer-header .section-description {
+    color: var(--v6-text-secondary) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+.theme-customizer--v6 .customizer-header .section-description::after {
+    content: ' ✦ Aurora · Animations · Glow Effects';
+    display: inline;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--v6-primary);
+    opacity: 0.7;
+}
+
+/* === V6 Tool Buttons === */
+.theme-customizer--v6 .customizer-tool-btn {
+    border-radius: var(--v6-radius-sm) !important;
+    border: 1px solid var(--v6-border) !important;
+    background: var(--v6-glass) !important;
+    color: var(--v6-text-secondary) !important;
+    font-weight: 600 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .customizer-tool-btn:hover {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: var(--v6-border-hover) !important;
+    color: var(--v6-primary) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--v6-shadow-sm) !important;
+}
+
+/* === V6 Search & Jump === */
+.theme-customizer--v6 .customizer-search,
+.theme-customizer--v6 .customizer-jump {
+    border-radius: var(--v6-radius-md) !important;
+    border: 1px solid var(--v6-border) !important;
+    background: var(--v6-glass) !important;
+}
+
+.theme-customizer--v6 .customizer-search:focus-within,
+.theme-customizer--v6 .customizer-jump:focus-within {
+    border-color: var(--v6-border-hover) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08) !important;
+}
+
+/* === V6 Control Sections === */
+.theme-customizer--v6 .control-section {
+    border-bottom: 1px solid var(--v6-border) !important;
+    padding: 24px 28px !important;
+    transition: background var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .control-section:hover {
+    background: rgba(99, 102, 241, 0.012) !important;
+}
+
+.theme-customizer--v6 .control-section h3 {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    color: var(--v6-text-primary) !important;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+}
+
+.theme-customizer--v6 .control-section h3::before {
+    background: linear-gradient(180deg, var(--v6-primary), var(--v6-accent)) !important;
+    border-radius: 3px !important;
+    width: 3px !important;
+    height: 20px !important;
+}
+
+.theme-customizer--v6 .control-section h3:hover {
+    color: var(--v6-primary) !important;
+}
+
+.theme-customizer--v6 .control-section h3::after {
+    color: var(--v6-text-muted) !important;
+    font-size: 12px !important;
+    transition: transform var(--v6-transition-normal) !important;
+}
+
+/* === V6 Color Inputs === */
+.theme-customizer--v6 .color-input-group label {
+    color: var(--v6-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.6px !important;
+}
+
+.theme-customizer--v6 .color-input-wrapper input[type="color"] {
+    width: 56px !important;
+    height: 56px !important;
+    border: 2px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    padding: 4px !important;
+    transition: all var(--v6-transition-normal) !important;
+    box-shadow: var(--v6-shadow-sm) !important;
+}
+
+.theme-customizer--v6 .color-input-wrapper input[type="color"]:hover {
+    border-color: var(--v6-border-hover) !important;
+    box-shadow: var(--v6-shadow-md), 0 0 0 3px rgba(99, 102, 241, 0.06) !important;
+    transform: scale(1.04) !important;
+}
+
+.theme-customizer--v6 .color-hex {
+    background: var(--v6-glass) !important;
+    border: 1.5px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .color-hex:focus {
+    border-color: var(--v6-primary) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08) !important;
+}
+
+/* === V6 Sliders === */
+.theme-customizer--v6 .slider-group label {
+    color: var(--v6-text-secondary) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}
+
+.theme-customizer--v6 .slider-wrapper {
+    background: var(--v6-glass) !important;
+    border: 1px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-md) !important;
+    padding: 14px 16px !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .slider-wrapper:hover {
+    border-color: var(--v6-border-hover) !important;
+    box-shadow: var(--v6-shadow-sm) !important;
+}
+
+.theme-customizer--v6 .slider::-webkit-slider-runnable-track {
+    height: 8px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg,
+            var(--v6-primary) 0%, var(--v6-primary) var(--slider-pct),
+            rgba(0, 0, 0, 0.08) var(--slider-pct), rgba(0, 0, 0, 0.08) 100%) !important;
+}
+
+.theme-customizer--v6 .slider::-webkit-slider-thumb {
+    width: 22px !important;
+    height: 22px !important;
+    border: 2px solid #fff !important;
+    background: linear-gradient(135deg, var(--v6-primary), var(--v6-accent)) !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3) !important;
+    margin-top: -7px !important;
+    transition: all var(--v6-transition-fast) !important;
+}
+
+.theme-customizer--v6 .slider-value {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+    color: var(--v6-primary) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    padding: 6px 12px !important;
+}
+
+/* === V6 Shadow/Preset Options === */
+.theme-customizer--v6 .shadow-option {
+    background: var(--v6-glass) !important;
+    border: 1.5px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-md) !important;
+    transition: all var(--v6-transition-smooth) !important;
+}
+
+.theme-customizer--v6 .shadow-option:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--v6-shadow-md) !important;
+    border-color: var(--v6-border-hover) !important;
+}
+
+.theme-customizer--v6 .shadow-option.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    border-color: var(--v6-primary) !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* === V6 Design Selector === */
+.theme-customizer--v6 .design-option {
+    border-radius: var(--v6-radius-sm) !important;
+    border: 1.5px solid var(--v6-border) !important;
+    transition: all var(--v6-transition-smooth) !important;
+}
+
+.theme-customizer--v6 .design-option:hover {
+    border-color: var(--v6-border-hover) !important;
+    box-shadow: var(--v6-shadow-md) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+}
+
+.theme-customizer--v6 .design-option.active {
+    border-color: var(--v6-primary) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08), var(--v6-shadow-md) !important;
+}
+
+/* === V6 Preview Panel === */
+.theme-customizer--v6 .customizer-preview {
+    border-radius: var(--v6-radius-xl) !important;
+    overflow: hidden !important;
+}
+
+.theme-customizer--v6 .preview-toolbar {
+    background: var(--v6-surface) !important;
+    border-bottom: 1px solid var(--v6-border) !important;
+    backdrop-filter: var(--v6-blur-md) !important;
+}
+
+.theme-customizer--v6 .preview-mode-btn {
+    border-radius: var(--v6-radius-sm) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .preview-mode-btn.active {
+    background: linear-gradient(135deg, var(--v6-primary), var(--v6-primary-dark)) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25) !important;
+}
+
+.theme-customizer--v6 .preview-legend {
+    font-size: 11px !important;
+    color: var(--v6-text-muted) !important;
+}
+
+/* === V6 Preview Container — Aurora stage === */
+.theme-customizer--v6 .preview-container {
+    background: linear-gradient(180deg, var(--v6-bg-start), var(--v6-bg-end)) !important;
+    position: relative;
+}
+
+.theme-customizer--v6 .preview-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================================
+   V6 CARD FIX — Ghost text, grey circle, text overlap
+   ============================================================ */
+
+/* FIX 1: Remove ghost text (small "mange" behind main text) */
+.theme-customizer--v6 .rami-card-index-verb {
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* FIX 2: Clean up the grey circle placeholder illustration */
+.theme-customizer--v6 .rami-card .rami-card-illustration {
+    background: linear-gradient(135deg,
+            var(--rami-illustration-bg-start, #f0f4ff),
+            var(--rami-illustration-bg-end, #e8ecff)) !important;
+    border: 1px solid var(--rami-illustration-border-color, rgba(99, 102, 241, 0.06)) !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06) !important;
+}
+
+/* Make the placeholder icon more polished */
+.theme-customizer--v6 .rami-card-illustration-placeholder {
+    color: var(--v6-primary) !important;
+    opacity: 0.35 !important;
+    font-size: 2.2em !important;
+}
+
+/* FIX 3: Adjust verb/text spacing to prevent overlap with illustration */
+.theme-customizer--v6 .rami-card .rami-card-verb {
+    position: absolute;
+    bottom: var(--rami-verb-bottom, 34px);
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.theme-customizer--v6 .rami-card .rami-card-verb-main {
+    font-weight: 800 !important;
+    letter-spacing: var(--rami-verb-letter-spacing, 0.05em) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* FIX 4: Center content better so illustration doesn't touch verb text */
+.theme-customizer--v6 .rami-card .rami-card-center {
+    top: 42% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* ============================================================
+   V6 Card Animation
+   ============================================================ */
+.theme-customizer--v6 .preview-cards-grid>* {
+    animation: v6-card-appear 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+@keyframes v6-card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(1) {
+    animation-delay: 0s !important;
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(2) {
+    animation-delay: 0.06s !important;
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(3) {
+    animation-delay: 0.12s !important;
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(4) {
+    animation-delay: 0.18s !important;
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(5) {
+    animation-delay: 0.24s !important;
+}
+
+.theme-customizer--v6 .preview-cards-grid>*:nth-child(6) {
+    animation-delay: 0.30s !important;
+}
+
+/* === V6 Card Hover — Aurora glow === */
+.theme-customizer--v6 .rami-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.theme-customizer--v6 .rami-card:hover {
+    box-shadow:
+        0 20px 50px rgba(99, 102, 241, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .rami-card:hover {
+    box-shadow:
+        0 20px 50px rgba(129, 140, 248, 0.1),
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+/* === V6 Footer === */
+.theme-customizer--v6 .customizer-footer {
+    background: var(--v6-surface) !important;
+    border: 1px solid var(--v6-glass-border) !important;
+    backdrop-filter: var(--v6-blur-lg) !important;
+    border-radius: var(--v6-radius-lg) !important;
+    box-shadow: var(--v6-shadow-xl) !important;
+    padding: 14px 20px !important;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-primary {
+    background: linear-gradient(135deg, var(--v6-primary), var(--v6-primary-dark)) !important;
+    border: none !important;
+    border-radius: var(--v6-radius-sm) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3) !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-secondary {
+    background: var(--v6-glass) !important;
+    border: 1px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    color: var(--v6-text-secondary) !important;
+    font-weight: 600 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: var(--v6-border-hover) !important;
+    color: var(--v6-primary) !important;
+}
+
+/* === V6 Layout === */
+.theme-customizer--v6 .customizer-layout {
+    grid-template-columns: minmax(460px, 700px) minmax(0, 1fr) !important;
+    gap: 24px !important;
+}
+
+@media (max-width: 1200px) {
+    .theme-customizer--v6 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .theme-customizer--v6 .control-section {
+        padding: 18px 16px !important;
+    }
+
+    .theme-customizer--v6 .customizer-header {
+        padding: 16px !important;
+    }
+}
+
+/* === V6 Scrollbar === */
+.theme-customizer--v6 .customizer-controls::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.theme-customizer--v6 .customizer-controls::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.theme-customizer--v6 .customizer-controls::-webkit-scrollbar-thumb {
+    background: var(--v6-text-muted) !important;
+    border-radius: 999px !important;
+    opacity: 0.3;
+}
+
+/* === V6 Font Options === */
+.theme-customizer--v6 .font-option {
+    background: var(--v6-glass) !important;
+    border: 1.5px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .font-option:hover {
+    border-color: var(--v6-border-hover) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--v6-shadow-sm) !important;
+}
+
+.theme-customizer--v6 .font-option.active {
+    border-color: var(--v6-primary) !important;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(6, 182, 212, 0.04)) !important;
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* === V6 Select Dropdowns === */
+.theme-customizer--v6 select.color-hex,
+.theme-customizer--v6 select.select-full {
+    background: var(--v6-glass) !important;
+    border: 1.5px solid var(--v6-border) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    color: var(--v6-text-primary) !important;
+    font-weight: 500 !important;
+    padding: 10px 14px !important;
+    transition: all var(--v6-transition-normal) !important;
+    cursor: pointer;
+}
+
+/* === V6 Preview Header === */
+.theme-customizer--v6 .preview-header h3 {
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, var(--v6-text-primary), var(--v6-primary)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* === V6 Floating Particles === */
+.theme-customizer--v6::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(2px 2px at 15% 25%, rgba(99, 102, 241, 0.1), transparent),
+        radial-gradient(2px 2px at 85% 15%, rgba(6, 182, 212, 0.08), transparent),
+        radial-gradient(2px 2px at 45% 75%, rgba(139, 92, 246, 0.06), transparent),
+        radial-gradient(3px 3px at 70% 55%, rgba(16, 185, 129, 0.05), transparent),
+        radial-gradient(2px 2px at 30% 90%, rgba(6, 182, 212, 0.06), transparent);
+    animation: v6-float-particles 25s ease-in-out infinite alternate;
+}
+
+@keyframes v6-float-particles {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-6px) scale(1.005);
+    }
+
+    100% {
+        transform: translateY(3px) scale(0.995);
+    }
+}
+
+[data-theme="dark"] .theme-customizer--v6::before {
+    background:
+        radial-gradient(2px 2px at 15% 25%, rgba(129, 140, 248, 0.06), transparent),
+        radial-gradient(2px 2px at 85% 15%, rgba(34, 211, 238, 0.05), transparent),
+        radial-gradient(2px 2px at 45% 75%, rgba(167, 139, 250, 0.04), transparent),
+        radial-gradient(3px 3px at 70% 55%, rgba(16, 185, 129, 0.03), transparent),
+        radial-gradient(2px 2px at 30% 90%, rgba(34, 211, 238, 0.04), transparent);
+}
+
+/* === V6 Exclusive Sections === */
+.theme-customizer--v6 .v5-exclusive-section,
+.theme-customizer--v6 .v6-exclusive-section {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(16, 185, 129, 0.04) 100%) !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .v5-exclusive-section,
+[data-theme="dark"] .theme-customizer--v6 .v6-exclusive-section {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.06) 0%, rgba(16, 185, 129, 0.06) 100%) !important;
+    border-color: rgba(129, 140, 248, 0.15) !important;
+}
+
+/* === V6 Exclusive: Card Glow === */
+.theme-customizer--v6 .v6-glow-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v6 .v6-glow-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: var(--v6-surface);
+    border: 1.5px solid var(--v6-border);
+    border-radius: var(--v6-radius-md);
+    cursor: pointer;
+    transition: all var(--v6-transition-normal);
+}
+
+.theme-customizer--v6 .v6-glow-option:hover {
+    border-color: var(--v6-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--v6-shadow-md);
+}
+
+.theme-customizer--v6 .v6-glow-option.active {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: var(--v6-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.theme-customizer--v6 .v6-glow-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: box-shadow 0.3s ease;
+}
+
+.theme-customizer--v6 .v6-glow-preview--none {
+    background: var(--v6-border);
+}
+
+.theme-customizer--v6 .v6-glow-preview--subtle {
+    background: linear-gradient(135deg, #818cf8, #06b6d4);
+    box-shadow: 0 0 16px rgba(99, 102, 241, 0.3);
+}
+
+.theme-customizer--v6 .v6-glow-preview--intense {
+    background: linear-gradient(135deg, #818cf8, #06b6d4);
+    box-shadow: 0 0 28px rgba(99, 102, 241, 0.5), 0 0 56px rgba(6, 182, 212, 0.2);
+}
+
+.theme-customizer--v6 .v6-glow-option span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--v6-text-secondary);
+}
+
+.theme-customizer--v6 .v6-glow-option.active span {
+    color: var(--v6-primary);
+}
+
+/* === V6 Exclusive: Typography Weight === */
+.theme-customizer--v6 .v6-weight-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v6 .v6-weight-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: transparent;
+    border: 1.5px solid var(--v6-border);
+    border-radius: var(--v6-radius-sm);
+    cursor: pointer;
+    transition: all var(--v6-transition-fast);
+}
+
+.theme-customizer--v6 .v6-weight-option:hover {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: var(--v6-border-hover);
+}
+
+.theme-customizer--v6 .v6-weight-option.active {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+.theme-customizer--v6 .v6-weight-sample {
+    font-size: 20px;
+    line-height: 1;
+    color: var(--v6-text-primary);
+}
+
+.theme-customizer--v6 .v6-weight-option span:last-child {
+    font-size: 11px;
+    color: var(--v6-text-muted);
+}
+
+/* === V6 Accessibility === */
+.theme-customizer--v6 *:focus-visible {
+    outline: 2px solid var(--v6-primary) !important;
+    outline-offset: 2px !important;
+    border-radius: 6px;
+}
+
+/* === V6 Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+
+    .theme-customizer--v6 *,
+    .theme-customizer--v6 *::before,
+    .theme-customizer--v6 *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* === V6 Dark Mode Enhancements === */
+[data-theme="dark"] .theme-customizer--v6 .customizer-header {
+    background: linear-gradient(135deg,
+            rgba(129, 140, 248, 0.1) 0%,
+            rgba(34, 211, 238, 0.06) 35%,
+            rgba(167, 139, 250, 0.08) 70%,
+            rgba(16, 185, 129, 0.05) 100%) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .customizer-controls {
+    background: var(--v6-surface) !important;
+    border-color: var(--v6-glass-border) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .customizer-footer {
+    background: var(--v6-surface) !important;
+    border-color: var(--v6-glass-border) !important;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .preview-container {
+    background: linear-gradient(180deg, var(--v6-bg-start), var(--v6-bg-end)) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .shadow-option {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="dark"] .theme-customizer--v6 .slider-wrapper {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* === V6 Smooth transitions === */
+.theme-customizer--v6,
+.theme-customizer--v6 .customizer-header,
+.theme-customizer--v6 .customizer-controls,
+.theme-customizer--v6 .customizer-footer,
+.theme-customizer--v6 .control-section,
+.theme-customizer--v6 .preview-container {
+    transition: background 0.4s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* === V6 Writing & Shape Styles (inherited from V5) === */
+.theme-customizer--v6 .v5-writing-styles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.theme-customizer--v6 .v5-style-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    background: var(--v6-surface);
+    border: 1px solid var(--v6-border);
+    border-radius: var(--v6-radius-md);
+    cursor: pointer;
+    transition: all var(--v6-transition-normal);
+}
+
+.theme-customizer--v6 .v5-style-option:hover {
+    border-color: var(--v6-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--v6-shadow-md);
+}
+
+.theme-customizer--v6 .v5-style-option.active {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: var(--v6-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.theme-customizer--v6 .v5-shape-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.theme-customizer--v6 .v5-shape-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--v6-radius-sm);
+    cursor: pointer;
+    transition: all var(--v6-transition-fast);
+}
+
+.theme-customizer--v6 .v5-shape-option:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.theme-customizer--v6 .v5-shape-option.active {
+    background: rgba(99, 102, 241, 0.05);
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+.theme-customizer--v6 .v5-shape-preview {
+    width: 32px;
+    height: 48px;
+    border: 2px solid var(--v6-text-secondary);
+    transition: all 0.3s ease;
+}
+
+.theme-customizer--v6 .v5-shape-option.active .v5-shape-preview {
+    border-color: var(--v6-primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* === V6 Zoom Overlay (inherited from V5) === */
+.theme-customizer--v6 .preview-container .rami-card:hover,
+.theme-customizer--v6 .preview-container .rami-card-large:hover {
+    cursor: zoom-in;
+}
+
+/* === V6 Help text === */
+.theme-customizer--v6 .customizer-help {
+    color: var(--v6-text-muted) !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    border-left: 2px solid var(--v6-primary) !important;
+    padding-left: 10px !important;
+    margin-top: 10px !important;
+    opacity: 0.8;
+}
+
+/* === V6 Color Grid Spacing === */
+.theme-customizer--v6 .color-grid {
+    gap: 16px !important;
+}
+
+/* === V6 Button Style Demos === */
+.theme-customizer--v6 .button-style-demo {
+    border-radius: var(--v6-radius-sm) !important;
+    font-weight: 600 !important;
+    transition: all var(--v6-transition-normal) !important;
+}
+
+/* === V6 Magic & Reset Buttons === */
+.theme-customizer--v6 #theme-magic:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(99, 102, 241, 0.06)) !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+    color: #7c3aed !important;
+}
+
+.theme-customizer--v6 #theme-reset:hover {
+    color: var(--v6-danger) !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+    background: rgba(239, 68, 68, 0.04) !important;
+}
+
+/* === V6 Large Card Preview === */
+.theme-customizer--v6 .rami-card-large {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* === V6 Card Back === */
+.theme-customizer--v6 .rami-card-back {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.theme-customizer--v6 .rami-card-back:hover {
+    transform: scale(1.03) !important;
+}
+
+/* === V6 Hints === */
+.theme-customizer--v6 .customizer-tools-hint {
+    color: var(--v6-text-muted) !important;
+    font-size: 10px !important;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(6, 182, 212, 0.02)) !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    border: 1px solid rgba(99, 102, 241, 0.06) !important;
+}
+
+/* === V6 Print === */
+@media print {
+
+    .theme-customizer--v6 .customizer-controls,
+    .theme-customizer--v6 .customizer-footer,
+    .theme-customizer--v6 .customizer-tools {
+        display: none !important;
+    }
+
+    .theme-customizer--v6 .customizer-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* === V6 Firefox fallback === */
+@supports not (backdrop-filter: blur(1px)) {
+    .theme-customizer--v6 .customizer-controls {
+        background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    .theme-customizer--v6 .customizer-footer {
+        background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    [data-theme="dark"] .theme-customizer--v6 .customizer-controls {
+        background: rgba(15, 23, 42, 0.96) !important;
+    }
+
+    [data-theme="dark"] .theme-customizer--v6 .customizer-footer {
+        background: rgba(15, 23, 42, 0.96) !important;
+    }
+}
+
+/* === V6 Shimmer on Save Button === */
+.theme-customizer--v6 .customizer-footer .btn-primary:not(:disabled) {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-primary:not(:disabled)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transition: none;
+    animation: none;
+}
+
+.theme-customizer--v6 .customizer-footer .btn-primary:not(:disabled):hover::after {
+    animation: v6-shimmer 1.2s ease-in-out;
+}
+
+@keyframes v6-shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* === V6 Save Status === */
+.theme-customizer--v6 .customizer-save-status {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: var(--v6-text-muted) !important;
+}
+
+/* === V6 Section body animation === */
+.theme-customizer--v6 .control-section-body {
+    transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease,
+        transform 0.25s ease !important;
+}
+
+/* === V6 Icon options === */
+.theme-customizer--v6 .shadow-options--icons .shadow-option {
+    border-radius: var(--v6-radius-sm) !important;
+}
+
+.theme-customizer--v6 .icon-preview {
+    color: var(--v6-text-secondary) !important;
+    transition: color var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .shadow-option.active .icon-preview {
+    color: var(--v6-primary) !important;
+}
+
+/* === V6 Active Pill gradient border === */
+.theme-customizer--v6 .customizer-version-pill.is-active {
+    position: relative;
+    z-index: 1;
+}
+
+/* === V6 AI Assistant section highlight === */
+.theme-customizer--v6 .control-section:first-child {
+    background: linear-gradient(180deg,
+            rgba(99, 102, 241, 0.02) 0%, transparent 100%) !important;
+}
+
+/* === V6 Design current value === */
+.theme-customizer--v6 .design-current {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(6, 182, 212, 0.03)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08) !important;
+    border-radius: var(--v6-radius-sm) !important;
+    padding: 8px 14px !important;
+}
+
+/* === V6 Notification Toast === */
+.theme-customizer--v6~.notification-container .notification,
+.theme-customizer--v6 #theme-message {
+    background: var(--v6-surface) !important;
+    border: 1px solid var(--v6-glass-border) !important;
+    backdrop-filter: var(--v6-blur-lg) !important;
+    border-radius: var(--v6-radius-md) !important;
+    box-shadow: var(--v6-shadow-lg) !important;
+}
+
+/* === V6 BG Demo squares === */
+.theme-customizer--v6 .bg-demo {
+    border-radius: 8px !important;
+    transition: transform var(--v6-transition-normal), box-shadow var(--v6-transition-normal) !important;
+}
+
+.theme-customizer--v6 .shadow-option:hover .bg-demo {
+    transform: scale(1.08) !important;
+}
+
+/* === V6 High Contrast === */
+@media (prefers-contrast: high) {
+    .theme-customizer--v6 {
+        --v6-border: rgba(0, 0, 0, 0.2);
+        --v6-border-hover: rgba(99, 102, 241, 0.5);
+    }
+
+    .theme-customizer--v6 .control-section h3 {
+        font-weight: 800 !important;
+    }
+}
