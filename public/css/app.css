@@ -2739,6 +2739,15 @@ svg {
     line-height: 1;
 }
 
+[data-suit="diamond"] .rami-card-suit,
+[data-suit="diamonds"] .rami-card-suit,
+[data-suit="heart"] .rami-card-suit,
+[data-suit="hearts"] .rami-card-suit {
+    color: #d32f2f !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
 /* Couleurs par groupe */
 .rami-card[data-group="1er"] {
     --rami-accent-color: var(--rami-group-1-color, #1e3a5f);
@@ -6393,3 +6402,4 @@ COMPATIBILITÉ IMPRESSION :
     border-color: #D4AF37 !important;
     box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
 }
+.rami-card:hover .rami-card-actions { opacity: 1 !important; }

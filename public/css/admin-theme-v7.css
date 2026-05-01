@@ -473,6 +473,13 @@
     font-size: 1.1em !important;
 }
 
+.theme-customizer--v7 .rami-card[data-suit="diamond"] .rami-card-suit,
+.theme-customizer--v7 .rami-card[data-suit="diamonds"] .rami-card-suit,
+.theme-customizer--v7 .rami-card[data-suit="heart"] .rami-card-suit,
+.theme-customizer--v7 .rami-card[data-suit="hearts"] .rami-card-suit {
+    color: #d32f2f !important;
+}
+
 .theme-customizer--v7 .rami-card .rami-card-index-top {
     font-family: var(--v7-font-display) !important;
 }
@@ -1135,6 +1142,13 @@
     color: var(--v7-navy) !important;
     font-family: var(--v7-font-display) !important;
     font-size: 1.1em !important;
+}
+
+.theme-customizer--v7 .rami-card-large[data-suit="diamond"] .rami-card-suit,
+.theme-customizer--v7 .rami-card-large[data-suit="diamonds"] .rami-card-suit,
+.theme-customizer--v7 .rami-card-large[data-suit="heart"] .rami-card-suit,
+.theme-customizer--v7 .rami-card-large[data-suit="hearts"] .rami-card-suit {
+    color: #d32f2f !important;
 }
 
 /* Large card — verb */

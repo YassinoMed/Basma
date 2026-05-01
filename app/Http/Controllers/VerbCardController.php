@@ -887,8 +887,26 @@ class VerbCardController extends Controller
         return $this->renderPrintFull($request, 3);
     }
 
-    private function renderPrintFull(Request $request, int $printUiVersion)
+    public function printFullBack(Request $request)
     {
+        return $this->renderPrintFull($request, 2, [
+            'backOnly' => true,
+            'includeBack' => true,
+        ]);
+    }
+
+    public function printFullBackV3(Request $request)
+    {
+        return $this->renderPrintFull($request, 3, [
+            'backOnly' => true,
+            'includeBack' => true,
+        ]);
+    }
+
+    private function renderPrintFull(Request $request, int $printUiVersion, array $options = [])
+    {
+        $includeBack = (bool) ($options['includeBack'] ?? false) || ((string) $request->query('include_back', '') === '1');
+        $backOnly = (bool) ($options['backOnly'] ?? false) || ((string) $request->query('back_only', '') === '1');
         $groupParam = $request->query('group');
         $query = trim((string) $request->query('q', ''));
         $verbFilter = trim((string) $request->query('verb', ''));
@@ -978,6 +996,8 @@ class VerbCardController extends Controller
             'irregularOnly' => $irregularOnly,
             'paperSize' => $paperSize,
             'printUiVersion' => $printUiVersion,
+            'includeBack' => $includeBack,
+            'backOnly' => $backOnly,
         ];
 
         $viewData = array_merge($viewData, $this->buildThemeOverrides($printUiVersion));
@@ -995,8 +1015,26 @@ class VerbCardController extends Controller
         return $this->renderPrintSingle($request, 3);
     }
 
-    private function renderPrintSingle(Request $request, int $printUiVersion)
+    public function printSingleBack(Request $request)
     {
+        return $this->renderPrintSingle($request, 2, [
+            'backOnly' => true,
+            'includeBack' => true,
+        ]);
+    }
+
+    public function printSingleBackV3(Request $request)
+    {
+        return $this->renderPrintSingle($request, 3, [
+            'backOnly' => true,
+            'includeBack' => true,
+        ]);
+    }
+
+    private function renderPrintSingle(Request $request, int $printUiVersion, array $options = [])
+    {
+        $includeBack = (bool) ($options['includeBack'] ?? false) || ((string) $request->query('include_back', '') === '1');
+        $backOnly = (bool) ($options['backOnly'] ?? false) || ((string) $request->query('back_only', '') === '1');
         $groupParam = $request->query('group');
         $query = trim((string) $request->query('q', ''));
         $verbFilter = trim((string) $request->query('verb', ''));
@@ -1092,6 +1130,8 @@ class VerbCardController extends Controller
             'irregularOnly' => $irregularOnly,
             'paperSize' => $paperSize,
             'printUiVersion' => $printUiVersion,
+            'includeBack' => $includeBack,
+            'backOnly' => $backOnly,
         ];
 
         $viewData = array_merge($viewData, $this->buildThemeOverrides($printUiVersion));

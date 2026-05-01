@@ -198,6 +198,11 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
 @endphp
 
 <div class="{{ $wrapperClass }}">
+    @if(!empty($themeSettingsInlineCss))
+    <style>
+        {!! $themeSettingsInlineCss !!}
+    </style>
+    @endif
     <style>
         .print-main {
             --rami-card-width: 190px;
@@ -668,7 +673,7 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
                                     <span class="rami-card-verb-main">{{ mb_strtoupper((string)
                                         ($card['conjugation_value'] ?? $verb->infinitive)) }}</span>
                                 </div>
-                                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                             </div>
                             @else
                             <div class="rami-card-verb-text">{{ mb_strtoupper((string) ($card['conjugation_value'] ??
@@ -682,7 +687,7 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
                                     <span class="rami-card-verb-main">{{ mb_strtoupper((string)
                                         ($card['conjugation_value'] ?? $verb->infinitive)) }}</span>
                                 </div>
-                                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                             </div>
                             @else
                             <div class="rami-card-verb-text">{{ mb_strtoupper((string) ($card['conjugation_value'] ??
@@ -763,7 +768,7 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
     <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}" target="_blank"
         style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
         <i class="ph ph-diamond"></i>
-        Classique ♦
+        Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
     </a>
     <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}" target="_blank"
         style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
@@ -801,7 +806,7 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
     <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}"
         style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
         <i class="ph ph-diamond"></i>
-        Classique ♦
+        Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
     </a>
     <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}"
         style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
@@ -827,7 +832,7 @@ $printBackClassicEmeraldUrl = route($printDeckBackRouteName, array_filter([
 
 <div class="print-legend" style="margin-top: 10px;">
     {{ $shownCardsCount ?: count($cards ?? []) }} cartes · {{ $shownPagesCount ?: count($sheets) }} page(s) · 8 cartes
-    par page {{ $paperSizeLabel }} · Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+    par page {{ $paperSizeLabel }} · Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
 </div>
 </div>
 @endsection

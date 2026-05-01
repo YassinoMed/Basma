@@ -533,6 +533,7 @@ class ThemeController extends Controller
             '--rami-font-family' => 'Inter, sans-serif',
             '--rami-selected-pattern' => 'plain',
             '--rami-card-back-pattern' => 'diamonds',
+            '--rami-card-back-pattern-color' => 'rgba(30, 58, 95, 0.03)',
         ];
     }
 
@@ -822,6 +823,7 @@ class ThemeController extends Controller
             '--rami-font-family', // Ajouté ici
             '--rami-selected-pattern',
             '--rami-card-back-pattern',
+            '--rami-card-back-pattern-color',
         ], true)) {
             return true; // On accepte les strings safe pour ces valeurs (couleurs ou font names)
         }

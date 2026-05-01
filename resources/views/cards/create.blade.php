@@ -296,7 +296,7 @@ $submitLabel = $submitLabel ?? 'Créer la carte';
                     Aperçu
                 </h3>
                 <div style="margin: 6px 0 14px; color: var(--color-text-muted); font-size: 0.95rem;">
-                    Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+                    Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
                 </div>
 
                 <article class="rami-card create-preview-card" id="create-preview-card"

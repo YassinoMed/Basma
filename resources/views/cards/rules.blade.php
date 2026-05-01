@@ -24,7 +24,7 @@ $backPattern = $themeCardBackPattern ?? 'plain';
     </h2>
     <div style="display: grid; gap: 8px; color: var(--color-text-secondary);">
         <div><strong>Objectif</strong> : former des combinaisons.</div>
-        <div><strong>Série</strong> : verbes du même groupe (♠ 1er, ♦ 2ème, ♣ 3ème, ♥ auxiliaires).</div>
+        <div><strong>Série</strong> : verbes du même groupe (♠ 1er, <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> 2ème, ♣ 3ème, ♥ auxiliaires).</div>
         <div><strong>Suite</strong> : mêmes terminaisons / structures proches au présent.</div>
         <div><strong>Bonus</strong> : une combinaison avec un auxiliaire (♥) vaut +1 point.</div>
     </div>

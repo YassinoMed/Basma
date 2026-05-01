@@ -14,7 +14,7 @@
         conçues pour un apprentissage ludique et élégant.
     </p>
     <p class="section-description" style="margin-top: 8px; font-size: 0.95rem;">
-        Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+        Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
     </p>
     <div style="margin-top: 12px; display: flex; justify-content: center;">
         <button type="button" class="btn btn-secondary" id="beginner-guide-open"
@@ -38,6 +38,8 @@ $printDeckParams = array_filter([
     'group' => $selectedGroup !== 'all' ? $selectedGroup : null,
     'q' => $searchQuery !== '' ? $searchQuery : null,
 ]);
+$printSingleRouteName = $useConjugatedVerb ? 'cards.print_single_v3' : 'cards.print_single';
+$printSingleBackRouteName = $useConjugatedVerb ? 'cards.print_single_back_v3' : 'cards.print_single_back';
 @endphp
 
 <div style="margin: 0 auto 18px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; max-width: 900px;">
@@ -48,6 +50,14 @@ $printDeckParams = array_filter([
     <a href="{{ route($printDeckRouteName, array_merge($printDeckParams, ['include_back' => 1])) }}" class="btn btn-secondary" target="_blank">
         <i class="ph ph-squares-four"></i>
         Recto/verso
+    </a>
+    <a href="{{ route($useConjugatedVerb ? 'cards.print_deck_back_v3' : 'cards.print_deck_back', array_merge($printDeckParams, ['back_color' => 'classic-red', 'back_pattern' => 'classic-red', 'back_only' => 1])) }}" class="btn btn-secondary" target="_blank" style="color: #c41e3a; border-color: #c41e3a;">
+        <i class="ph ph-diamond"></i>
+        Dos Rouge
+    </a>
+    <a href="{{ route($useConjugatedVerb ? 'cards.print_deck_back_v3' : 'cards.print_deck_back', array_merge($printDeckParams, ['back_color' => 'classic-blue', 'back_pattern' => 'classic-blue', 'back_only' => 1])) }}" class="btn btn-secondary" target="_blank" style="color: #1a3a6b; border-color: #1a3a6b;">
+        <i class="ph ph-diamond"></i>
+        Dos Bleu
     </a>
     <a href="{{ route('cards.rules') }}" class="btn btn-secondary">
         <i class="ph ph-book-open"></i>
@@ -60,7 +70,7 @@ $printDeckParams = array_filter([
     <div style="flex: 1;">
         <div style="font-weight: 700; margin-bottom: 4px;">Guide rapide</div>
         <div style="opacity: 0.9;">
-            Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+            Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
         </div>
     </div>
     <button type="button" class="alert-close" id="beginner-guide-close" aria-label="Masquer le guide" title="Masquer">
@@ -192,7 +202,7 @@ $printDeckParams = array_filter([
                         <i class="ph-bold ph-speaker-high"></i>
                     </button>
                 </div>
-                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
             </div>
             @else
             <div class="rami-card-verb-text">
@@ -207,7 +217,7 @@ $printDeckParams = array_filter([
 
         @if($loop->iteration <= 2)
         <div class="rami-card-micro-legend" aria-hidden="true">
-            ♠ pique · ♦ carreaux · ♣ trèfle · ♥ cœur
+            ♠ pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> carreaux · ♣ trèfle · ♥ cœur
         </div>
         @endif
 
@@ -219,6 +229,16 @@ $printDeckParams = array_filter([
                 <span>{{ $verb->pronounLabel('je') }}</span>
             </div>
             <div class="rami-card-index-verb">{{ $conjugation ? $verb->formatConjugation('je', (string) ($conjugation->je ?? '')) : '' }}</div>
+        </div>
+
+        <!-- Boutons d'action directs (hover) -->
+        <div class="rami-card-actions" style="position: absolute; bottom: 8px; right: 8px; display: flex; gap: 6px; z-index: 10; opacity: 0; transition: opacity var(--duration-200);">
+            <a href="{{ route($printSingleBackRouteName, ['verb' => $verb->infinitive]) }}" class="btn btn-icon-small" title="Imprimer les versos (8/A4)" target="_blank" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
+                <i class="ph ph-squares-four"></i>
+            </a>
+            <a href="{{ route($printSingleRouteName, ['verb' => $verb->infinitive]) }}" class="btn btn-icon-small" title="Imprimer le verbe (8/A4)" target="_blank" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);">
+                <i class="ph ph-printer"></i>
+            </a>
         </div>
     </article>
     @endforeach

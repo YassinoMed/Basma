@@ -122,7 +122,7 @@ $showRouteName = $useConjugatedVerb ? 'cards.show_v3' : 'cards.show';
                         <i class="ph-bold ph-speaker-high"></i>
                     </button>
                 </div>
-                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
             </div>
             @else
             <div class="rami-card-verb-text">

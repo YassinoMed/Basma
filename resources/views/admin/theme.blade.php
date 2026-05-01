@@ -1647,7 +1647,7 @@
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="classic-red">
                                     <div class="bg-demo bg-classic-red"></div>
-                                    <span>Classique ♦</span>
+                                    <span>Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span></span>
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="classic-blue">
                                     <div class="bg-demo bg-classic-blue"></div>
@@ -1665,7 +1665,7 @@
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="filigrane-red">
                                     <div class="bg-demo bg-filigrane-red"></div>
-                                    <span>Filigrane ♦</span>
+                                    <span>Filigrane <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span></span>
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="filigrane-blue">
                                     <div class="bg-demo bg-filigrane-blue"></div>
@@ -1673,7 +1673,7 @@
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="ecusson-red">
                                     <div class="bg-demo bg-ecusson-red"></div>
-                                    <span>Écusson ♦</span>
+                                    <span>Écusson <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span></span>
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="ecusson-blue">
                                     <div class="bg-demo bg-ecusson-blue"></div>
@@ -1681,7 +1681,7 @@
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="eventail-red">
                                     <div class="bg-demo bg-eventail-red"></div>
-                                    <span>Éventail ♦</span>
+                                    <span>Éventail <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span></span>
                                 </button>
                                 <button type="button" class="shadow-option" data-rami-card-back-preset="eventail-blue">
                                     <div class="bg-demo bg-eventail-blue"></div>
@@ -2208,7 +2208,7 @@
                         </div>
 
                         <div class="slider-group">
-                            <label>Taille symbole (♠♦♣♥)</label>
+                            <label>Taille symbole (♠<span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>♣♥)</label>
                             <div class="slider-wrapper">
                                 <input type="range" min="0.9" max="1.9" step="0.05"
                                     value="{{ (float) str_replace('em', '', ($themeSettings['--rami-suit-size'] ?? '1.35em')) }}"
@@ -2370,7 +2370,7 @@
                     </div>
                 </div>
                 <div class="preview-legend">
-                    Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+                    Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
                 </div>
 
                 <div class="preview-container preview-container--single">
@@ -2552,10 +2552,9 @@
 
                     <div class="preview-mode" data-preview="back">
                         <div class="preview-cards-grid preview-single-card">
-                            @for($i = 0; $i < 1; $i++) <article class="rami-card rami-card-back" data-group="1er"
-                                data-pattern="diamonds">
-                                </article>
-                                @endfor
+                            <article class="rami-card rami-card-back" data-group="1er"
+                                data-pattern="{{ $themeSettings['--rami-card-back-pattern'] ?? 'diamonds' }}">
+                            </article>
                         </div>
                     </div>
                 </div>

@@ -476,7 +476,7 @@ $printPaperLetterUrl = route($printRouteName, $verb).'?'.http_build_query(array_
                                         $verb->formatConjugation($conjugationKey, (string)
                                         ($conjugation->$conjugationKey ?? '')) : $verb->infinitive) }}</span>
                                 </div>
-                                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                             </div>
                             @else
                             <div class="rami-card-verb-text">{{ mb_strtoupper($verb->infinitive) }}</div>
@@ -490,7 +490,7 @@ $printPaperLetterUrl = route($printRouteName, $verb).'?'.http_build_query(array_
                                         $verb->formatConjugation($conjugationKey, (string)
                                         ($conjugation->$conjugationKey ?? '')) : $verb->infinitive) }}</span>
                                 </div>
-                                <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                             </div>
                             @else
                             <div class="rami-card-verb-text">{{ mb_strtoupper($verb->infinitive) }}</div>
@@ -580,7 +580,7 @@ $printPaperLetterUrl = route($printRouteName, $verb).'?'.http_build_query(array_
     <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}" target="_blank"
         style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
         <i class="ph ph-diamond"></i>
-        Classique ♦
+        Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
     </a>
     <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}" target="_blank"
         style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
@@ -618,7 +618,7 @@ $printPaperLetterUrl = route($printRouteName, $verb).'?'.http_build_query(array_
     <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}"
         style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
         <i class="ph ph-diamond"></i>
-        Classique ♦
+        Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
     </a>
     <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}"
         style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
@@ -643,7 +643,7 @@ $printPaperLetterUrl = route($printRouteName, $verb).'?'.http_build_query(array_
 </div>
 
 <div class="print-legend">
-    Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+    Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
 </div>
 </div>
 </div>

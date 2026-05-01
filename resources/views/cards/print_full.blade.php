@@ -18,8 +18,28 @@
 @php
 $paperSize = $paperSize ?? 'a4';
 $paperSizeLabel = $paperSize === 'letter' ? 'Letter' : 'A4';
+$includeBack = !empty($includeBack) || (string) request()->query('include_back', '') === '1';
+$backOnly = !empty($backOnly) || (string) request()->query('back_only', '') === '1';
+$includeBack = $includeBack || $backOnly;
+$backPattern = (string) request()->query('back_pattern', ($themeCardBackPattern ?? 'plain'));
+$backColor = (string) request()->query('back_color', '1');
+$allowedBackColors = ['1', '2', '3', 'premium', 'classic-red', 'classic-blue', 'classic-gold', 'classic-emerald', 'filigrane-red', 'filigrane-blue', 'ecusson-red', 'ecusson-blue', 'eventail-red', 'eventail-blue', 'indigo', 'bordeaux'];
+if (! in_array($backColor, $allowedBackColors, true)) { $backColor = '1'; }
+$backColor = $backColor === 'indigo' ? '1' : ($backColor === 'bordeaux' ? '2' : $backColor);
+$backColorClass = match ($backColor) {
+    '2' => 'rami-card-back--v2',
+    '3' => 'rami-card-back--v3',
+    'premium' => 'rami-card-back--premium',
+    'classic-red' => 'rami-card-back--classic-red',
+    'classic-blue' => 'rami-card-back--classic-blue',
+    'classic-gold' => 'rami-card-back--classic-gold',
+    'classic-emerald' => 'rami-card-back--classic-emerald',
+    default => 'rami-card-back--v1',
+};
+
 $useConjugatedVerb = (($printUiVersion ?? 2) === 3);
 $printFullRouteName = $useConjugatedVerb ? 'cards.print_full_v3' : 'cards.print_full';
+$printFullBackRouteName = $useConjugatedVerb ? 'cards.print_full_back_v3' : 'cards.print_full_back';
 $printSingleRouteName = $useConjugatedVerb ? 'cards.print_single_v3' : 'cards.print_single';
 $printDeckRouteName = $useConjugatedVerb ? 'cards.print_deck_v3' : 'cards.print_deck';
 $indexRouteName = $useConjugatedVerb ? 'cards.index_v3' : 'cards.index';
@@ -30,33 +50,35 @@ $irregularOnly = $irregularOnly ?? false;
 $themeWritingStyle = $themeWritingStyle ?? null;
 $isDosTheme = (($activeThemeUiVersion ?? 1) === 5) && ($themeWritingStyle === 'mono');
 $wrapperClass = 'print-theme-wrapper';
-if (($activeThemeUiVersion ?? 1) === 5) {
-    $wrapperClass .= ' theme-customizer--v5';
-}
+if (($activeThemeUiVersion ?? 1) === 5) { $wrapperClass .= ' theme-customizer--v5'; }
+$wrapperClass .= $backOnly ? ' print-preview' : '';
 
-$printFullUrl = route($printFullRouteName, array_filter([
+$baseParams = [
     'group' => count($selectedGroups) ? $selectedGroups : null,
     'q' => $searchQuery !== '' ? $searchQuery : null,
     'verb' => $selectedVerb !== '' ? $selectedVerb : null,
     'irregular' => $irregularOnly ? 1 : null,
     'paper' => $paperSize,
-]));
+];
 
-$printSingleUrl = route($printSingleRouteName, array_filter([
-    'group' => count($selectedGroups) ? $selectedGroups : null,
-    'q' => $searchQuery !== '' ? $searchQuery : null,
-    'verb' => $selectedVerb !== '' ? $selectedVerb : null,
-    'irregular' => $irregularOnly ? 1 : null,
-    'paper' => $paperSize,
-]));
+$printFullUrl = route($backOnly ? $printFullBackRouteName : $printFullRouteName, array_filter(array_merge($baseParams, [
+    'include_back' => $includeBack ? 1 : null,
+    'back_color' => $backColor,
+    'back_pattern' => $includeBack ? $backPattern : null,
+    'back_only' => $backOnly ? 1 : null,
+])));
 
-$printDeckUrl = route($printDeckRouteName, array_filter([
-    'group' => count($selectedGroups) ? $selectedGroups : null,
-    'q' => $searchQuery !== '' ? $searchQuery : null,
-    'verb' => $selectedVerb !== '' ? $selectedVerb : null,
-    'irregular' => $irregularOnly ? 1 : null,
-    'paper' => $paperSize,
-]));
+$printBackV1Url = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => '1', 'back_pattern' => $backPattern, 'back_only' => 1])));
+$printBackV2Url = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => '2', 'back_pattern' => $backPattern, 'back_only' => 1])));
+$printBackV3Url = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => '3', 'back_pattern' => $backPattern, 'back_only' => 1])));
+$printBackPremiumUrl = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => 'premium', 'back_pattern' => $backPattern, 'back_only' => 1])));
+$printBackClassicRedUrl = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => 'classic-red', 'back_pattern' => 'classic-red', 'back_only' => 1])));
+$printBackClassicBlueUrl = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => 'classic-blue', 'back_pattern' => 'classic-blue', 'back_only' => 1])));
+$printBackClassicGoldUrl = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => 'classic-gold', 'back_pattern' => 'classic-gold', 'back_only' => 1])));
+$printBackClassicEmeraldUrl = route($printFullBackRouteName, array_filter(array_merge($baseParams, ['back_color' => 'classic-emerald', 'back_pattern' => 'classic-emerald', 'back_only' => 1])));
+
+$printSingleUrl = route($printSingleRouteName, array_filter($baseParams));
+$printDeckUrl = route($printDeckRouteName, array_filter($baseParams));
 
 $selectedGroupForIndex = count($selectedGroups) === 1 ? $selectedGroups[0] : 'all';
 $indexUrl = route($indexRouteName, array_filter([
@@ -66,6 +88,11 @@ $indexUrl = route($indexRouteName, array_filter([
 @endphp
 
 <div class="{{ $wrapperClass }}">
+    @if(!empty($themeSettingsInlineCss))
+    <style>
+        {!! $themeSettingsInlineCss !!}
+    </style>
+    @endif
     <style>
         .print-main {
             --rami-card-width: 190px;
@@ -124,6 +151,15 @@ $indexUrl = route($indexRouteName, array_filter([
         .print-rami-card-back {
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
+        }
+
+        .print-rami-card[data-suit="diamond"] .rami-card-suit,
+        .print-rami-card[data-suit="diamonds"] .rami-card-suit,
+        .print-rami-card[data-suit="heart"] .rami-card-suit,
+        .print-rami-card[data-suit="hearts"] .rami-card-suit {
+            color: #d32f2f !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
         /* Adjust UI details for large scale view */
@@ -262,9 +298,19 @@ $indexUrl = route($indexRouteName, array_filter([
         }
     </style>
 
-    <form method="GET" action="{{ route($printFullRouteName) }}" class="print-filters">
+    <form method="GET" action="{{ route($backOnly ? $printFullBackRouteName : $printFullRouteName) }}" class="print-filters">
         @if($searchQuery !== '')
         <input type="hidden" name="q" value="{{ $searchQuery }}">
+        @endif
+        @if($includeBack)
+        <input type="hidden" name="include_back" value="1">
+        @endif
+        @if($backOnly)
+        <input type="hidden" name="back_only" value="1">
+        @endif
+        <input type="hidden" name="back_color" value="{{ $backColor }}">
+        @if($includeBack)
+        <input type="hidden" name="back_pattern" value="{{ $backPattern }}">
         @endif
 
         <div class="print-filter-field">
@@ -339,6 +385,7 @@ $indexUrl = route($indexRouteName, array_filter([
                 <h3 class="print-full-verb-name">{{ mb_strtoupper($verb->infinitive) }} — {{ $pageData['pronoun_label'] }}</h3>
             </div>
 
+            @if(!$backOnly)
             <div class="print-full-cell">
                 <div class="print-rami-card rami-card{{ $isDosTheme ? ' print-dos-back' : '' }}" data-group="{{ $verb->group }}"
                     data-suit="{{ $verb->suit ?? 'spade' }}" data-pattern="{{ $verb->pattern ?? 'plain' }}">
@@ -382,7 +429,7 @@ $indexUrl = route($indexRouteName, array_filter([
                                 <span class="rami-card-verb-main">{{ mb_strtoupper((string)
                                     ($pageData['conjugation_value'] ?? $verb->infinitive)) }}</span>
                             </div>
-                            <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                         </div>
                         @else
                         <div class="rami-card-verb-text">{{ mb_strtoupper((string) ($pageData['conjugation_value'] ??
@@ -396,7 +443,7 @@ $indexUrl = route($indexRouteName, array_filter([
                                 <span class="rami-card-verb-main">{{ mb_strtoupper((string)
                                     ($pageData['conjugation_value'] ?? $verb->infinitive)) }}</span>
                             </div>
-                            <div class="rami-card-verb-sub">{{ mb_strtoupper($verb->infinitive) }}</div>
+
                         </div>
                         @else
                         <div class="rami-card-verb-text">{{ mb_strtoupper((string) ($pageData['conjugation_value'] ??
@@ -415,6 +462,16 @@ $indexUrl = route($indexRouteName, array_filter([
                     </div>
                 </div>
             </div>
+            @endif
+
+            @if($includeBack)
+            <div class="print-full-cell">
+                <div class="print-rami-card rami-card {{ $backColorClass }}{{ $isDosTheme ? ' print-dos-back' : '' }}"
+                    data-group="{{ $verb->group }}" data-suit="{{ $verb->suit ?? 'spade' }}"
+                    data-pattern="{{ in_array($backColor, ['classic-red', 'classic-blue', 'classic-gold', 'classic-emerald', 'filigrane-red', 'filigrane-blue', 'ecusson-red', 'ecusson-blue', 'eventail-red', 'eventail-blue'], true) ? $backColor : $backPattern }}">
+                </div>
+            </div>
+            @endif
         </div>
         @endforeach
     </div>
@@ -437,6 +494,85 @@ $indexUrl = route($indexRouteName, array_filter([
             <i class="ph ph-arrows-out"></i>
             1 carte/A4
         </a>
+        
+        @if(!$includeBack)
+        <a class="btn btn-secondary" href="{{ $printBackV1Url }}" target="_blank">
+            <i class="ph ph-squares-four"></i>
+            Dos 1
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackV2Url }}" target="_blank">
+            <i class="ph ph-squares-four"></i>
+            Dos 2
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackV3Url }}" target="_blank">
+            <i class="ph ph-squares-four"></i>
+            Dos 3
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackPremiumUrl }}" target="_blank"
+            style="background: linear-gradient(135deg, #8B1E2F, #6B1525); color: #D4AF37; border-color: #D4AF37;">
+            <i class="ph ph-star"></i>
+            Premium ★
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}" target="_blank"
+            style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
+            <i class="ph ph-diamond"></i>
+            Classique <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}" target="_blank"
+            style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
+            <i class="ph ph-diamond"></i>
+            Classique ♠
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicGoldUrl }}" target="_blank"
+            style="background: linear-gradient(135deg, #4a0e1e, #5c1428); color: #d4a832; border-color: #d4a832;">
+            <i class="ph ph-star-four"></i>
+            Or ✦
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicEmeraldUrl }}" target="_blank"
+            style="background: #f5f0e6; color: #0d5e3a; border-color: #0d5e3a;">
+            <i class="ph ph-leaf"></i>
+            Émeraude ♣
+        </a>
+        @else
+        <a class="btn btn-secondary" href="{{ $printBackV1Url }}">
+            <i class="ph ph-palette"></i>
+            Dos 1
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackV2Url }}">
+            <i class="ph ph-palette"></i>
+            Dos 2
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackV3Url }}">
+            <i class="ph ph-palette"></i>
+            Dos 3
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackPremiumUrl }}"
+            style="background: linear-gradient(135deg, #8B1E2F, #6B1525); color: #D4AF37; border-color: #D4AF37;">
+            <i class="ph ph-star"></i>
+            Premium ★
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicRedUrl }}"
+            style="background: #ffffff; color: #c41e3a; border-color: #c41e3a;">
+            <i class="ph ph-diamond"></i>
+            Rouge <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span>
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicBlueUrl }}"
+            style="background: #ffffff; color: #1a3a6b; border-color: #1a3a6b;">
+            <i class="ph ph-diamond"></i>
+            Bleu ♠
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicGoldUrl }}"
+            style="background: linear-gradient(135deg, #4a0e1e, #5c1428); color: #d4a832; border-color: #d4a832;">
+            <i class="ph ph-star-four"></i>
+            Or ✦
+        </a>
+        <a class="btn btn-secondary" href="{{ $printBackClassicEmeraldUrl }}"
+            style="background: #f5f0e6; color: #0d5e3a; border-color: #0d5e3a;">
+            <i class="ph ph-leaf"></i>
+            Émeraude ♣
+        </a>
+        @endif
+        
         <button class="btn btn-primary" onclick="window.print()">
             <i class="ph ph-printer"></i>
             Imprimer
@@ -444,7 +580,7 @@ $indexUrl = route($indexRouteName, array_filter([
     </div>
 
     <div class="print-legend" style="margin-top: 10px;">
-        {{ count($fullPages) }} page(s) · 1 carte en pleine page A4 par page · Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+        {{ count($fullPages) }} page(s) · 1 carte en pleine page A4 par page · Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
     </div>
 </div>
 @endsection

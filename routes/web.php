@@ -108,3 +108,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/system', [SystemController::class, 'index'])->name('admin.system.index');
     Route::post('/system/action', [SystemController::class, 'action'])->name('admin.system.action');
 });
+Route::get('/cards/print/single-back', [VerbCardController::class, 'printSingleBack'])->name('cards.print_single_back');Route::get('/cards/print/single-back-v3', [VerbCardController::class, 'printSingleBackV3'])->name('cards.print_single_back_v3');
+Route::get('/cards/print/full-back', [VerbCardController::class, 'printFullBack'])->name('cards.print_full_back');Route::get('/cards/print/full-back-v3', [VerbCardController::class, 'printFullBackV3'])->name('cards.print_full_back_v3');

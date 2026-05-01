@@ -11,6 +11,7 @@ $useConjugatedVerb = $cardsUiVersion === 3;
 $indexRouteName = $useConjugatedVerb ? 'cards.index_v3' : 'cards.index';
 $showRouteName = $useConjugatedVerb ? 'cards.show_v3' : 'cards.show';
 $printRouteName = $useConjugatedVerb ? 'cards.print_v3' : 'cards.print';
+$printBackRouteName = $useConjugatedVerb ? 'cards.print_back_v3' : 'cards.print_back';
 $pronouns = [
     'je' => 'JE',
     'tu' => 'TU',
@@ -78,7 +79,7 @@ $suitTitle = $verb->suit_title;
     </div>
     @endif
     <div style="margin-top: 10px; color: var(--color-text-muted); font-size: 0.95rem;">
-        Couleurs : ♠ Pique · ♦ Carreaux · ♣ Trèfle · ♥ Cœur
+        Couleurs : ♠ Pique · <span style="color: #d32f2f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;">♦</span> Carreaux · ♣ Trèfle · ♥ Cœur
     </div>
 </div>
 
@@ -214,6 +215,10 @@ $suitTitle = $verb->suit_title;
     <a href="{{ route($printRouteName, $verb) }}" class="btn btn-primary btn-lg" target="_blank">
         <i class="ph ph-printer"></i>
         Imprimer la carte
+    </a>
+    <a href="{{ route($printBackRouteName, $verb) }}" class="btn btn-secondary btn-lg" target="_blank">
+        <i class="ph ph-squares-four"></i>
+        Imprimer le verso
     </a>
 </div>
 <div style="max-width: 620px; margin: 18px auto 0;">
